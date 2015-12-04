@@ -72,6 +72,7 @@ private:
 	bool m_isGround;
 	float m_vxMax;
 	float m_vyMax;
+	bool isInput;
 private:
 	void InitAnimation();//khoi tao cac thong so cua Mario
 	void InitMove();//khoi tao cac thong so chuyen dong cua Mario

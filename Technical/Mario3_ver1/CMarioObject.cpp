@@ -5,6 +5,8 @@ CMarioObject::CMarioObject()
 {
 	this->m_Id = 0;
 	this->m_IdType = 1;
+
+	this->isInput = false;
 	this->m_Dir = Direction::NONE_DIR;
 	this->m_status = STATUS::NONE_STATUS;
 	this->m_collision = COLLISION::NONE_COL;
@@ -47,12 +49,13 @@ CMarioObject::~CMarioObject()
 }
 void CMarioObject::Update(float deltaTime)
 {
-	OnKeyDown(deltaTime);
-	OnKeyUp(deltaTime);
+	
 	
 	SetFrame(deltaTime);
 	ChangeFrame(deltaTime);	
 	MoveUpdate(deltaTime);
+	OnKeyDown(deltaTime);
+	OnKeyUp(deltaTime);
 }
 void CMarioObject::Update(float deltaTime, std::vector<CBaseGameObject*>* listObjectCollision)
 {}
@@ -89,19 +92,17 @@ void CMarioObject::OnCollision(float deltaTime, std::vector<CBaseGameObject*> li
 				{
 					this->m_ax = 0;
 					this->m_vx = 0;
-				}
-				if (normalY > 0)
-				{
-					this->m_vy = 0;
-					this->m_a = 0;
-				}
+					this->isInput = false;
+				}				
 			}
+			
 		}
 	}
 }
 
 void CMarioObject::OnCollision(float deltaTime, std::vector<Box> listBox)
 {	
+	
 #pragma region Va cham k co van toc
 	//this->m_isGround = false;
 	//for (std::vector<Box>::iterator it = listBox.begin(); it != listBox.end(); it++)
@@ -167,17 +168,17 @@ void CMarioObject::OnCollision(float deltaTime, std::vector<Box> listBox)
 				}
 			}
 			if (normalX != 0)
-			{
-				
+			{				
 				this->m_ax = 0;
 				this->m_vx = 0;
-				
+				this->isInput = false;
 				//xu ly khong cho di chuyen qua
 				//MessageBox(NULL, "Va cham theo chieu X", "COL", MB_OK);
 			}
 		}
+		
 	}
-
+	
 	
 
 #pragma endregion
@@ -314,7 +315,7 @@ void CMarioObject::SetFrame(float deltaTime)
 }
 void CMarioObject::Move(float deltaTime)
 {
-	if (this->m_status != STATUS::NONE_STATUS)
+	if (this->isInput)
 	{
 		if (this->m_Dir == Direction::LEFT)
 		{
@@ -322,10 +323,7 @@ void CMarioObject::Move(float deltaTime)
 		}
 		else
 		{
-			if (this->m_Dir == Direction::RIGHT)
-			{
-				this->m_ax = 70;
-			}
+			this->m_ax = 70;
 		}
 	}
 
@@ -345,6 +343,7 @@ void CMarioObject::Move(float deltaTime)
 
 	this->m_Pos.x += this->m_vx * deltaTime + 0.5f * this->m_ax * deltaTime *deltaTime;
 
+	
 	if (this->m_vx * this->m_ax < 0)							//Ngăn gia tốc làm Mario quay lại
 	{
 		if (this->m_vx > -10 && this->m_vx < 10)
@@ -425,8 +424,7 @@ void CMarioObject::OnKeyDown(float deltaTime)
 				this->m_canJump = true;
 				this->m_isJumping = true;
 				this->m_isGround = false;				
-			}
-			
+			}			
 			break;
 		case DIK_X:
 			break;
@@ -437,11 +435,14 @@ void CMarioObject::OnKeyDown(float deltaTime)
 		case DIK_LEFT:
 			this->m_status = STATUS::MOVE;
 			this->m_Dir = Direction::LEFT;	
-			
+			this->isInput = true;
+			this->m_ax = -70;
 			break;
 		case DIK_RIGHT:
 			this->m_status = STATUS::MOVE;
 			this->m_Dir = Direction::RIGHT;	
+			this->isInput = true;
+			this->m_ax = 70;
 			break;
 		case DIK_UP:
 			break;
@@ -470,10 +471,12 @@ void CMarioObject::OnKeyUp(float deltaTime)
 		case DIK_LEFT:
 			//MessageBox(NULL, "Da tha phim Left", "THA", MB_OK);
 			this->m_status = STATUS::NONE_STATUS;
+			this->isInput = false;
 			this->m_ax = 100;
 			break;
 		case DIK_RIGHT:
-			this->m_status = STATUS::NONE_STATUS;			
+			this->m_status = STATUS::NONE_STATUS;	
+			this->isInput = false;
 			this->m_ax = -100;
 			break;
 		case DIK_UP:

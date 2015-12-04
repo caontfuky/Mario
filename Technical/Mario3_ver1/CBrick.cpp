@@ -65,6 +65,8 @@ void CBrick::OnCollision(float deltaTime)
 		if (normalY >= 0)
 		{
 			status = BRICK_STATUS::BRICK_NONE;
+			CMarioObject::GetInstance()->m_a = 0;
+			CMarioObject::GetInstance()->m_vy = 0;
 			//CMarioObject::GetInstance()->m_a = CMarioObject::GetInstance()->m_aDefault;
 			//MessageBox(NULL, "Va cham theo  Y Duoi len", "VA CHam", MB_OK);
 		}
