@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="FrameWork">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="FrameWork\DirectX">
+      <UniqueIdentifier>{78e0f8f5-a034-45f4-9340-96573937b903}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\Object">
+      <UniqueIdentifier>{2a31ae20-f757-4314-a917-d8bbc2bca059}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\Mario">
+      <UniqueIdentifier>{127e06e7-d233-419b-a00d-362cd0ef4efe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\DirectX\Configs">
+      <UniqueIdentifier>{7d44ce82-d3ef-41a4-9aca-2f48723fef19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\DirectX\Input">
+      <UniqueIdentifier>{b4d47e97-c0a6-439c-8e46-5a2c66c07eed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\DirectX\Divice">
+      <UniqueIdentifier>{71a07db7-5bc2-499e-90d2-d5e61a1703d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\DirectX\Windows">
+      <UniqueIdentifier>{193e9699-306b-4d97-8f30-e2b294932892}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\Mario\Game">
+      <UniqueIdentifier>{fd58c3ca-a1f0-4a05-b4d1-5263c02d7e3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\Object\Object">
+      <UniqueIdentifier>{2d524a69-3a42-4dda-b37a-07d20102641c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\Object\Object\BaseGameObject">
+      <UniqueIdentifier>{9e20ecda-46ec-4fff-8320-4cd2ed28321e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\Object\Object\BaseEnemy">
+      <UniqueIdentifier>{fb8a01d1-064a-4957-a247-a85db7351106}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\Object\Object\Mario">
+      <UniqueIdentifier>{0aae897b-ca2a-4a4e-8d8d-237f53130d33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\DirectX\DrawObject">
+      <UniqueIdentifier>{3f08ca54-d8e3-441b-bba1-ba9cbfd1a0d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\Object\Scene">
+      <UniqueIdentifier>{a4d9458b-94a4-42ad-8205-a608bce4cd63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\Object\StateGame">
+      <UniqueIdentifier>{2eac7e6b-f7f2-4ca6-a15d-552c12322f64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\Object\Object\Background">
+      <UniqueIdentifier>{a04c17b9-998e-4840-af0b-7bd835850096}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\Object\Object\Background\TestListBox">
+      <UniqueIdentifier>{cc4389c8-df2c-41a0-9f70-5420a6dda8d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\Object\Object\BaseEnemy\EnemyRun">
+      <UniqueIdentifier>{be0c0917-22b9-403c-b8ec-f8771b25d5a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\Object\Object\Brick">
+      <UniqueIdentifier>{aba99af0-f753-4a41-8d73-42b5dee7bfbd}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>FrameWork\Mario</Filter>
+    </ClCompile>
+    <ClCompile Include="CFileUtil.cpp">
+      <Filter>FrameWork\DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="CFileConfig.cpp">
+      <Filter>FrameWork\DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="CTexture.cpp">
+      <Filter>FrameWork\DirectX\Divice</Filter>
+    </ClCompile>
+    <ClCompile Include="CViewWindows.cpp">
+      <Filter>FrameWork\DirectX\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="CDevice.cpp">
+      <Filter>FrameWork\DirectX\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="CSprite.cpp">
+      <Filter>FrameWork\DirectX\Divice</Filter>
+    </ClCompile>
+    <ClCompile Include="CInput.cpp">
+      <Filter>FrameWork\DirectX\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="CAnimation.cpp">
+      <Filter>FrameWork\DirectX\Divice</Filter>
+    </ClCompile>
+    <ClCompile Include="CGame.cpp">
+      <Filter>FrameWork\Mario\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="CMario.cpp">
+      <Filter>FrameWork\Mario\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="CBaseGameObject.cpp">
+      <Filter>FrameWork\Object\Object\BaseGameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="CBaseEnemy.cpp">
+      <Filter>FrameWork\Object\Object\BaseEnemy</Filter>
+    </ClCompile>
+    <ClCompile Include="CMarioObject.cpp">
+      <Filter>FrameWork\Object\Object\Mario</Filter>
+    </ClCompile>
+    <ClCompile Include="CDrawObject.cpp">
+      <Filter>FrameWork\DirectX\DrawObject</Filter>
+    </ClCompile>
+    <ClCompile Include="CState.cpp">
+      <Filter>FrameWork\Object\StateGame</Filter>
+    </ClCompile>
+    <ClCompile Include="CStateGamePlay.cpp">
+      <Filter>FrameWork\Object\StateGame</Filter>
+    </ClCompile>
+    <ClCompile Include="StateGameManager.cpp">
+      <Filter>FrameWork\Object\StateGame</Filter>
+    </ClCompile>
+    <ClCompile Include="CCollision.cpp">
+      <Filter>FrameWork\DirectX\Divice</Filter>
+    </ClCompile>
+    <ClCompile Include="CBackGround.cpp">
+      <Filter>FrameWork\Object\Object\Background</Filter>
+    </ClCompile>
+    <ClCompile Include="CPoolObject.cpp">
+      <Filter>FrameWork\DirectX\DrawObject</Filter>
+    </ClCompile>
+    <ClCompile Include="CLoadBackground.cpp">
+      <Filter>FrameWork\Object\Object\Background</Filter>
+    </ClCompile>
+    <ClCompile Include="CCamera.cpp">
+      <Filter>FrameWork\DirectX\Divice</Filter>
+    </ClCompile>
+    <ClCompile Include="CBoxGround.cpp">
+      <Filter>FrameWork\Object\Object\Background\TestListBox</Filter>
+    </ClCompile>
+    <ClCompile Include="CEnemyRun.cpp">
+      <Filter>FrameWork\Object\Object\BaseEnemy\EnemyRun</Filter>
+    </ClCompile>
+    <ClCompile Include="CBrick.cpp">
+      <Filter>FrameWork\Object\Object\Brick</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CGlobal.h">
+      <Filter>FrameWork\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="CSingleton.h">
+      <Filter>FrameWork\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="CResourece.h">
+      <Filter>FrameWork\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="CFileUtil.h">
+      <Filter>FrameWork\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="CFileConfig.h">
+      <Filter>FrameWork\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="CTexture.h">
+      <Filter>FrameWork\DirectX\Divice</Filter>
+    </ClInclude>
+    <ClInclude Include="CViewWindows.h">
+      <Filter>FrameWork\DirectX\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="CDevice.h">
+      <Filter>FrameWork\DirectX\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="CSprite.h">
+      <Filter>FrameWork\DirectX\Divice</Filter>
+    </ClInclude>
+    <ClInclude Include="CInput.h">
+      <Filter>FrameWork\DirectX\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="CAnimation.h">
+      <Filter>FrameWork\DirectX\Divice</Filter>
+    </ClInclude>
+    <ClInclude Include="CGame.h">
+      <Filter>FrameWork\Mario\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="CMario.h">
+      <Filter>FrameWork\Mario\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="CMove.h">
+      <Filter>FrameWork\Object\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CBaseGameObject.h">
+      <Filter>FrameWork\Object\Object\BaseGameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="CBaseEnemy.h">
+      <Filter>FrameWork\Object\Object\BaseEnemy</Filter>
+    </ClInclude>
+    <ClInclude Include="CMarioObject.h">
+      <Filter>FrameWork\Object\Object\Mario</Filter>
+    </ClInclude>
+    <ClInclude Include="Connfigs.h">
+      <Filter>FrameWork\DirectX\Configs</Filter>
+    </ClInclude>
+    <ClInclude Include="CDrawObject.h">
+      <Filter>FrameWork\DirectX\DrawObject</Filter>
+    </ClInclude>
+    <ClInclude Include="CState.h">
+      <Filter>FrameWork\Object\StateGame</Filter>
+    </ClInclude>
+    <ClInclude Include="CStateGamePlay.h">
+      <Filter>FrameWork\Object\StateGame</Filter>
+    </ClInclude>
+    <ClInclude Include="StateGameManager.h">
+      <Filter>FrameWork\Object\StateGame</Filter>
+    </ClInclude>
+    <ClInclude Include="CCollision.h">
+      <Filter>FrameWork\DirectX\Divice</Filter>
+    </ClInclude>
+    <ClInclude Include="CBackGround.h">
+      <Filter>FrameWork\Object\Object\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="CPoolObject.h">
+      <Filter>FrameWork\DirectX\DrawObject</Filter>
+    </ClInclude>
+    <ClInclude Include="CLoadBackground.h">
+      <Filter>FrameWork\Object\Object\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="CCamera.h">
+      <Filter>FrameWork\DirectX\Divice</Filter>
+    </ClInclude>
+    <ClInclude Include="CBoxGround.h">
+      <Filter>FrameWork\Object\Object\Background\TestListBox</Filter>
+    </ClInclude>
+    <ClInclude Include="CEnemyRun.h">
+      <Filter>FrameWork\Object\Object\BaseEnemy\EnemyRun</Filter>
+    </ClInclude>
+    <ClInclude Include="CBrick.h">
+      <Filter>FrameWork\Object\Object\Brick</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
