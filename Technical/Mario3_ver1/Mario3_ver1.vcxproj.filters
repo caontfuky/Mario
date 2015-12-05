@@ -62,6 +62,12 @@
     <Filter Include="FrameWork\Object\Object\Brick">
       <UniqueIdentifier>{aba99af0-f753-4a41-8d73-42b5dee7bfbd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FrameWork\Object\Object\Effect">
+      <UniqueIdentifier>{d51d2673-d942-4965-adfe-61a9bd347e51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\Object\Object\Effect\Coin">
+      <UniqueIdentifier>{7f2afeba-3bd9-4906-944b-34edaa37a495}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -141,6 +147,9 @@
     </ClCompile>
     <ClCompile Include="CBrick.cpp">
       <Filter>FrameWork\Object\Object\Brick</Filter>
+    </ClCompile>
+    <ClCompile Include="CCoin.cpp">
+      <Filter>FrameWork\Object\Object\Effect\Coin</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -233,6 +242,9 @@
     </ClInclude>
     <ClInclude Include="CBrick.h">
       <Filter>FrameWork\Object\Object\Brick</Filter>
+    </ClInclude>
+    <ClInclude Include="CCoin.h">
+      <Filter>FrameWork\Object\Object\Effect\Coin</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -88,12 +88,18 @@ void CMarioObject::OnCollision(float deltaTime, std::vector<CBaseGameObject*> li
 						this->m_collision = COLLISION::GROUND_COL;
 					}
 				}
-				if (normalX != 0)
+				if (normalX < 0 && this->m_Dir == Direction::RIGHT)
 				{
 					this->m_ax = 0;
 					this->m_vx = 0;
 					this->isInput = false;
-				}				
+				}
+				if (normalX > 0 && this->m_Dir == Direction::LEFT)
+				{
+					this->m_ax = 0;
+					this->m_vx = 0;
+					this->isInput = false;
+				}
 			}
 			
 		}
@@ -168,12 +174,26 @@ void CMarioObject::OnCollision(float deltaTime, std::vector<Box> listBox)
 				}
 			}
 			if (normalX != 0)
-			{				
-				this->m_ax = 0;
-				this->m_vx = 0;
-				this->isInput = false;
+			{			
+				if (normalX < 0 && this->m_Dir == Direction::RIGHT)
+				{
+					this->m_ax = 0;
+					this->m_vx = 0;
+					this->isInput = false;
+				}
+				if (normalX > 0 && this->m_Dir == Direction::LEFT)
+				{
+					this->m_ax = 0;
+					this->m_vx = 0;
+					this->isInput = false;
+				}		
 				//xu ly khong cho di chuyen qua
 				//MessageBox(NULL, "Va cham theo chieu X", "COL", MB_OK);
+			}
+			if (normalX == 0)
+			{
+				if (this->m_status != STATUS::NONE_STATUS)
+					this->isInput = true;
 			}
 		}
 		

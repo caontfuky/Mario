@@ -10,3 +10,6 @@
 
 //Resource Brick
 #define BRICK_1 "..\\Resources\\Brick\\brick1.png"
+
+//Effect
+#define EFFECT_COIN "..\\Resources\\Effect\\Coin\\Coin.png"

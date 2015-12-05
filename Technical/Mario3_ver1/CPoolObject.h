@@ -12,6 +12,9 @@
 
 //Brick
 #include "CBrick.h"
+
+//Effect
+#include "CCoin.h"
 class CPoolObject : public CSingleton<CPoolObject>
 {
 	friend class CSingleton<CPoolObject>;
@@ -20,7 +23,7 @@ public:
 	~CPoolObject();
 
 	std::vector<CBaseGameObject*> listEnemy;
-	std::vector<CBaseGameObject*> listBrick;
+	std::vector<CBaseGameObject*> listEffect;
 public:
 	CBaseEnemy *enemy;
 	CBaseEnemy *enemy1;
@@ -28,7 +31,7 @@ public:
 
 	CEnemyRun *enemyRun1;
 
-
+	CCoin *coin;
 public:
 	void LoadBackGround();//load back ground
 	void CreateEnemy(int count);
@@ -38,6 +41,10 @@ public:
 
 public:
 	void Draw();
+
+	//Effect
+public:
+	void RenderCoin(Vector2 pos);
 };
 #endif
 

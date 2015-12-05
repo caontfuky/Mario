@@ -83,6 +83,13 @@ void CDrawObject::Draw(CBaseGameObject* obj)
 				//this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
 				this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
 				break;
+				//Effect
+			case 301:
+				texture->LoadImageFromFile(EFFECT_COIN, D3DCOLOR_XRGB(255, 0, 255));
+				pos = Vector3(obj->GetPos().x, obj->GetPos().y, 0);
+				//this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+				this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+				break;
 			default:
 				break;
 		}

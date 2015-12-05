@@ -11,6 +11,7 @@ class CBrick:public CBaseGameObject, public CAnimation
 {
 public:
 	CBrick();
+	CBrick(Vector2 pos);
 	~CBrick();
 	BRICK_STATUS status;
 public:

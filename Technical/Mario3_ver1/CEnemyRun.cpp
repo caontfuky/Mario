@@ -25,7 +25,7 @@ void CEnemyRun::Init()
 	//khoi tao Animation
 	this->m_currentTime = 0;
 	this->m_currentFrame = 0;
-	this->m_elapseTimeChangeFrame = 0.1f;
+	this->m_elapseTimeChangeFrame = 0.2f;
 	this->m_increase = 1;
 	this->m_totalFrame = 3;
 	this->m_column = 3;
@@ -44,7 +44,6 @@ void CEnemyRun::Init()
 	this->m_Height = 16;
 	this->m_isJumping = false;	
 	this->m_canJump = true;
-	this->m_elapseTimeChangeFrame = 0.2f;
 }
 void CEnemyRun::Update(float deltaTime)
 {
@@ -72,7 +71,7 @@ void CEnemyRun::SetFrame(float deltaTime)
 void CEnemyRun::MoveUpdate(float deltaTime)
 {
 	this->m_Pos.x += this->m_vx * deltaTime;
-	if (this->m_Pos.x <= 0)
+	if (this->m_Pos.x <= 0 || this->m_Pos.x >= 200)
 	{
 		this->m_vx *= -1;
 	}
@@ -117,7 +116,7 @@ void CEnemyRun::OnCollision(float deltaTime)//xet va cham voi Player
 	{
 		if (CCollision::GetInstance()->Collision(CMarioObject::GetInstance(), this))
 		{
-			MessageBox(NULL, "Va cham theo  X", "VA CHam", MB_OK);
+			MessageBox(NULL, "Mario Die", "Game Over", MB_OK);
 		}
 	}
 }

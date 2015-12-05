@@ -75,6 +75,7 @@
     <ClCompile Include="CBoxGround.cpp" />
     <ClCompile Include="CBrick.cpp" />
     <ClCompile Include="CCamera.cpp" />
+    <ClCompile Include="CCoin.cpp" />
     <ClCompile Include="CCollision.cpp" />
     <ClCompile Include="CDevice.cpp" />
     <ClCompile Include="CDrawObject.cpp" />
@@ -103,6 +104,7 @@
     <ClInclude Include="CBoxGround.h" />
     <ClInclude Include="CBrick.h" />
     <ClInclude Include="CCamera.h" />
+    <ClInclude Include="CCoin.h" />
     <ClInclude Include="CCollision.h" />
     <ClInclude Include="CDevice.h" />
     <ClInclude Include="CDrawObject.h" />
