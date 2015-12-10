@@ -21,7 +21,8 @@ void CStateGamePlay::Update(float deltaTime)
 
 	//CMarioObject::GetInstance()->OnCollision(deltaTime, CPoolObject::GetInstance()->enemy);
 	//va cham voi Ground
-	CMarioObject::GetInstance()->OnCollision(deltaTime, CBoxGround::GetInstance()->listBox);
+	//CMarioObject::GetInstance()->OnCollision(deltaTime, CBoxGround::GetInstance()->listBox);
+	CMarioObject::GetInstance()->OnCollision(deltaTime, CBoxGround::GetInstance()->listGround);
 
 	//va cham voi List Enemy
 	CMarioObject::GetInstance()->OnCollision(deltaTime, CPoolObject::GetInstance()->listEnemy);

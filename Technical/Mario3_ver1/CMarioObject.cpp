@@ -30,7 +30,7 @@ void CMarioObject::InitMove()
 	this->m_vyDefault = this->m_vy;
 	this->m_vxMax = 50;
 	this->m_vyMax = -140;
-	this->m_a = 300;
+	this->m_a = -300;
 	this->m_aDefault = this->m_a;
 	this->m_ax = 0;
 	this->m_Pos = Vector2(50, 200);
@@ -76,10 +76,9 @@ void CMarioObject::OnCollision(float deltaTime, std::vector<CBaseGameObject*> li
 
 			if ((timeCollision > 0.0f && timeCollision < 1.0f) || timeCollision == 2.0f)
 			{
-				//MessageBox(NULL, "Va cham voi Brick", "COL", MB_OK);
-				if (normalY < 0)
+				if (normalY > 0)
 				{
-					if (this->m_vy >= 0)
+					if (this->m_vy <= 0)
 					{
 						this->m_isGround = true;
 						this->m_vy = 0;
@@ -88,7 +87,25 @@ void CMarioObject::OnCollision(float deltaTime, std::vector<CBaseGameObject*> li
 						this->m_collision = COLLISION::GROUND_COL;
 					}
 				}
-				if (normalX < 0 && this->m_Dir == Direction::RIGHT)
+				if (normalY < 0)
+				{	/*
+					if (this->m_vy <= 0)
+					{*/
+					this->m_isGround = true;
+					this->m_vy = -75;
+					this->m_a = 0;
+					this->m_canJump = false;
+					this->m_collision = COLLISION::GROUND_COL;
+					//}
+				}
+				if (normalX != 0)
+				{
+					
+					this->m_ax = 0;
+					this->m_vx = 0;
+					this->isInput = false;
+				}
+				/*if (normalX < 0 && this->m_Dir == Direction::RIGHT)
 				{
 					this->m_ax = 0;
 					this->m_vx = 0;
@@ -99,7 +116,7 @@ void CMarioObject::OnCollision(float deltaTime, std::vector<CBaseGameObject*> li
 					this->m_ax = 0;
 					this->m_vx = 0;
 					this->isInput = false;
-				}
+				}*/
 			}
 			
 		}
@@ -164,7 +181,7 @@ void CMarioObject::OnCollision(float deltaTime, std::vector<Box> listBox)
 		{			
 			if (normalY < 0)
 			{
-				if (this->m_vy >= 0)
+				if (this->m_vy <= 0)
 				{
 					this->m_isGround = true;
 					this->m_vy = 0;
@@ -173,8 +190,8 @@ void CMarioObject::OnCollision(float deltaTime, std::vector<Box> listBox)
 					this->m_collision = COLLISION::GROUND_COL;
 				}
 			}
-			if (normalX != 0)
-			{			
+			if (normalX != 0 && this->m_vy != 0)
+			{
 				if (normalX < 0 && this->m_Dir == Direction::RIGHT)
 				{
 					this->m_ax = 0;
@@ -190,18 +207,86 @@ void CMarioObject::OnCollision(float deltaTime, std::vector<Box> listBox)
 				//xu ly khong cho di chuyen qua
 				//MessageBox(NULL, "Va cham theo chieu X", "COL", MB_OK);
 			}
-			if (normalX == 0)
+			
+			/*if (normalX == 0)
 			{
 				if (this->m_status != STATUS::NONE_STATUS)
 					this->isInput = true;
-			}
+			}*/
 		}
 		
 	}
-	
-	
-
 #pragma endregion
+}
+void CMarioObject::OnCollision(float deltaTime, std::vector<Ground> listGround)
+{
+	float normalX = 0;
+	float normalY = 0;
+	float moveX = 0.0f;
+	float moveY = 0.0f;
+	float timeCollision;
+
+	this->m_isGround = false;
+	for (std::vector<Ground>::iterator it = listGround.begin(); it != listGround.end(); it++)
+	{
+		Ground ground = *it;
+		Box box = ground.box;
+
+		timeCollision = CCollision::GetInstance()->Collision(this, box, normalX, normalY, moveX, moveY, deltaTime);
+
+		if ((timeCollision > 0.0f && timeCollision < 1.0f) || timeCollision == 2.0f)
+		{
+			if (ground.idGround == 702)
+			{
+				if (normalY < 0)
+				{
+					if (this->m_vy <= 0)
+					{
+						this->m_isGround = true;
+						this->m_vy = 0;
+						this->m_a = 0;
+						this->m_canJump = false;
+						this->m_collision = COLLISION::GROUND_COL;
+					}
+				}
+				if (normalX != 0 && this->m_vy != 0)
+				{
+					if (normalX < 0 && this->m_Dir == Direction::RIGHT)
+					{
+						this->m_ax = 0;
+						this->m_vx = 0;
+						this->isInput = false;
+					}
+					if (normalX > 0 && this->m_Dir == Direction::LEFT)
+					{
+						this->m_ax = 0;
+						this->m_vx = 0;
+						this->isInput = false;
+					}
+					//xu ly khong cho di chuyen qua
+					//MessageBox(NULL, "Va cham theo chieu X", "COL", MB_OK);
+				}
+			}
+			if (ground.idGround == 701)
+			{
+				if (normalX != 0)
+				{
+					if (normalX < 0 && this->m_Dir == Direction::RIGHT)
+					{
+						this->m_ax = 0;
+						this->m_vx = 0;
+						this->isInput = false;
+					}
+					if (normalX > 0 && this->m_Dir == Direction::LEFT)
+					{
+						this->m_ax = 0;
+						this->m_vx = 0;
+						this->isInput = false;
+					}					
+				}
+			}
+		}
+	}
 }
 void CMarioObject::OnCollision(float deltaTime, CBaseGameObject* Object)
 {
@@ -265,7 +350,7 @@ void CMarioObject::Gravity(float deltaTime)
 		this->m_a = this->m_aDefault;
 	}
 	this->m_vy += this->m_a *deltaTime;
-	if (this->m_vy > 0)
+	if (this->m_vy < 0)
 	{
 		this->m_canJump = true;
 	}
@@ -280,13 +365,13 @@ void CMarioObject::AddForce(float deltaTime)
 		if (m_timeJumb < 0.2f)
 		{
 			
-			this->m_vy = -100;
+			this->m_vy = 100;
 			this->m_Pos.y += this->m_vy*deltaTime + 0.5 * this->m_a * deltaTime *deltaTime;
 			//this->m_canJump = true;
 		}
 		if (m_timeJumb > 0.2f)
 		{
-			this->m_vy = -120;			
+			this->m_vy = 120;			
 			this->m_Pos.y += this->m_vy*deltaTime + 0.5 * this->m_a * deltaTime *deltaTime;
 			
 			//MessageBox(NULL, "Nhay cao", "Jumb", MB_OK);
@@ -374,7 +459,7 @@ void CMarioObject::Move(float deltaTime)
 	}
 
 	//thiet lap camera
-	//CCamera::GetInstance()->Update(this->m_Pos.x - __SCREEN_WIDTH / 2, 0);
+	CCamera::GetInstance()->Update(this->m_Pos.x - __SCREEN_WIDTH / 2, 0);
 }
 void CMarioObject::MoveUpdate(float deltaTime)
 {
@@ -423,7 +508,7 @@ void CMarioObject::SetLeft(Direction left)
 {}
 Box CMarioObject::GetBox()
 {
-	return Box(this->m_Pos.x, this->m_Pos.y, this->m_Width, this->m_Height + 3, this->m_vx, this->m_vy);
+	return Box(this->m_Pos.x, this->m_Pos.y, this->m_Width, this->m_Height, this->m_vx, this->m_vy);
 }
 RECT* CMarioObject::GetBound()
 {

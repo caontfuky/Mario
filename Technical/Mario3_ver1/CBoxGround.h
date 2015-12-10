@@ -6,6 +6,7 @@
 #include "CFileUtil.h"
 
 #define FILE_LIST_BOX "..\\Resources\\Box\\Box.txt"
+
 class CBoxGround : public CSingleton<CBoxGround>
 {
 public:
@@ -13,6 +14,7 @@ public:
 	~CBoxGround();
 public:
 	std::vector<Box> listBox;
+	std::vector<Ground> listGround;
 
 public:
 	void Init();

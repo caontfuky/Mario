@@ -50,6 +50,8 @@ void CBrick::Update(float deltaTime)
 	}
 	OnCollision(deltaTime);
 }
+void CBrick::OnCollision(float deltaTime, std::vector<Ground> listGround)
+{}
 void CBrick::Update(float deltaTime, std::vector<CBaseGameObject*>* listObjectCollision)
 {}
 void CBrick::OnCollision(float deltaTime, std::vector<CBaseGameObject*> listObjectCollision)
@@ -67,15 +69,18 @@ void CBrick::OnCollision(float deltaTime)
 
 	if ((timeCollision > 0.0f && timeCollision < 1.0f) || timeCollision == 2.0f)
 	{
-		if (normalY > 0 )
+		if (normalY < 0 )
 		{
-			Vector2 pos = Vector2(this->m_Pos.x, this->m_Pos.y - this->m_Height);
+			Vector2 pos = Vector2(this->m_Pos.x, this->m_Pos.y + this->m_Height);
 			
 			if (status != BRICK_STATUS::BRICK_NONE)
 				CPoolObject::GetInstance()->RenderCoin(pos);
 			status = BRICK_STATUS::BRICK_NONE;
+
 			CMarioObject::GetInstance()->m_a = 0;
-			CMarioObject::GetInstance()->m_vy = 0;			
+			CMarioObject::GetInstance()->m_vy = -100;
+			
+					
 			//CMarioObject::GetInstance()->m_a = CMarioObject::GetInstance()->m_aDefault;
 			//MessageBox(NULL, "Va cham theo  Y Duoi len", "VA CHam", MB_OK);
 		}

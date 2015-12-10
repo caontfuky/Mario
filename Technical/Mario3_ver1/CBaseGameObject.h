@@ -32,7 +32,7 @@ public:
 	RECT *m_RectRS;//de xet va cham
 	RECT m_Rect;//xet quadtree
 	int m_Hp;//mau cua doi tuong
-	
+	float m_rotation;
 public:
 	float m_timeRemove;
 	bool isRemove;
@@ -44,6 +44,7 @@ public:
 	virtual void Update(float deltaTime, std::vector<CBaseGameObject*>* listObjectCollision);//ham Update de xe va cham
 	virtual void OnCollision(float deltaTime, std::vector<CBaseGameObject*> listObjectCollision) = 0;//ham xet va cham
 	virtual void OnCollision(float deltaTime, CBaseGameObject* Object) = 0;//Test va cham voi 1 doi tuong
+	virtual void OnCollision(float deltaTime, std::vector<Ground> listGround) = 0;
 	virtual Vector2 GetPos(){ return this->m_Pos; };//lay ra vi tri cua Doi tuong
 	virtual Tag GetTag(){ return this->m_Tag; };//lay ra tag loai nao
 	virtual void SetTag(Tag tag){ this->m_Tag = tag; };//set la loai doi tuong nao

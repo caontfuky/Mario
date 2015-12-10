@@ -19,8 +19,8 @@ using namespace std;
 //extern HINSTANCE e_hInstance = nullptr;
 
 #define __FRAME_RATE 60
-#define __SCREEN_WIDTH  512
-#define __SCREEN_HEIGHT 470
+#define __SCREEN_WIDTH  640
+#define __SCREEN_HEIGHT 480
 #define __CLASS_NAME "Mario"
 #define __CLASS_NAME__(x) #x
 
@@ -61,15 +61,6 @@ typedef D3DXMATRIX				Matrix;
 typedef D3DCOLOR				Color;
 typedef RECT					Rect;
 
-#define __OBJECT_PATH__ "..\\Resource\\File\\Object\\ObjectPath.csv"
-#define __AUDIO_PATH__ "..\\Resource\\File\\Audio\\AudioPath.csv"
-#define __SIMON_PATH__  "..\\Resource\\simon.png"
-#define __BULLET_PATH__ "..\\Resource\\Bullet.png"
-#define __CONTRA_PATH__ "..\\Resources\\contra_1.PNG"
-//
-#define __NAME_MAP_1__ "JUNGLE"
-#define __NAME_MAP_3__ "WATERFALL"
-#define __NAME_MAP_5__ "SNOW FIELD"
 //
 #define PI atan(1.0)*4
 //#define PI 3.14
@@ -125,4 +116,23 @@ struct Box
 
 	// velocity
 	float vx, vy;
+};
+struct Ground
+{
+	int stt;
+	int idGround;
+	Box box;
+	Ground()
+	{
+		stt = 0;
+		idGround = 0;
+		box = Box();
+	}
+	Ground(int _stt, int _idGround, Box _box)
+	{
+		stt = _stt;
+		idGround = _idGround;
+		box = _box;
+	}
+
 };

@@ -21,6 +21,7 @@ public:
 	void OnCollision(float deltaTime, CBaseGameObject* Object);//ham xet va cham
 	void OnCollision(float deltaTime);//xet va cham voi Player
 	void MoveUpdate(float deltaTime);
+	void OnCollision(float deltaTime, std::vector<Ground> listGround);
 	Box GetBox();
 	RECT* GetBound();
 	RECT* GetRectRS();

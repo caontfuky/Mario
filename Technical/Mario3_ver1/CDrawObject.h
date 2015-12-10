@@ -5,6 +5,7 @@
 #include "CSprite.h"
 #include "CBaseGameObject.h"
 #include "CResourece.h"
+#include "CCamera.h"
 
 class CDrawObject : public CSingleton<CDrawObject>
 {

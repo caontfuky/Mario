@@ -68,6 +68,18 @@
     <Filter Include="FrameWork\Object\Object\Effect\Coin">
       <UniqueIdentifier>{7f2afeba-3bd9-4906-944b-34edaa37a495}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FrameWork\Object\Object\BaseEnemy\EnemyTurtle">
+      <UniqueIdentifier>{58cc96d8-2186-4fe7-b914-5a95c21055c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\Object\Object\BaseEnemy\EnemyFlower">
+      <UniqueIdentifier>{09896eee-083c-4208-9c3e-352ce4cd869a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\Object\Object\BaseEnemy\Bullet">
+      <UniqueIdentifier>{ac3768ef-d5cd-4f24-95b4-c3f816cb740c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\DirectX\DrawObject\QuadTree">
+      <UniqueIdentifier>{d159c0ca-84ac-4b4f-9570-2e73a977fef9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -150,6 +162,30 @@
     </ClCompile>
     <ClCompile Include="CCoin.cpp">
       <Filter>FrameWork\Object\Object\Effect\Coin</Filter>
+    </ClCompile>
+    <ClCompile Include="CEnemyTurtle.cpp">
+      <Filter>FrameWork\Object\Object\BaseEnemy\EnemyTurtle</Filter>
+    </ClCompile>
+    <ClCompile Include="CEnemyFlower.cpp">
+      <Filter>FrameWork\Object\Object\BaseEnemy\EnemyFlower</Filter>
+    </ClCompile>
+    <ClCompile Include="CBullet.cpp">
+      <Filter>FrameWork\Object\Object\BaseEnemy\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="CLoadGameObject.cpp">
+      <Filter>FrameWork\DirectX\DrawObject</Filter>
+    </ClCompile>
+    <ClCompile Include="CStone.cpp">
+      <Filter>FrameWork\Object\Object\Brick</Filter>
+    </ClCompile>
+    <ClCompile Include="CQuadNode.cpp">
+      <Filter>FrameWork\DirectX\DrawObject\QuadTree</Filter>
+    </ClCompile>
+    <ClCompile Include="CQuadTree.cpp">
+      <Filter>FrameWork\DirectX\DrawObject\QuadTree</Filter>
+    </ClCompile>
+    <ClCompile Include="QuadObject.cpp">
+      <Filter>FrameWork\DirectX\DrawObject\QuadTree</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -245,6 +281,30 @@
     </ClInclude>
     <ClInclude Include="CCoin.h">
       <Filter>FrameWork\Object\Object\Effect\Coin</Filter>
+    </ClInclude>
+    <ClInclude Include="CEnemyTurtle.h">
+      <Filter>FrameWork\Object\Object\BaseEnemy\EnemyTurtle</Filter>
+    </ClInclude>
+    <ClInclude Include="CEnemyFlower.h">
+      <Filter>FrameWork\Object\Object\BaseEnemy\EnemyFlower</Filter>
+    </ClInclude>
+    <ClInclude Include="CBullet.h">
+      <Filter>FrameWork\Object\Object\BaseEnemy\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="CLoadGameObject.h">
+      <Filter>FrameWork\DirectX\DrawObject</Filter>
+    </ClInclude>
+    <ClInclude Include="CStone.h">
+      <Filter>FrameWork\Object\Object\Brick</Filter>
+    </ClInclude>
+    <ClInclude Include="CQuadNode.h">
+      <Filter>FrameWork\DirectX\DrawObject\QuadTree</Filter>
+    </ClInclude>
+    <ClInclude Include="CQuadTree.h">
+      <Filter>FrameWork\DirectX\DrawObject\QuadTree</Filter>
+    </ClInclude>
+    <ClInclude Include="QuadObject.h">
+      <Filter>FrameWork\DirectX\DrawObject\QuadTree</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

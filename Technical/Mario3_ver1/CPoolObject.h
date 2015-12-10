@@ -6,15 +6,21 @@
 #include "CDrawObject.h"
 #include "CBaseEnemy.h"
 #include "CBackGround.h"
+#include "CLoadGameObject.h"
+#include "CBoxGround.h"
 
 //Enemy
 #include "CEnemyRun.h"
-
+#include "CEnemyTurtle.h"
+#include "CEnemyFlower.h"
 //Brick
 #include "CBrick.h"
-
+#include "CStone.h"
 //Effect
 #include "CCoin.h"
+
+//Bullet
+#include "CBullet.h"
 class CPoolObject : public CSingleton<CPoolObject>
 {
 	friend class CSingleton<CPoolObject>;
@@ -32,19 +38,25 @@ public:
 	CEnemyRun *enemyRun1;
 
 	CCoin *coin;
+
+	CBullet *bullet;
+	CStone *stone;
 public:
 	void LoadBackGround();//load back ground
 	void CreateEnemy(int count);
 	void CreateBrick(int count);
-
 	void Update(float deltaTime);
 
+	void LoadListGameObject();
+	void CreateGameObject();
 public:
 	void Draw();
 
 	//Effect
 public:
 	void RenderCoin(Vector2 pos);
+	void FireBullet(BULLET_DIR dir, Vector2 pos);
+	void Collision(float deltaTime);
 };
 #endif
 

@@ -43,6 +43,7 @@ public:
 	void OnCollision(float deltaTime, std::vector<CBaseGameObject*> listObjectCollision);//ham xet va cham
 	void OnCollision(float deltaTime, CBaseGameObject* Object);//ham xet va cham
 	void OnCollision(float deltaTime, std::vector<Box> listBox);
+	void OnCollision(float deltaTime, std::vector<Ground> listGround);
 	Vector2 GetPos(){ return this->m_Pos; };//lay ra vi tri cua Doi tuong
 	Tag GetTag(){ return this->m_Tag; };//lay ra tag loai nao
 	void SetTag(Tag tag){ this->m_Tag = tag; };//set la loai doi tuong nao
@@ -67,12 +68,14 @@ public:
 	int m_keyUp;
 	STATUS m_status;
 	COLLISION m_collision;
+	bool isInput;
+	bool m_isGround;
 private:
 	float m_timeJumb = 10;//thoi gian addFore
-	bool m_isGround;
+	
 	float m_vxMax;
 	float m_vyMax;
-	bool isInput;
+	
 private:
 	void InitAnimation();//khoi tao cac thong so cua Mario
 	void InitMove();//khoi tao cac thong so chuyen dong cua Mario

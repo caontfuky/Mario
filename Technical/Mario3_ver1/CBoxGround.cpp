@@ -37,14 +37,19 @@ void CBoxGround::LoadListBox(string filePath)
 	{
 		result = CFileUtil::GetInstance()->Split(value.at(i).c_str(), '\t');
 
-		float x = std::atoi(result.at(0).c_str());
-		float y = std::atoi(result.at(1).c_str());
-		float w = std::atoi(result.at(2).c_str());
-		float h = std::atoi(result.at(3).c_str());
+		float stt = std::atoi(result.at(0).c_str());
+		float id = std::atoi(result.at(1).c_str());
+
+		float x = std::atoi(result.at(2).c_str());
+		float y = std::atoi(result.at(3).c_str());
+		float w = std::atoi(result.at(5).c_str());
+		float h = std::atoi(result.at(4).c_str());
 		
 
-		Box box = Box(x, y, w, h);
 
+		Box box = Box(x, y, w, h);
+		Ground ground = Ground(stt, id, box);
+		this->listGround.push_back(ground);
 		this->listBox.push_back(box);
 	}
 }

@@ -22,13 +22,14 @@ void CDrawObject::Draw(CBaseGameObject* obj)
 		int typeImage = obj->GetIDType();
 		CTexture* texture = new CTexture();
 		Vector3 pos = Vector3();
+
+		pos = CCamera::GetInstance()->GetPointTransform(obj->GetPos().x, obj->GetPos().y);
+		
 		switch (typeImage)
 		{
 			case 0://eo co thang nao
 				break;
 			case 1://thang Mario
-				
-				pos = Vector3(obj->GetPos().x, obj->GetPos().y, 0);
 				if (CMarioObject::GetInstance()->m_collision == COLLISION::NONE_COL)//truong hop mario nhay
 				{
 					texture->LoadImageFromFile(MARIO_JUMB, D3DCOLOR_XRGB(255, 0, 255));
@@ -57,13 +58,13 @@ void CDrawObject::Draw(CBaseGameObject* obj)
 				break;
 			case 2:
 				texture->LoadImageFromFile(MARIO_MOVE, D3DCOLOR_XRGB(255, 0, 255));
-				pos = Vector3(obj->GetPos().x, obj->GetPos().y, 0);
+				//pos = Vector3(obj->GetPos().x, obj->GetPos().y, 0);
 				//this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
 				this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
 				break; 
 			case 3:
 				texture->LoadImageFromFile(BACK_GROUND, D3DCOLOR_XRGB(255, 0, 255));
-				pos = Vector3(obj->GetPos().x, obj->GetPos().y, 0);
+				//pos = Vector3(obj->GetPos().x, obj->GetPos().y, 0);
 				//this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
 				this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
 				break;
@@ -71,24 +72,58 @@ void CDrawObject::Draw(CBaseGameObject* obj)
 				//enemy
 			case 101:
 				texture->LoadImageFromFile(ENEMY_RUN_1, D3DCOLOR_XRGB(255, 0, 255));
-				pos = Vector3(obj->GetPos().x, obj->GetPos().y, 0);
+				//pos = Vector3(obj->GetPos().x, obj->GetPos().y, 0);
 				//this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
 				this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+				//this->m_draw->drawRotation(texture, obj->GetRectRS(), pos, 90, D3DCOLOR_XRGB(255, 255, 255), true);
 				break;
+			case 102:
+				texture->LoadImageFromFile(ENEMY_TURTEL_1, D3DCOLOR_XRGB(255, 0, 255));
+				//pos = Vector3(obj->GetPos().x, obj->GetPos().y, 0);
+				//this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+				if (obj->GetDirection() == Direction::RIGHT)
+				{
+					this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+				}
+				else
+				{
+					this->m_draw->drawFlipX(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
 
+				}
+				break;
+			case 103:
+				texture->LoadImageFromFile(ENEMY_3, D3DCOLOR_XRGB(255, 0, 255));
+				//pos = Vector3(obj->GetPos().x, obj->GetPos().y, 0);
+				//this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+				this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+				//this->m_draw->drawRotation(texture, obj->GetRectRS(), pos, 90, D3DCOLOR_XRGB(255, 255, 255), true);
+				break;
 				//Brick
 			case 201:
 				texture->LoadImageFromFile(BRICK_1, D3DCOLOR_XRGB(255, 0, 255));
-				pos = Vector3(obj->GetPos().x, obj->GetPos().y, 0);
+				//pos = Vector3(obj->GetPos().x, obj->GetPos().y, 0);
+				//this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+				this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+				break;
+			case 202:
+				texture->LoadImageFromFile(STONE, D3DCOLOR_XRGB(255, 0, 255));
+				//pos = Vector3(obj->GetPos().x, obj->GetPos().y, 0);
 				//this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
 				this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
 				break;
 				//Effect
 			case 301:
 				texture->LoadImageFromFile(EFFECT_COIN, D3DCOLOR_XRGB(255, 0, 255));
-				pos = Vector3(obj->GetPos().x, obj->GetPos().y, 0);
+				//pos = Vector3(obj->GetPos().x, obj->GetPos().y, 0);
 				//this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
 				this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+				break;
+				//Bullet
+			case 401:
+				texture->LoadImageFromFile(BULLET_ENEMY, D3DCOLOR_XRGB(255, 0, 255));
+				//pos = Vector3(obj->GetPos().x, obj->GetPos().y, 0);
+				//this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+				this->m_draw->drawRotation(texture, obj->GetRectRS(), pos, obj->m_rotation, D3DCOLOR_XRGB(255, 255, 255), true);
 				break;
 			default:
 				break;
