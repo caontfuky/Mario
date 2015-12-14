@@ -8,6 +8,7 @@
 #include "CBackGround.h"
 #include "CLoadGameObject.h"
 #include "CBoxGround.h"
+#include "CLoadObject.h"
 
 //Enemy
 #include "CEnemyRun.h"
@@ -30,6 +31,8 @@ public:
 
 	std::vector<CBaseGameObject*> listEnemy;
 	std::vector<CBaseGameObject*> listEffect;
+
+	std::vector<int> m_listIdObject;
 public:
 	CBaseEnemy *enemy;
 	CBaseEnemy *enemy1;
@@ -41,6 +44,8 @@ public:
 
 	CBullet *bullet;
 	CStone *stone;
+
+	std::hash_map<int, CBaseGameObject*> m_listObjectCurr;
 public:
 	void LoadBackGround();//load back ground
 	void CreateEnemy(int count);
@@ -57,6 +62,7 @@ public:
 	void RenderCoin(Vector2 pos);
 	void FireBullet(BULLET_DIR dir, Vector2 pos);
 	void Collision(float deltaTime);
+	bool contains(std::vector<int> v, int x);
 };
 #endif
 

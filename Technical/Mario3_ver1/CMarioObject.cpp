@@ -98,25 +98,19 @@ void CMarioObject::OnCollision(float deltaTime, std::vector<CBaseGameObject*> li
 					this->m_collision = COLLISION::GROUND_COL;
 					//}
 				}
-				if (normalX != 0)
-				{
-					
-					this->m_ax = 0;
-					this->m_vx = 0;
-					this->isInput = false;
-				}
-				/*if (normalX < 0 && this->m_Dir == Direction::RIGHT)
+				
+				if (normalX < 0 && this->m_Dir == Direction::RIGHT && (this->m_Pos.y - this->m_Height / 2) < obj->m_Pos.y)
 				{
 					this->m_ax = 0;
 					this->m_vx = 0;
 					this->isInput = false;
 				}
-				if (normalX > 0 && this->m_Dir == Direction::LEFT)
+				if (normalX > 0 && this->m_Dir == Direction::LEFT && (this->m_Pos.y - this->m_Height / 2) < obj->m_Pos.y)
 				{
 					this->m_ax = 0;
 					this->m_vx = 0;
 					this->isInput = false;
-				}*/
+				}
 			}
 			
 		}
@@ -231,14 +225,14 @@ void CMarioObject::OnCollision(float deltaTime, std::vector<Ground> listGround)
 	{
 		Ground ground = *it;
 		Box box = ground.box;
-
+		
 		timeCollision = CCollision::GetInstance()->Collision(this, box, normalX, normalY, moveX, moveY, deltaTime);
 
 		if ((timeCollision > 0.0f && timeCollision < 1.0f) || timeCollision == 2.0f)
 		{
 			if (ground.idGround == 702)
 			{
-				if (normalY < 0)
+				if (normalY > 0)
 				{
 					if (this->m_vy <= 0)
 					{
@@ -247,6 +241,14 @@ void CMarioObject::OnCollision(float deltaTime, std::vector<Ground> listGround)
 						this->m_a = 0;
 						this->m_canJump = false;
 						this->m_collision = COLLISION::GROUND_COL;
+
+						//neu 2 box va cham long nhau thi tach no ra
+						float botMario = this->m_Pos.y - this->m_Height / 2.0;
+						float topBox = box.y + box.h / 2.0;
+						if (botMario < topBox)
+						{
+							this->m_Pos.y = topBox + this->m_Height / 2.0;
+						}
 					}
 				}
 				if (normalX != 0 && this->m_vy != 0)

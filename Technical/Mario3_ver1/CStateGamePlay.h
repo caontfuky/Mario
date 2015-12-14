@@ -8,7 +8,7 @@
 #include "CCollision.h"
 #include "CPoolObject.h"
 #include "CLoadBackground.h"
-
+#include "CLoadObject.h"
 class CStateGamePlay : public CState
 {
 public:

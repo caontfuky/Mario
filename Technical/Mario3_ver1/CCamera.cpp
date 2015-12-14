@@ -32,7 +32,7 @@ void CCamera::Update(float x, float y)
 		}
 	}
 
-	m_pos.y = __SCREEN_HEIGHT - 50;//
+	m_pos.y = __SCREEN_HEIGHT;//
 }
 
 RECT*& CCamera::GetBound()
@@ -44,7 +44,14 @@ RECT*& CCamera::GetBound()
 	rect->bottom = m_pos.y;
 	return rect;
 }
-
+bool CCamera::CheckCollision(CBaseGameObject *obj)
+{
+	if (obj->m_Pos.x < this->m_pos.x + 480)
+	{
+		return true;
+	}
+	return false;
+}
 Vector3 CCamera::GetPointTransform(float x, float y)
 {
 	m_matrixTransform._41 = -m_pos.x;

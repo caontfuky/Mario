@@ -81,7 +81,7 @@ void CDrawObject::Draw(CBaseGameObject* obj)
 				texture->LoadImageFromFile(ENEMY_TURTEL_1, D3DCOLOR_XRGB(255, 0, 255));
 				//pos = Vector3(obj->GetPos().x, obj->GetPos().y, 0);
 				//this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
-				if (obj->GetDirection() == Direction::RIGHT)
+				if (obj->m_Dir == Direction::RIGHT)
 				{
 					this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
 				}
@@ -102,7 +102,7 @@ void CDrawObject::Draw(CBaseGameObject* obj)
 			case 201:
 				texture->LoadImageFromFile(BRICK_1, D3DCOLOR_XRGB(255, 0, 255));
 				//pos = Vector3(obj->GetPos().x, obj->GetPos().y, 0);
-				//this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+				//this->m_draw->adraw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
 				this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
 				break;
 			case 202:

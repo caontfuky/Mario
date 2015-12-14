@@ -11,9 +11,11 @@ CStateGamePlay::~CStateGamePlay()
 void CStateGamePlay::Init()
 {
 	CLoadBackground::GetInstance()->LoadBackgroundFromFile();
+	CLoadObject::GetInstance()->LoadReSourceFromFile();
 }
 void CStateGamePlay::Update(float deltaTime)
 {
+	//CLoadObject::GetInstance()->Update(deltaTime);
 	//update cac Enemy
 	CPoolObject::GetInstance()->Update(deltaTime);
 	//update mario
@@ -25,7 +27,7 @@ void CStateGamePlay::Update(float deltaTime)
 	CMarioObject::GetInstance()->OnCollision(deltaTime, CBoxGround::GetInstance()->listGround);
 
 	//va cham voi List Enemy
-	CMarioObject::GetInstance()->OnCollision(deltaTime, CPoolObject::GetInstance()->listEnemy);
+	CMarioObject::GetInstance()->OnCollision(deltaTime, CLoadObject::GetInstance()->m_listGameObject);//CPoolObject::GetInstance()->listEnemy);
 	
 }
 void CStateGamePlay::Render()

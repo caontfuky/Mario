@@ -187,6 +187,9 @@
     <ClCompile Include="QuadObject.cpp">
       <Filter>FrameWork\DirectX\DrawObject\QuadTree</Filter>
     </ClCompile>
+    <ClCompile Include="CLoadObject.cpp">
+      <Filter>FrameWork\DirectX\DrawObject</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CGlobal.h">
@@ -305,6 +308,9 @@
     </ClInclude>
     <ClInclude Include="QuadObject.h">
       <Filter>FrameWork\DirectX\DrawObject\QuadTree</Filter>
+    </ClInclude>
+    <ClInclude Include="CLoadObject.h">
+      <Filter>FrameWork\DirectX\DrawObject</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

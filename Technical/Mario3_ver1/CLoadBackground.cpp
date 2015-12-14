@@ -76,7 +76,7 @@ void CLoadBackground::Draw()
 				rectRS.top = (this->m_matrix[row][col] / this->m_tileCols) * this->m_tileHeight;
 				rectRS.bottom = rectRS.top + this->m_tileHeight;
 				pos.x = col * this->m_tileHeight;
-				pos.y = (this->m_rows - row - 1) * this->m_tileWidth - 16;
+				pos.y = (this->m_rows - row - 1) * this->m_tileWidth;
 				pos.z = 0;
 				//Lay toa do tam
 				posCenter.x = pos.x + this->m_tileWidth / 2;

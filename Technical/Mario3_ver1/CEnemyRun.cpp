@@ -4,8 +4,8 @@
 CEnemyRun::CEnemyRun()
 {
 	Init();
-	this->level = LEVEL::LEVEL_1;
-	this->lv = 1;
+	/*this->level = LEVEL::LEVEL_1;
+	this->lv = 1;*/
 }
 
 CEnemyRun::CEnemyRun(Vector2 pos)
@@ -18,8 +18,8 @@ CEnemyRun::CEnemyRun(Vector2 pos, LEVEL _level)
 {
 	Init();
 	this->m_Pos = pos;
-
-	this->level = LEVEL::LEVEL_1;
+	this->level = _level;
+	this->lv = (int)this->level;
 	
 }
 
@@ -37,8 +37,7 @@ void CEnemyRun::Init()
 	this->m_isLife = true;
 	this->m_timeRemove = 0;
 	this->isRemove = false;
-	this->isGround = false;
-	
+	this->isGround = false;	
 
 	//khoi tao Animation
 	this->m_currentTime = 0;
@@ -69,6 +68,7 @@ void CEnemyRun::Update(float deltaTime)
 	SetFrame(deltaTime);
 	MoveUpdate(deltaTime);
 	OnCollision(deltaTime);
+	
 }
 void CEnemyRun::SetFrame(float deltaTime)
 {
@@ -104,30 +104,19 @@ float t = 0;
 void CEnemyRun::MoveUpdate(float deltaTime)
 {
 	
-	if (this->lv == 0 && this->isGround == true)
-	{
-		if (!this->isGround)
-		{
-			this->m_a = this->m_aDefault;
-			this->m_vy *= -1;
-		}
-		if (this->isGround)
-		{
-			this->m_a = 0;
-			this->m_vy = 0;
-		}
+	if (this->lv == 0)
+	{		
 		this->m_Pos.x += this->m_vx * deltaTime;
-		if (this->m_Pos.x <= 0 || this->m_Pos.x >= 200)
+		//MessageBox(NULL, "MOVE", "MOVE", MB_OK);
+		
+	}
+	if (this->m_isLife == false)
+	{
+		this->m_timeRemove += deltaTime;
+		if (this->m_timeRemove >= 0.5f)
 		{
-			this->m_vx *= -1;
-		}
-		if (this->m_isLife == false)
-		{
-			this->m_timeRemove += deltaTime;
-			if (this->m_timeRemove >= 0.5f)
-			{
-				this->isRemove = true;
-			}
+			this->isRemove = true;
+			this->m_Pos = Vector2(-100, -100);
 		}
 	}
 	if (this->lv == 1)
@@ -198,7 +187,7 @@ void CEnemyRun::OnCollision(float deltaTime, std::vector<Ground> listGround)//va
 		{
 			if (ground.idGround == 702)//va cham voi nen
 			{
-				if (normalY < 0)
+				if (normalY > 0)
 				{
 					if (this->m_vy <= 0)
 					{						
@@ -231,16 +220,13 @@ void CEnemyRun::OnCollision(float deltaTime)//xet va cham voi Player
 		if (normalY > 0)
 		{
 			this->lv -= 1;
-			CMarioObject::GetInstance()->m_vy *= -1;
-			
 			if (this->lv < 0)
 			{
 				this->m_vx = 0;
 				this->m_isLife = false;
 				this->status = ENEMY_STATUS::ENEMY_DIE;
 			}
-			
-			
+			CMarioObject::GetInstance()->m_vy *= -1;		
 		}	
 		
 	}
@@ -256,7 +242,7 @@ void CEnemyRun::OnCollision(float deltaTime)//xet va cham voi Player
 
 Box CEnemyRun::GetBox()
 {
-	return Box(this->m_Pos.x, this->m_Pos.y, this->m_Width, this->m_Height + 3, this->m_vx, this->m_vy);
+	return Box(this->m_Pos.x, this->m_Pos.y, this->m_Width, this->m_Height, this->m_vx, this->m_vy);
 }
 RECT* CEnemyRun::GetBound()
 {

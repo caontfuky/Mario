@@ -3,6 +3,7 @@
 
 #include "CGlobal.h"
 #include "CSingleton.h"
+#include "CBaseGameObject.h"
 class CCamera : public CSingleton<CCamera>
 {
 public:
@@ -17,6 +18,7 @@ public:
 public:
 	Vector3 GetCameraPos();
 	void SetPos(Vector3);
+	bool CheckCollision(CBaseGameObject *obj);
 };
 #endif
 
