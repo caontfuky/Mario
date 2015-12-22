@@ -5,7 +5,7 @@ CMarioObject::CMarioObject()
 {
 	this->m_Id = 0;
 	this->m_IdType = 1;
-	this->level = 2;
+	this->level = 1;
 	this->isInput = false;
 	this->m_Dir = Direction::NONE_DIR;
 	this->m_status = STATUS::NONE_STATUS;
