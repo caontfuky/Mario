@@ -16,7 +16,7 @@ void CBrick::Init()
 	this->m_IdType = 201;//id Image
 	this->status = BRICK_STATUS::BRICK_ITEM;
 	this->m_Tag = Tag::BRICK;
-
+	this->m_isLife = true;
 	//khoi tao thong so Sprite
 	this->m_currentTime = 0;
 	this->m_currentFrame = 0;
@@ -27,7 +27,7 @@ void CBrick::Init()
 
 	//
 	this->m_Pos = Vector2(100, 370);
-	this->m_Width = 20;
+	this->m_Width = 16;
 	this->m_Height = 16;
 
 }
@@ -55,7 +55,38 @@ void CBrick::OnCollision(float deltaTime, std::vector<Ground> listGround)
 void CBrick::Update(float deltaTime, std::vector<CBaseGameObject*>* listObjectCollision)
 {}
 void CBrick::OnCollision(float deltaTime, std::vector<CBaseGameObject*> listObjectCollision)
-{}
+{
+	float normalX = 0;
+	float normalY = 0;
+	float moveX = 0.0f;
+	float moveY = 0.0f;
+	float timeCollision;
+	for (std::vector<CBaseGameObject*>::iterator it = listObjectCollision.begin(); it != listObjectCollision.end(); it++)
+	{
+		CBaseGameObject* obj = *it;
+
+		if (obj->GetTag() == Tag::ENEMY)
+		{
+			if (obj->m_IdType == 102 && obj->m_isLife == false)//va cham voi con rua
+			{
+				timeCollision = CCollision::GetInstance()->Collision(this, obj, normalX, normalY, moveX, moveY, deltaTime);
+
+				if ((timeCollision > 0.0f && timeCollision < 1.0f) || timeCollision == 2.0f)
+				{
+					if (normalX != 0)
+					{
+						Vector2 pos = Vector2(this->m_Pos.x, this->m_Pos.y + this->m_Height);
+
+						if (status != BRICK_STATUS::BRICK_NONE)
+							CPoolObject::GetInstance()->RenderCoin(pos);
+						status = BRICK_STATUS::BRICK_NONE;
+						this->m_isLife = false;
+					}
+				}
+			}
+		}
+	}
+}
 void CBrick::OnCollision(float deltaTime, CBaseGameObject* Object)
 {}
 void CBrick::OnCollision(float deltaTime)
@@ -69,7 +100,7 @@ void CBrick::OnCollision(float deltaTime)
 
 	if ((timeCollision > 0.0f && timeCollision < 1.0f) || timeCollision == 2.0f)
 	{
-		if (normalY < 0 )
+		if (normalY < 0)
 		{
 			Vector2 pos = Vector2(this->m_Pos.x, this->m_Pos.y + this->m_Height);
 			

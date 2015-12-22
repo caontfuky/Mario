@@ -53,8 +53,7 @@ void CPoolObject::Draw()
 	for (std::vector<CBaseGameObject*>::iterator it = listEffect.begin(); it != listEffect.end(); it++)
 	{
 		CBaseGameObject* obj = *it;
-		if (!obj->isRemove)
-			CDrawObject::GetInstance()->Draw(obj);
+		CDrawObject::GetInstance()->Draw(obj);
 	}
 }
 void CPoolObject::LoadListGameObject()
@@ -179,13 +178,25 @@ void CPoolObject::Update(float deltaTime)
 		{
 			obj->Update(deltaTime);
 		}
-	}
-	for (std::vector<CBaseGameObject*>::iterator it = listEffect.begin(); it != listEffect.end(); it++)
+	}	
+	
+	for (std::vector<CBaseGameObject*>::iterator it = listEffect.begin(); it != listEffect.end();)
 	{
 		CBaseGameObject* obj = *it;
-		if (obj != NULL)
+		if (obj != NULL && obj->isRemove == false)
 			obj->Update(deltaTime);
+		if (obj->isRemove)
+		{
+			it = listEffect.erase(it);
+		}
+		else
+		{
+			it++;
+		}
+			
 	}
+	
+	
 	CLoadObject::GetInstance()->Update(deltaTime);
 	Collision(deltaTime);
 }

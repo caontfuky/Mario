@@ -41,7 +41,7 @@ void CBoxGround::LoadListBox(string filePath)
 		float id = std::atoi(result.at(1).c_str());
 
 		float x = std::atoi(result.at(2).c_str());
-		float y = std::atoi(result.at(3).c_str());
+		float y = std::atoi(result.at(3).c_str()) + 8;
 		float w = std::atoi(result.at(5).c_str());
 		float h = std::atoi(result.at(4).c_str());
 		

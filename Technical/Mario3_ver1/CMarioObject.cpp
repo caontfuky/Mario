@@ -5,7 +5,7 @@ CMarioObject::CMarioObject()
 {
 	this->m_Id = 0;
 	this->m_IdType = 1;
-
+	this->level = 2;
 	this->isInput = false;
 	this->m_Dir = Direction::NONE_DIR;
 	this->m_status = STATUS::NONE_STATUS;
@@ -19,8 +19,8 @@ void CMarioObject::InitAnimation()
 	this->m_currentFrame = 0;
 	this->m_elapseTimeChangeFrame = 0.1f;
 	this->m_increase = 1;
-	this->m_totalFrame = 2;
-	this->m_column = 2;
+	this->m_totalFrame = 4;
+	this->m_column = 4;
 }
 void CMarioObject::InitMove()
 {
@@ -54,8 +54,12 @@ void CMarioObject::Update(float deltaTime)
 	SetFrame(deltaTime);
 	ChangeFrame(deltaTime);	
 	MoveUpdate(deltaTime);
-	OnKeyDown(deltaTime);
-	OnKeyUp(deltaTime);
+	if (this->m_status != STATUS::DIE)
+	{		
+		OnKeyDown(deltaTime);
+		OnKeyUp(deltaTime);
+	}
+	
 }
 void CMarioObject::Update(float deltaTime, std::vector<CBaseGameObject*>* listObjectCollision)
 {}
@@ -214,77 +218,81 @@ void CMarioObject::OnCollision(float deltaTime, std::vector<Box> listBox)
 }
 void CMarioObject::OnCollision(float deltaTime, std::vector<Ground> listGround)
 {
-	float normalX = 0;
-	float normalY = 0;
-	float moveX = 0.0f;
-	float moveY = 0.0f;
-	float timeCollision;
-
-	this->m_isGround = false;
-	for (std::vector<Ground>::iterator it = listGround.begin(); it != listGround.end(); it++)
+	if (this->m_status != STATUS::DIE)
 	{
-		Ground ground = *it;
-		Box box = ground.box;
-		
-		timeCollision = CCollision::GetInstance()->Collision(this, box, normalX, normalY, moveX, moveY, deltaTime);
 
-		if ((timeCollision > 0.0f && timeCollision < 1.0f) || timeCollision == 2.0f)
+		float normalX = 0;
+		float normalY = 0;
+		float moveX = 0.0f;
+		float moveY = 0.0f;
+		float timeCollision;
+
+		this->m_isGround = false;
+		for (std::vector<Ground>::iterator it = listGround.begin(); it != listGround.end(); it++)
 		{
-			if (ground.idGround == 702)
-			{
-				if (normalY > 0)
-				{
-					if (this->m_vy <= 0)
-					{
-						this->m_isGround = true;
-						this->m_vy = 0;
-						this->m_a = 0;
-						this->m_canJump = false;
-						this->m_collision = COLLISION::GROUND_COL;
+			Ground ground = *it;
+			Box box = ground.box;
 
-						//neu 2 box va cham long nhau thi tach no ra
-						float botMario = this->m_Pos.y - this->m_Height / 2.0;
-						float topBox = box.y + box.h / 2.0;
-						if (botMario < topBox)
+			timeCollision = CCollision::GetInstance()->Collision(this, box, normalX, normalY, moveX, moveY, deltaTime);
+
+			if ((timeCollision > 0.0f && timeCollision < 1.0f) || timeCollision == 2.0f)
+			{
+				if (ground.idGround == 702)
+				{
+					if (normalY > 0)
+					{
+						if (this->m_vy <= 0)
 						{
-							this->m_Pos.y = topBox + this->m_Height / 2.0;
+							this->m_isGround = true;
+							this->m_vy = 0;
+							this->m_a = 0;
+							this->m_canJump = false;
+							this->m_collision = COLLISION::GROUND_COL;
+
+							//neu 2 box va cham long nhau thi tach no ra
+							float botMario = this->m_Pos.y - this->m_Height / 2.0;
+							float topBox = box.y + box.h / 2.0;
+							if (botMario < topBox)
+							{
+								this->m_Pos.y = topBox + this->m_Height / 2.0;
+							}
 						}
 					}
+					if (normalX != 0 && this->m_vy != 0)
+					{
+						if (normalX < 0 && this->m_Dir == Direction::RIGHT)
+						{
+							this->m_ax = 0;
+							this->m_vx = 0;
+							this->isInput = false;
+						}
+						if (normalX > 0 && this->m_Dir == Direction::LEFT)
+						{
+							this->m_ax = 0;
+							this->m_vx = 0;
+							this->isInput = false;
+						}
+						//xu ly khong cho di chuyen qua
+						//MessageBox(NULL, "Va cham theo chieu X", "COL", MB_OK);
+					}
 				}
-				if (normalX != 0 && this->m_vy != 0)
+				if (ground.idGround == 701)
 				{
-					if (normalX < 0 && this->m_Dir == Direction::RIGHT)
+					if (normalX != 0)
 					{
-						this->m_ax = 0;
-						this->m_vx = 0;
-						this->isInput = false;
+						if (normalX < 0 && this->m_Dir == Direction::RIGHT)
+						{
+							this->m_ax = 0;
+							this->m_vx = 0;
+							this->isInput = false;
+						}
+						if (normalX > 0 && this->m_Dir == Direction::LEFT)
+						{
+							this->m_ax = 0;
+							this->m_vx = 0;
+							this->isInput = false;
+						}
 					}
-					if (normalX > 0 && this->m_Dir == Direction::LEFT)
-					{
-						this->m_ax = 0;
-						this->m_vx = 0;
-						this->isInput = false;
-					}
-					//xu ly khong cho di chuyen qua
-					//MessageBox(NULL, "Va cham theo chieu X", "COL", MB_OK);
-				}
-			}
-			if (ground.idGround == 701)
-			{
-				if (normalX != 0)
-				{
-					if (normalX < 0 && this->m_Dir == Direction::RIGHT)
-					{
-						this->m_ax = 0;
-						this->m_vx = 0;
-						this->isInput = false;
-					}
-					if (normalX > 0 && this->m_Dir == Direction::LEFT)
-					{
-						this->m_ax = 0;
-						this->m_vx = 0;
-						this->isInput = false;
-					}					
 				}
 			}
 		}
@@ -389,34 +397,137 @@ void CMarioObject::AddForce(float deltaTime)
 //thay doi Frame
 void CMarioObject::SetFrame(float deltaTime)
 {
-	if (this->m_collision == COLLISION::NONE_COL)
+	if (this->level == 1)
 	{
-		this->m_startFrame = 0;
-		this->m_endFrame = 0;
-	}
-	else
-	{
-
-		switch (this->m_status)
+		if (this->m_status != STATUS::DIE)
 		{
-		case STATUS::NONE_STATUS:
+
+			if (this->m_collision == COLLISION::NONE_COL)
+			{
+				this->m_startFrame = 0;
+				this->m_endFrame = 0;
+			}
+			else
+			{
+
+				switch (this->m_status)
+				{
+				case STATUS::NONE_STATUS:
+					this->m_startFrame = 0;
+					this->m_endFrame = 0;
+					break;
+				case STATUS::MOVE:
+					this->m_startFrame = 0;
+					this->m_endFrame = 1;
+					break;
+				case STATUS::JUMB:
+					this->m_startFrame = 0;
+					this->m_endFrame = 0;
+					break;
+				case STATUS::FLY:
+					
+					break;
+				case STATUS::DIE:
+					break;
+				default:
+					break;
+				}
+			}
+		}
+		else
+		{
 			this->m_startFrame = 0;
 			this->m_endFrame = 0;
-			break;
-		case STATUS::MOVE:
-			this->m_startFrame = 0;
-			this->m_endFrame = 1;
-			break;
-		case STATUS::JUMB:
+		}
+	}
+	if (this->level == 2)
+	{
+		
+		if (this->m_collision == COLLISION::NONE_COL)
+		{
+			this->m_Width = 18;
+			this->m_Height = 28;
 			this->m_startFrame = 0;
 			this->m_endFrame = 0;
-			break;
-		case STATUS::FLY:
-			break;
-		case STATUS::DIE:
-			break;
-		default:
-			break;
+		}
+		else
+		{
+			this->m_Width = 17;
+			this->m_Height = 28;
+
+			switch (this->m_status)
+			{
+			case STATUS::NONE_STATUS:
+				this->m_startFrame = 0;
+				this->m_endFrame = 0;
+				break;
+			case STATUS::MOVE:
+				this->m_startFrame = 1;
+				this->m_endFrame = 2;
+				break;
+			case STATUS::JUMB:
+				this->m_startFrame = 0;
+				this->m_endFrame = 0;
+				break;
+			case STATUS::FLY:
+				if (this->m_collision == COLLISION::NONE_COL)
+				{
+					this->m_startFrame = 3;
+					this->m_endFrame = 3;
+				}
+				else
+				{
+					this->m_startFrame = 0;
+					this->m_endFrame = 2;
+				}
+				break;
+			case STATUS::DIE:
+				break;
+			default:
+				break;
+			}
+		}
+	}
+	if (this->level == 3)
+	{
+		if (this->m_collision == COLLISION::NONE_COL)
+		{
+			this->m_startFrame = 0;
+			this->m_endFrame = 0;
+		}
+		else
+		{
+			switch (this->m_status)
+			{
+			case STATUS::NONE_STATUS:
+				this->m_startFrame = 0;
+				this->m_endFrame = 0;
+				break;
+			case STATUS::MOVE:
+				this->m_startFrame = 0;
+				this->m_endFrame = 1;
+				break;
+			case STATUS::JUMB:
+				this->m_startFrame = 0;
+				this->m_endFrame = 0;
+				break;
+			case STATUS::FLY:
+				if (this->m_collision == COLLISION::NONE_COL)
+				{
+					this->m_startFrame = 6;
+					this->m_endFrame = 8;
+				}
+				else
+				{
+					this->m_startFrame = 0;
+					this->m_endFrame = 2;
+				}
+				break;
+			case STATUS::DIE:
+				break;
+			default:
+				break;
+			}
 		}
 	}
 }

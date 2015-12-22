@@ -30,30 +30,101 @@ void CDrawObject::Draw(CBaseGameObject* obj)
 			case 0://eo co thang nao
 				break;
 			case 1://thang Mario
-				if (CMarioObject::GetInstance()->m_collision == COLLISION::NONE_COL)//truong hop mario nhay
+				if (CMarioObject::GetInstance()->level == 1)
 				{
-					texture->LoadImageFromFile(MARIO_JUMB, D3DCOLOR_XRGB(255, 0, 255));
 
-					if (obj->GetDirection() == Direction::RIGHT)
+					if (CMarioObject::GetInstance()->m_status != STATUS::DIE)
 					{
-						this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+
+						if (CMarioObject::GetInstance()->m_collision == COLLISION::NONE_COL)//truong hop mario nhay
+						{
+							texture->LoadImageFromFile(MARIO_JUMB, D3DCOLOR_XRGB(255, 0, 255));
+
+							if (obj->GetDirection() == Direction::RIGHT)
+							{
+								this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+							}
+							else
+							{
+								this->m_draw->drawFlipX(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+							}
+						}
+						else
+						{
+							texture->LoadImageFromFile(MARIO_MOVE, D3DCOLOR_XRGB(255, 0, 255));
+							if (obj->GetDirection() == Direction::RIGHT)
+							{
+								this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+							}
+							else
+							{
+								this->m_draw->drawFlipX(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+							}
+						}
 					}
 					else
 					{
-						this->m_draw->drawFlipX(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+						texture->LoadImageFromFile(MARIO_DIE, D3DCOLOR_XRGB(255, 0, 255));
+						this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+
 					}
 				}
-				else				
+				if (CMarioObject::GetInstance()->level == 2)
 				{
-					texture->LoadImageFromFile(MARIO_MOVE, D3DCOLOR_XRGB(255, 0, 255));
-					if (obj->GetDirection() == Direction::RIGHT)
+					if (CMarioObject::GetInstance()->m_collision == COLLISION::NONE_COL)//truong hop mario nhay
 					{
-						this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+						texture->LoadImageFromFile(MARIO_JUMB_LV2, D3DCOLOR_XRGB(255, 0, 255));
+
+						if (obj->GetDirection() == Direction::RIGHT)
+						{
+							this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+						}
+						else
+						{
+							this->m_draw->drawFlipX(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+						}
 					}
 					else
 					{
-						this->m_draw->drawFlipX(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+						texture->LoadImageFromFile(MARIO_MOVE_LV2, D3DCOLOR_XRGB(255, 0, 255));
+						if (obj->GetDirection() == Direction::RIGHT)
+						{
+							this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+						}
+						else
+						{
+							this->m_draw->drawFlipX(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+						}
 					}
+				}
+				if (CMarioObject::GetInstance()->level == 3)
+				{
+					if (CMarioObject::GetInstance()->m_collision == COLLISION::NONE_COL)//truong hop mario nhay
+					{
+						texture->LoadImageFromFile(MARIO_JUMB_LV3, D3DCOLOR_XRGB(255, 0, 255));
+
+						if (obj->GetDirection() == Direction::RIGHT)
+						{
+							this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+						}
+						else
+						{
+							this->m_draw->drawFlipX(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+						}
+					}
+					else
+					{
+						texture->LoadImageFromFile(MARIO_MOVE_LV3, D3DCOLOR_XRGB(255, 0, 255));
+						if (obj->GetDirection() == Direction::RIGHT)
+						{
+							this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+						}
+						else
+						{
+							this->m_draw->drawFlipX(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+						}
+					}
+
 				}
 				break;
 			case 2:

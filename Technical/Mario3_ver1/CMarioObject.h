@@ -70,6 +70,7 @@ public:
 	COLLISION m_collision;
 	bool isInput;
 	bool m_isGround;
+	int level;
 private:
 	float m_timeJumb = 10;//thoi gian addFore
 	

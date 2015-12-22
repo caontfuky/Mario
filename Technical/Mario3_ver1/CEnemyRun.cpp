@@ -115,8 +115,7 @@ void CEnemyRun::MoveUpdate(float deltaTime)
 		this->m_timeRemove += deltaTime;
 		if (this->m_timeRemove >= 0.5f)
 		{
-			this->isRemove = true;
-			this->m_Pos = Vector2(-100, -100);
+			this->isRemove = true;			
 		}
 	}
 	if (this->lv == 1)
@@ -164,7 +163,36 @@ void CEnemyRun::Update(float deltaTime, std::vector<CBaseGameObject*>* listObjec
 
 }
 void CEnemyRun::OnCollision(float deltaTime, std::vector<CBaseGameObject*> listObjectCollision)
-{}
+{
+	float normalX = 0;
+	float normalY = 0;
+	float moveX = 0.0f;
+	float moveY = 0.0f;
+	float timeCollision;
+	for (std::vector<CBaseGameObject*>::iterator it = listObjectCollision.begin(); it != listObjectCollision.end(); it++)
+	{
+		CBaseGameObject* obj = *it;
+
+		if (obj->GetTag() == Tag::ENEMY)
+		{
+			if (obj->m_IdType == 102 && obj->m_isLife == false)//va cham voi con rua
+			{
+				timeCollision = CCollision::GetInstance()->Collision(this, obj, normalX, normalY, moveX, moveY, deltaTime);
+
+				if ((timeCollision > 0.0f && timeCollision < 1.0f) || timeCollision == 2.0f)
+				{
+					this->lv -= 1;
+					if (this->lv < 0)
+					{
+						this->m_vx = 0;
+						this->m_isLife = false;
+						this->status = ENEMY_STATUS::ENEMY_DIE;
+					}
+				}
+			}
+		}
+	}
+}
 void CEnemyRun::OnCollision(float deltaTime, CBaseGameObject* Object)
 {}
 
@@ -198,7 +226,7 @@ void CEnemyRun::OnCollision(float deltaTime, std::vector<Ground> listGround)//va
 					}
 				}
 			}
-			if (ground.idGround == 701)//va cham voi brich de quay dau lai
+			if (ground.idGround == 701 || ground.idGround == 705)//va cham voi brich de quay dau lai
 			{
 				this->m_vx *= -1;
 			}
@@ -236,6 +264,8 @@ void CEnemyRun::OnCollision(float deltaTime)//xet va cham voi Player
 		if (CCollision::GetInstance()->Collision(CMarioObject::GetInstance(), this) && CMarioObject::GetInstance()->m_vy == 0)
 		{
 			//MessageBox(NULL, "Mario Die", "Game Over", MB_OK);
+			CMarioObject::GetInstance()->m_status = STATUS::DIE;
+			CMarioObject::GetInstance()->m_vy = 120;
 		}
 	}
 }

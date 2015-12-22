@@ -1,7 +1,17 @@
 
+//lv1
+#define MARIO_MOVE "..\\Resources\\Mario\\Lv1\\move.PNG"
+#define MARIO_JUMB "..\\Resources\\Mario\\Lv1\\Jumb.PNG"
+#define MARIO_DIE "..\\Resources\\Mario\\Lv1\\die.PNG"
+//lv2
+#define MARIO_MOVE_LV2 "..\\Resources\\Mario\\Lv2\\Move.PNG"
+#define MARIO_JUMB_LV2 "..\\Resources\\Mario\\Lv2\\Jumb.PNG"
+#define MARIO_FLY_LV2 "..\\Resources\\Mario\\Lv2\\Fly.PNG"
+//lv3
+#define MARIO_MOVE_LV3 "..\\Resources\\Mario\\Lv3\\Move.PNG"
+#define MARIO_JUMB_LV3 "..\\Resources\\Mario\\Lv3\\Jumb.PNG"
+#define MARIO_FLY_LV3 "..\\Resources\\Mario\\Lv3\\Fly.PNG"
 
-#define MARIO_MOVE "..\\Resources\\Mario\\move.PNG"
-#define MARIO_JUMB "..\\Resources\\Mario\\Jumb.PNG"
 #define BACK_GROUND "..\\Resources\\Mario\\Background.png"
 #define BACK_GROUND_1 "..\\Resources\\Map\\Quadtree\\1-1-1-1.PNG"//Map_1.png"
 #define BULLET_ENEMY "..\\Resources\\Enemy\\Bullet.png"
@@ -16,7 +26,7 @@
 #define ENEMY_5 "..\\Resources\\Enemy\\Enemy5.png"
 
 //Resource Brick
-#define BRICK_1 "..\\Resources\\Brick\\brick1.png"
+#define BRICK_1 "..\\Resources\\Brick\\brick4.png"
 #define STONE "..\\Resources\\Brick\\stone.png"
 
 //Effect
