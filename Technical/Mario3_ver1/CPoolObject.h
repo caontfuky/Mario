@@ -65,6 +65,7 @@ public:
 public:
 	void RenderCoin(Vector2 pos);
 	void FireBullet(BULLET_DIR dir, Vector2 pos);
+	void RenderItem(Vector2 pos, TYPE_ITEM type);
 	void Collision(float deltaTime);
 	bool contains(std::vector<int> v, int x);
 };

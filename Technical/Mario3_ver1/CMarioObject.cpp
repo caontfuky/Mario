@@ -421,7 +421,8 @@ void CMarioObject::SetFrame(float deltaTime)
 	{
 		if (this->m_status != STATUS::DIE)
 		{
-
+			this->m_Width = 16;
+			this->m_Height = 16;
 			if (this->m_collision == COLLISION::NONE_COL)
 			{
 				this->m_startFrame = 0;

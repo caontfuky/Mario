@@ -18,7 +18,7 @@ CPoolObject::CPoolObject()
 	//bullet 
 	//this->bullet = new CBullet();
 	this->fly = new	CEnemyTurtleFly();
-	this->item = new CItem(Vector2(100, 50), TYPE_ITEM::ITEM_MUSHROOM);
+	//this->item = new CItem(Vector2(100, 50), TYPE_ITEM::ITEM_MUSHROOM);
 }
 
 
@@ -28,7 +28,8 @@ CPoolObject::~CPoolObject()
 void CPoolObject::Draw()
 {
 	CDrawObject::GetInstance()->Draw(this->fly);
-	CDrawObject::GetInstance()->Draw(this->item);
+	if (this->item != NULL)
+		CDrawObject::GetInstance()->Draw(this->item);
 	//CDrawObject::GetInstance()->Draw(this->coin);
 	//CDrawObject::GetInstance()->Draw(this->stone);
 	CLoadObject::GetInstance()->Draw();
@@ -172,7 +173,8 @@ bool CPoolObject::contains(std::vector<int> v, int x)
 void CPoolObject::Update(float deltaTime)
 {
 	this->fly->Update(deltaTime);
-	this->item ->Update(deltaTime);
+	if (this->item != NULL)
+		this->item->Update(deltaTime);
 	//this->coin->Update(deltaTime);
 	//this->stone->Update(deltaTime);
 	if (bullet != NULL)
@@ -218,7 +220,8 @@ void CPoolObject::Collision(float deltaTime)
 		}
 	}
 	this->fly->OnCollision(deltaTime, CBoxGround::GetInstance()->listGround);
-	this->item->OnCollision(deltaTime, CBoxGround::GetInstance()->listGround);
+	if (this->item != NULL)
+		this->item->OnCollision(deltaTime, CBoxGround::GetInstance()->listGround);
 }
 void CPoolObject::RenderCoin(Vector2 pos)
 {
@@ -227,4 +230,8 @@ void CPoolObject::RenderCoin(Vector2 pos)
 void CPoolObject::FireBullet(BULLET_DIR dir, Vector2 pos)
 {
 	bullet = new CBullet(dir, pos);	
+}
+void CPoolObject::RenderItem(Vector2 pos, TYPE_ITEM type)
+{
+	this->item = new CItem(pos, type);
 }
