@@ -7,6 +7,9 @@ CMarioObject::CMarioObject()
 	this->m_IdType = 1;
 	this->level = 1;
 	this->isInput = false;
+	this->m_isFly = false;
+	this->m_isJumbFly = false;
+	this->m_isCanJumbFly = false;
 	this->m_Dir = Direction::NONE_DIR;
 	this->m_status = STATUS::NONE_STATUS;
 	this->m_collision = COLLISION::NONE_COL;
@@ -19,11 +22,12 @@ void CMarioObject::InitAnimation()
 	this->m_currentFrame = 0;
 	this->m_elapseTimeChangeFrame = 0.1f;
 	this->m_increase = 1;
-	this->m_totalFrame = 4;
-	this->m_column = 4;
+	this->m_totalFrame = 8;
+	this->m_column = 8;
 }
 void CMarioObject::InitMove()
 {
+	
 	this->m_vx = 0;
 	this->m_vy = 0;
 	this->m_vxDefault = this->m_vx;
@@ -248,7 +252,11 @@ void CMarioObject::OnCollision(float deltaTime, std::vector<Ground> listGround)
 							this->m_a = 0;
 							this->m_canJump = false;
 							this->m_collision = COLLISION::GROUND_COL;
-
+							if (this->m_isJumbFly == true)
+							{
+								this->m_isJumbFly = false;
+							}
+							
 							//neu 2 box va cham long nhau thi tach no ra
 							float botMario = this->m_Pos.y - this->m_Height / 2.0;
 							float topBox = box.y + box.h / 2.0;
@@ -369,27 +377,39 @@ void CMarioObject::Gravity(float deltaTime)
 //xu ly khi mario nhay, add them 1 luc
 void CMarioObject::AddForce(float deltaTime)
 {
-	if (this->m_isJumping == true)
+	if (m_isJumbFly == false)
 	{
-		m_timeJumb += deltaTime;
-		if (m_timeJumb < 0.2f)
+
+		if (this->m_isJumping == true)
 		{
-			
+			m_timeJumb += deltaTime;
+			if (m_timeJumb < 0.2f)
+			{
+
+				this->m_vy = 100;
+				this->m_Pos.y += this->m_vy*deltaTime + 0.5 * this->m_a * deltaTime *deltaTime;
+				//this->m_canJump = true;
+			}
+			if (m_timeJumb > 0.2f)
+			{
+				this->m_vy = 120;
+				this->m_Pos.y += this->m_vy*deltaTime + 0.5 * this->m_a * deltaTime *deltaTime;
+
+				//MessageBox(NULL, "Nhay cao", "Jumb", MB_OK);
+			}
+			if (this->m_timeJumb > 0.3f)
+			{
+				this->m_isJumping = false;
+				//this->m_canJump = true;
+			}
+		}
+	}
+	else
+	{
+		if (this->m_isCanJumbFly)
+		{
 			this->m_vy = 100;
 			this->m_Pos.y += this->m_vy*deltaTime + 0.5 * this->m_a * deltaTime *deltaTime;
-			//this->m_canJump = true;
-		}
-		if (m_timeJumb > 0.2f)
-		{
-			this->m_vy = 120;			
-			this->m_Pos.y += this->m_vy*deltaTime + 0.5 * this->m_a * deltaTime *deltaTime;
-			
-			//MessageBox(NULL, "Nhay cao", "Jumb", MB_OK);
-		}
-		if (this->m_timeJumb > 0.3f)
-		{
-			this->m_isJumping = false;
-			//this->m_canJump = true;
 		}
 	}
 	
@@ -445,14 +465,14 @@ void CMarioObject::SetFrame(float deltaTime)
 		
 		if (this->m_collision == COLLISION::NONE_COL)
 		{
-			this->m_Width = 18;
-			this->m_Height = 28;
-			this->m_startFrame = 0;
-			this->m_endFrame = 0;
+				this->m_Width = 19;
+				this->m_Height = 28;
+				this->m_startFrame = 0;
+				this->m_endFrame = 0;
 		}
 		else
 		{
-			this->m_Width = 17;
+			this->m_Width = 19;
 			this->m_Height = 28;
 
 			switch (this->m_status)
@@ -462,8 +482,11 @@ void CMarioObject::SetFrame(float deltaTime)
 				this->m_endFrame = 0;
 				break;
 			case STATUS::MOVE:
-				this->m_startFrame = 1;
-				this->m_endFrame = 2;
+				
+
+					this->m_startFrame = 0;
+					this->m_endFrame = 1;
+					
 				break;
 			case STATUS::JUMB:
 				this->m_startFrame = 0;
@@ -492,11 +515,23 @@ void CMarioObject::SetFrame(float deltaTime)
 	{
 		if (this->m_collision == COLLISION::NONE_COL)
 		{
-			this->m_startFrame = 0;
-			this->m_endFrame = 0;
+			if (!this->m_isFly)
+			{			
+				this->m_Width = 24;
+				this->m_Height = 30;
+				this->m_startFrame = 0;
+				this->m_endFrame = 0;
+			}
+			else
+			{
+				this->m_startFrame = 3;
+				this->m_endFrame = 3;
+			}
 		}
 		else
 		{
+			this->m_Width = 25;
+			this->m_Height = 30;
 			switch (this->m_status)
 			{
 			case STATUS::NONE_STATUS:
@@ -504,8 +539,35 @@ void CMarioObject::SetFrame(float deltaTime)
 				this->m_endFrame = 0;
 				break;
 			case STATUS::MOVE:
-				this->m_startFrame = 0;
-				this->m_endFrame = 1;
+				if (!this->m_isFly)
+				{
+					
+					this->m_elapseTimeChangeFrame = 0.1f;
+					this->m_vxMax = 50;
+				}
+				else
+				{
+					this->m_isJumbFly = false;
+					this->m_elapseTimeChangeFrame = 0.05f;
+					this->m_vxMax = 80;
+				}
+				if (this->m_vx < 80 && this->m_isGround)
+				{
+					this->m_isJumbFly = false;
+					this->m_startFrame = 0;
+					this->m_endFrame = 1;
+				}
+				if (this->m_vx >= 80 || this->m_vx <= -80)
+				{
+					this->m_isJumbFly = true;
+					this->m_Width = 26;
+					this->m_Height = 30;
+					this->m_elapseTimeChangeFrame = 0.03f;
+					this->m_vxMax = 80;
+					this->m_startFrame = 3;
+					this->m_endFrame = 5;
+				}
+				
 				break;
 			case STATUS::JUMB:
 				this->m_startFrame = 0;
@@ -519,6 +581,7 @@ void CMarioObject::SetFrame(float deltaTime)
 				}
 				else
 				{
+					
 					this->m_startFrame = 0;
 					this->m_endFrame = 2;
 				}
@@ -608,8 +671,15 @@ void CMarioObject::MoveUpdate(float deltaTime)
 	//grafity
 	Gravity(deltaTime);
 	//nhay
-	if (this->m_canJump == false)
+	if (this->m_isJumbFly == false)
+	{
+		if (this->m_canJump == false)
+			AddForce(deltaTime);
+	}
+	else
+	{
 		AddForce(deltaTime);
+	}
 	//di chuyen cua mario
 	Move(deltaTime);
 
@@ -637,18 +707,27 @@ void CMarioObject::OnKeyDown(float deltaTime)
 	switch (this->m_keyDown)
 	{
 		case DIK_SPACE:
-			if (this->m_isGround)
+			if (this->m_isJumbFly == false)
 			{
-				this->m_canJump = true;
-				this->m_isJumping = true;
-				this->m_isGround = false;				
-			}			
+				if (this->m_isGround)
+				{
+					this->m_canJump = true;
+					this->m_isJumping = true;
+					this->m_isGround = false;
+				}
+				this->m_isCanJumbFly = false;
+			}
+			else
+			{
+				this->m_isCanJumbFly = true;
+			}
 			break;
 		case DIK_X:
 			break;
 		case DIK_Z:
 			break;
 		case DIK_C:
+			this->m_isFly = true;
 			break;
 		case DIK_LEFT:
 			this->m_status = STATUS::MOVE;
@@ -676,15 +755,26 @@ void CMarioObject::OnKeyUp(float deltaTime)
 	switch (this->m_keyUp)
 	{
 		case DIK_SPACE:
-			this->m_isJumping = false;
-			this->m_timeJumb = 0;
-			this->m_a = m_aDefault;
+			if (this->m_isJumbFly == false)
+			{
+
+				this->m_isJumping = false;
+				this->m_timeJumb = 0;
+				this->m_a = m_aDefault;
+				this->m_isCanJumbFly = false;
+			}
+			else
+			{
+				this->m_isCanJumbFly = false;
+			}
+			
 			break;
 		case DIK_X:
 			break;
 		case DIK_Z:
 			break;
 		case DIK_C:
+			this->m_isFly = false;
 			break;
 		case DIK_LEFT:
 			//MessageBox(NULL, "Da tha phim Left", "THA", MB_OK);

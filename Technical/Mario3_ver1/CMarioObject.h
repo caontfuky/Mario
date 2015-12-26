@@ -71,6 +71,10 @@ public:
 	bool isInput;
 	bool m_isGround;
 	int level;
+	bool m_isFly;
+	bool m_isJumbFly;
+	bool m_isCanJumbFly;
+	
 private:
 	float m_timeJumb = 10;//thoi gian addFore
 	

@@ -13,12 +13,14 @@
 //Enemy
 #include "CEnemyRun.h"
 #include "CEnemyTurtle.h"
+#include "CEnemyTurtleFly.h"
 #include "CEnemyFlower.h"
 //Brick
 #include "CBrick.h"
 #include "CStone.h"
 //Effect
 #include "CCoin.h"
+#include "CItem.h"
 
 //Bullet
 #include "CBullet.h"
@@ -44,6 +46,8 @@ public:
 
 	CBullet *bullet;
 	CStone *stone;
+	CEnemyTurtleFly *fly;
+	CItem *item;
 
 	std::hash_map<int, CBaseGameObject*> m_listObjectCurr;
 public:

@@ -30,6 +30,7 @@ void CDrawObject::Draw(CBaseGameObject* obj)
 			case 0://eo co thang nao
 				break;
 			case 1://thang Mario
+#pragma region Mario
 				if (CMarioObject::GetInstance()->level == 1)
 				{
 
@@ -114,19 +115,37 @@ void CDrawObject::Draw(CBaseGameObject* obj)
 					}
 					else
 					{
-						texture->LoadImageFromFile(MARIO_MOVE_LV3, D3DCOLOR_XRGB(255, 0, 255));
-						if (obj->GetDirection() == Direction::RIGHT)
+						if (CMarioObject::GetInstance()->m_vx < 80)
 						{
-							this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+
+							texture->LoadImageFromFile(MARIO_MOVE_LV3, D3DCOLOR_XRGB(255, 0, 255));
+							if (obj->GetDirection() == Direction::RIGHT)
+							{
+								this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+							}
+							else
+							{
+								this->m_draw->drawFlipX(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+							}
 						}
-						else
+						if (CMarioObject::GetInstance()->m_vx >= 80 || CMarioObject::GetInstance()->m_vx <= -80)
 						{
-							this->m_draw->drawFlipX(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+							texture->LoadImageFromFile(MARIO_FLY_LV3, D3DCOLOR_XRGB(255, 0, 255));
+							if (obj->GetDirection() == Direction::RIGHT)
+							{
+								this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+							}
+							else
+							{
+								this->m_draw->drawFlipX(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+							}
 						}
+						
 					}
 
 				}
 				break;
+#pragma endregion
 			case 2:
 				texture->LoadImageFromFile(MARIO_MOVE, D3DCOLOR_XRGB(255, 0, 255));
 				//pos = Vector3(obj->GetPos().x, obj->GetPos().y, 0);
@@ -169,6 +188,23 @@ void CDrawObject::Draw(CBaseGameObject* obj)
 				this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
 				//this->m_draw->drawRotation(texture, obj->GetRectRS(), pos, 90, D3DCOLOR_XRGB(255, 255, 255), true);
 				break;
+			case 104:
+				break;
+			case 105:
+				break;
+				//rua bay
+			case 106:
+				texture->LoadImageFromFile(ENEMY_TURTEL_2, D3DCOLOR_XRGB(255, 0, 255));
+				if (obj->m_Dir == Direction::RIGHT)
+				{
+					this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+				}
+				else
+				{
+					this->m_draw->drawFlipX(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+
+				}
+				break;
 				//Brick
 			case 201:
 				texture->LoadImageFromFile(BRICK_1, D3DCOLOR_XRGB(255, 0, 255));
@@ -178,6 +214,12 @@ void CDrawObject::Draw(CBaseGameObject* obj)
 				break;
 			case 202:
 				texture->LoadImageFromFile(STONE, D3DCOLOR_XRGB(255, 0, 255));
+				//pos = Vector3(obj->GetPos().x, obj->GetPos().y, 0);
+				//this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+				this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+				break;
+			case 203:
+				texture->LoadImageFromFile(MUSHROOM_ITEM, D3DCOLOR_XRGB(255, 0, 255));
 				//pos = Vector3(obj->GetPos().x, obj->GetPos().y, 0);
 				//this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
 				this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);

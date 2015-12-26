@@ -100,6 +100,7 @@ void CBullet::OnCollision(float deltaTime)//xet va cham voi Player
 		//MessageBox(NULL, "Bullet", "Game Over", MB_OK);
 		CMarioObject::GetInstance()->m_status = STATUS::DIE;
 		CMarioObject::GetInstance()->m_vy = 120;
+		
 	}
 }
 

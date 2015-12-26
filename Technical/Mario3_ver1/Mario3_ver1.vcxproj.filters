@@ -190,6 +190,15 @@
     <ClCompile Include="CLoadObject.cpp">
       <Filter>FrameWork\DirectX\DrawObject</Filter>
     </ClCompile>
+    <ClCompile Include="CEnemyTurtleFly.cpp">
+      <Filter>FrameWork\Object\Object\BaseEnemy\EnemyTurtle</Filter>
+    </ClCompile>
+    <ClCompile Include="CBrickItem.cpp">
+      <Filter>FrameWork\Object\Object\Brick</Filter>
+    </ClCompile>
+    <ClCompile Include="CItem.cpp">
+      <Filter>FrameWork\Object\Object\Brick</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CGlobal.h">
@@ -311,6 +320,15 @@
     </ClInclude>
     <ClInclude Include="CLoadObject.h">
       <Filter>FrameWork\DirectX\DrawObject</Filter>
+    </ClInclude>
+    <ClInclude Include="CEnemyTurtleFly.h">
+      <Filter>FrameWork\Object\Object\BaseEnemy\EnemyTurtle</Filter>
+    </ClInclude>
+    <ClInclude Include="CBrickItem.h">
+      <Filter>FrameWork\Object\Object\Brick</Filter>
+    </ClInclude>
+    <ClInclude Include="CItem.h">
+      <Filter>FrameWork\Object\Object\Brick</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

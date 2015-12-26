@@ -38,11 +38,11 @@ void CStateGamePlay::Render()
 
 	//ve map len man hinh
 	CLoadBackground::GetInstance()->Draw();
-	
-	//ve cac doi tuong len man hinh
-	CPoolObject::GetInstance()->Draw();
 	//ve mario
 	CDrawObject::GetInstance()->Draw(CMarioObject::GetInstance());
+	//ve cac doi tuong len man hinh
+	CPoolObject::GetInstance()->Draw();
+	
 }
 void CStateGamePlay::Destroy()
 {

@@ -9,6 +9,7 @@ CLoadObject::CLoadObject()
 	this->m_listQuadTree = new std::hash_map<int, std::string>();
 	this->m_listAllGameObject = new std::hash_map<int, std::string>();
 	this->m_quadTree = new CQuadTree();
+
 }
 
 
@@ -186,6 +187,7 @@ void CLoadObject::DeleteObjectOutScreen(float deltaTime)
 }
 void CLoadObject::Draw()
 {	
+	
 	for (std::vector<CBaseGameObject*>::iterator it = this->m_listGameObject.begin();
 		it != this->m_listGameObject.end();
 		++it)

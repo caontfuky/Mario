@@ -223,6 +223,7 @@ void CEnemyRun::OnCollision(float deltaTime, std::vector<Ground> listGround)//va
 						this->m_a = 0;
 						this->m_canJump = false;
 						this->isGround = true;
+						
 					}
 				}
 			}

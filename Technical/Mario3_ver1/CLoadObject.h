@@ -8,6 +8,7 @@
 //Enemy
 #include "CEnemyRun.h"
 #include "CEnemyTurtle.h"
+#include "CEnemyTurtleFly.h"
 #include "CEnemyFlower.h"
 //Brick
 #include "CBrick.h"
@@ -26,6 +27,7 @@ class CLoadObject : public CSingleton<CLoadObject>
 public:
 	CLoadObject();
 	~CLoadObject();
+
 
 	
 public:

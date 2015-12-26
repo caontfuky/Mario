@@ -17,6 +17,8 @@ CPoolObject::CPoolObject()
 	//CreateGameObject();
 	//bullet 
 	//this->bullet = new CBullet();
+	this->fly = new	CEnemyTurtleFly();
+	this->item = new CItem(Vector2(100, 50), TYPE_ITEM::ITEM_MUSHROOM);
 }
 
 
@@ -25,9 +27,12 @@ CPoolObject::~CPoolObject()
 }
 void CPoolObject::Draw()
 {
+	CDrawObject::GetInstance()->Draw(this->fly);
+	CDrawObject::GetInstance()->Draw(this->item);
 	//CDrawObject::GetInstance()->Draw(this->coin);
 	//CDrawObject::GetInstance()->Draw(this->stone);
 	CLoadObject::GetInstance()->Draw();
+	
 	if (bullet != NULL)
 	{
 		if (CCamera::GetInstance()->CheckCollision(this->bullet))
@@ -166,6 +171,8 @@ bool CPoolObject::contains(std::vector<int> v, int x)
 
 void CPoolObject::Update(float deltaTime)
 {
+	this->fly->Update(deltaTime);
+	this->item ->Update(deltaTime);
 	//this->coin->Update(deltaTime);
 	//this->stone->Update(deltaTime);
 	if (bullet != NULL)
@@ -210,6 +217,8 @@ void CPoolObject::Collision(float deltaTime)
 			obj->OnCollision(deltaTime, CBoxGround::GetInstance()->listGround);
 		}
 	}
+	this->fly->OnCollision(deltaTime, CBoxGround::GetInstance()->listGround);
+	this->item->OnCollision(deltaTime, CBoxGround::GetInstance()->listGround);
 }
 void CPoolObject::RenderCoin(Vector2 pos)
 {

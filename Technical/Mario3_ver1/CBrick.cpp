@@ -10,10 +10,17 @@ CBrick::CBrick(Vector2 pos)
 	Init();
 	this->m_Pos = pos;
 }
+CBrick::CBrick(Vector2 pos, int _level)
+{
+	Init();
+	this->m_Pos = pos;
+	this->level = _level;
+}
 void CBrick::Init()
 {
 	this->m_Id = 201;
 	this->m_IdType = 201;//id Image
+	this->level = 1;
 	this->status = BRICK_STATUS::BRICK_ITEM;
 	this->m_Tag = Tag::BRICK;
 	this->m_isLife = true;
@@ -76,9 +83,18 @@ void CBrick::OnCollision(float deltaTime, std::vector<CBaseGameObject*> listObje
 					if (normalX != 0)
 					{
 						Vector2 pos = Vector2(this->m_Pos.x, this->m_Pos.y + this->m_Height);
-
+						
 						if (status != BRICK_STATUS::BRICK_NONE)
-							CPoolObject::GetInstance()->RenderCoin(pos);
+						{
+							if (this->level == 1)
+							{
+								CPoolObject::GetInstance()->RenderCoin(pos);
+							}
+							if (this->level == 2)
+							{
+
+							}
+						}
 						status = BRICK_STATUS::BRICK_NONE;
 						this->m_isLife = false;
 					}

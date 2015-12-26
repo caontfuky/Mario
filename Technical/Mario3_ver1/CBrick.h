@@ -12,8 +12,10 @@ class CBrick:public CBaseGameObject, public CAnimation
 public:
 	CBrick();
 	CBrick(Vector2 pos);
+	CBrick(Vector2 pos, int _level);
 	~CBrick();
 	BRICK_STATUS status;
+	int level;
 public:
 	void Update(float deltaTime);//ham Update chinh cua game
 	void Update(float deltaTime, std::vector<CBaseGameObject*>* listObjectCollision);//ham Update de xe va cham

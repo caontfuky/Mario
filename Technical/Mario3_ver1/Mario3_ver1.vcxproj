@@ -74,6 +74,7 @@
     <ClCompile Include="CBaseGameObject.cpp" />
     <ClCompile Include="CBoxGround.cpp" />
     <ClCompile Include="CBrick.cpp" />
+    <ClCompile Include="CBrickItem.cpp" />
     <ClCompile Include="CBullet.cpp" />
     <ClCompile Include="CCamera.cpp" />
     <ClCompile Include="CCoin.cpp" />
@@ -86,6 +87,7 @@
     <ClCompile Include="CFileConfig.cpp" />
     <ClCompile Include="CFileUtil.cpp" />
     <ClCompile Include="CGame.cpp" />
+    <ClCompile Include="CItem.cpp" />
     <ClCompile Include="CLoadBackground.cpp" />
     <ClCompile Include="CLoadGameObject.cpp" />
     <ClCompile Include="CLoadObject.cpp" />
@@ -101,6 +103,7 @@
     <ClCompile Include="CTexture.cpp" />
     <ClCompile Include="CViewWindows.cpp" />
     <ClCompile Include="CInput.cpp" />
+    <ClCompile Include="CEnemyTurtleFly.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="QuadObject.cpp" />
     <ClCompile Include="StateGameManager.cpp" />
@@ -112,6 +115,7 @@
     <ClInclude Include="CBaseGameObject.h" />
     <ClInclude Include="CBoxGround.h" />
     <ClInclude Include="CBrick.h" />
+    <ClInclude Include="CBrickItem.h" />
     <ClInclude Include="CBullet.h" />
     <ClInclude Include="CCamera.h" />
     <ClInclude Include="CCoin.h" />
@@ -125,6 +129,7 @@
     <ClInclude Include="CFileUtil.h" />
     <ClInclude Include="CGame.h" />
     <ClInclude Include="CGlobal.h" />
+    <ClInclude Include="CItem.h" />
     <ClInclude Include="CLoadBackground.h" />
     <ClInclude Include="CLoadGameObject.h" />
     <ClInclude Include="CLoadObject.h" />
@@ -144,6 +149,7 @@
     <ClInclude Include="CTexture.h" />
     <ClInclude Include="CViewWindows.h" />
     <ClInclude Include="CInput.h" />
+    <ClInclude Include="CEnemyTurtleFly.h" />
     <ClInclude Include="QuadObject.h" />
     <ClInclude Include="StateGameManager.h" />
   </ItemGroup>
