@@ -31,7 +31,7 @@ void CPoolObject::Draw()
 	if (this->item != NULL)
 		CDrawObject::GetInstance()->Draw(this->item);
 	//CDrawObject::GetInstance()->Draw(this->coin);
-	//CDrawObject::GetInstance()->Draw(this->stone);
+	CDrawObject::GetInstance()->Draw(this->stone);
 	CLoadObject::GetInstance()->Draw();
 	
 	if (bullet != NULL)
@@ -172,6 +172,7 @@ bool CPoolObject::contains(std::vector<int> v, int x)
 
 void CPoolObject::Update(float deltaTime)
 {
+	//this->stone->Update(deltaTime);
 	this->fly->Update(deltaTime);
 	if (this->item != NULL)
 		this->item->Update(deltaTime);

@@ -19,6 +19,7 @@ CStone::~CStone()
 void CStone::Update(float deltaTime)
 {
 	//OnCollision(deltaTime);
+	this->m_Pos.x += 20 * deltaTime;
 }
 void CStone::Update(float deltaTime, std::vector<CBaseGameObject*>* listObjectCollision)
 {}
