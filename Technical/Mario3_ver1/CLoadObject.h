@@ -10,6 +10,7 @@
 #include "CEnemyTurtle.h"
 #include "CEnemyTurtleFly.h"
 #include "CEnemyFlower.h"
+#include "CEnemyFlower2.h"
 //Brick
 #include "CBrick.h"
 #include "CStone.h"

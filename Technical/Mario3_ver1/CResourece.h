@@ -24,6 +24,7 @@
 #define ENEMY_3 "..\\Resources\\Enemy\\Enemy3.png"
 #define ENEMY_4 "..\\Resources\\Enemy\\Enemy4.png"
 #define ENEMY_5 "..\\Resources\\Enemy\\Enemy5.png"
+#define ENEMY_6 "..\\Resources\\Enemy\\Enemy6.png"
 
 //Resource Brick
 #define BRICK_1 "..\\Resources\\Brick\\brick4.png"

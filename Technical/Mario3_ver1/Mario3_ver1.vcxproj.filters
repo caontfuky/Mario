@@ -80,6 +80,9 @@
     <Filter Include="FrameWork\DirectX\DrawObject\QuadTree">
       <UniqueIdentifier>{d159c0ca-84ac-4b4f-9570-2e73a977fef9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FrameWork\Object\Object\BaseEnemy\EnemyFlower2">
+      <UniqueIdentifier>{79a4f5b9-4676-4733-b4e7-a9ccf35b620f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -198,6 +201,9 @@
     </ClCompile>
     <ClCompile Include="CItem.cpp">
       <Filter>FrameWork\Object\Object\Brick</Filter>
+    </ClCompile>
+    <ClCompile Include="CEnemyFlower2.cpp">
+      <Filter>FrameWork\Object\Object\BaseEnemy\EnemyFlower2</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -329,6 +335,9 @@
     </ClInclude>
     <ClInclude Include="CItem.h">
       <Filter>FrameWork\Object\Object\Brick</Filter>
+    </ClInclude>
+    <ClInclude Include="CEnemyFlower2.h">
+      <Filter>FrameWork\Object\Object\BaseEnemy\EnemyFlower2</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

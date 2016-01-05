@@ -4,7 +4,8 @@
 CPoolObject::CPoolObject()
 {
 	this->listEnemy = std::vector<CBaseGameObject*>();
-	this->stone = new CStone();
+	//this->stone = new CStone();
+	this->enemyFlower2 = new CEnemyFlower2(Vector2(50,50));
 
 	//this->enemyRun1 = new CEnemyRun(Vector2(200, 50), LEVEL::LEVEL_0);
 	this->coin = new CCoin();
@@ -32,6 +33,9 @@ void CPoolObject::Draw()
 		CDrawObject::GetInstance()->Draw(this->item);
 	//CDrawObject::GetInstance()->Draw(this->coin);
 	CDrawObject::GetInstance()->Draw(this->stone);
+
+	CDrawObject::GetInstance()->Draw(this->enemyFlower2);
+
 	CLoadObject::GetInstance()->Draw();
 	
 	if (bullet != NULL)
@@ -174,6 +178,9 @@ void CPoolObject::Update(float deltaTime)
 {
 	//this->stone->Update(deltaTime);
 	this->fly->Update(deltaTime);
+	
+	this->enemyFlower2->Update(deltaTime);
+
 	if (this->item != NULL)
 		this->item->Update(deltaTime);
 	//this->coin->Update(deltaTime);

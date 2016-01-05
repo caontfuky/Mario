@@ -104,6 +104,7 @@
     <ClCompile Include="CViewWindows.cpp" />
     <ClCompile Include="CInput.cpp" />
     <ClCompile Include="CEnemyTurtleFly.cpp" />
+    <ClCompile Include="CEnemyFlower2.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="QuadObject.cpp" />
     <ClCompile Include="StateGameManager.cpp" />
@@ -150,6 +151,7 @@
     <ClInclude Include="CViewWindows.h" />
     <ClInclude Include="CInput.h" />
     <ClInclude Include="CEnemyTurtleFly.h" />
+    <ClInclude Include="CEnemyFlower2.h" />
     <ClInclude Include="QuadObject.h" />
     <ClInclude Include="StateGameManager.h" />
   </ItemGroup>

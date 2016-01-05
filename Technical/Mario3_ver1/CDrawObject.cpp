@@ -188,7 +188,11 @@ void CDrawObject::Draw(CBaseGameObject* obj)
 				this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
 				//this->m_draw->drawRotation(texture, obj->GetRectRS(), pos, 90, D3DCOLOR_XRGB(255, 255, 255), true);
 				break;
-			case 104:
+			case 104: // enemy flower 2
+				texture->LoadImageFromFile(ENEMY_6, D3DCOLOR_XRGB(0, 255, 255));
+				//pos = Vector3(obj->GetPos().x, obj->GetPos().y, 0);
+				//this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+				this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
 				break;
 			case 105:
 				break;
@@ -202,7 +206,6 @@ void CDrawObject::Draw(CBaseGameObject* obj)
 				else
 				{
 					this->m_draw->drawFlipX(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
-
 				}
 				break;
 				//Brick

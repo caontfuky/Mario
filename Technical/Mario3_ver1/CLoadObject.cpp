@@ -3,6 +3,7 @@
 #include "CCamera.h"
 #include "CDrawObject.h"
 
+
 CLoadObject::CLoadObject()
 {
 	this->m_listGameObject = std::vector<CBaseGameObject*>();
@@ -176,6 +177,7 @@ CBaseGameObject* CLoadObject::CreateObject(int id, Vector2 pos)
 	case 207:
 		return new CBrick(pos);
 		break;
+
 	default:
 		break;
 	}

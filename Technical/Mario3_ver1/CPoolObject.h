@@ -15,6 +15,7 @@
 #include "CEnemyTurtle.h"
 #include "CEnemyTurtleFly.h"
 #include "CEnemyFlower.h"
+#include"CEnemyFlower2.h"
 //Brick
 #include "CBrick.h"
 #include "CStone.h"
@@ -48,6 +49,8 @@ public:
 	CStone *stone;
 	CEnemyTurtleFly *fly;
 	CItem *item;
+
+	CEnemyFlower2 *enemyFlower2;
 
 	std::hash_map<int, CBaseGameObject*> m_listObjectCurr;
 public:
