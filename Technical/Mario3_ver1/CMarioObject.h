@@ -62,6 +62,7 @@ public :
 	//xu ly Input
 	void OnKeyDown(float deltaTime);
 	void OnKeyUp(float deltaTime);
+	void MarioDie();
 	//cac thong so ve Mario
 public:
 	int m_keyDown;
@@ -74,6 +75,8 @@ public:
 	bool m_isFly;
 	bool m_isJumbFly;
 	bool m_isCanJumbFly;
+	bool m_isUndying;
+	bool m_isRender;
 	
 private:
 	float m_timeJumb = 10;//thoi gian addFore

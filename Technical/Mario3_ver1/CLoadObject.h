@@ -20,8 +20,8 @@
 //Bullet
 #include "CBullet.h"
 
-#define FILE_LIST_OBJECT "..\\Resources\\Object\\1-1-Object.txt"
-#define FILE_LIST_OBJECT_QUADTREE "..\\Resources\\Object\\1-1-Quadtree.txt"
+#define FILE_LIST_OBJECT "..\\Resources\\Object\\1-1.txt"
+#define FILE_LIST_OBJECT_QUADTREE "..\\Resources\\Object\\1-1quadTree.txt"
 class CLoadObject : public CSingleton<CLoadObject>
 {
 	friend class CSingleton<CLoadObject>;

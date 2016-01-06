@@ -5,7 +5,7 @@ CPoolObject::CPoolObject()
 {
 	this->listEnemy = std::vector<CBaseGameObject*>();
 	//this->stone = new CStone();
-	this->enemyFlower2 = new CEnemyFlower2(Vector2(50,50));
+	//this->enemyFlower2 = new CEnemyFlower2(Vector2(50,50));
 
 	//this->enemyRun1 = new CEnemyRun(Vector2(200, 50), LEVEL::LEVEL_0);
 	this->coin = new CCoin();
@@ -28,13 +28,13 @@ CPoolObject::~CPoolObject()
 }
 void CPoolObject::Draw()
 {
-	CDrawObject::GetInstance()->Draw(this->fly);
+	//CDrawObject::GetInstance()->Draw(this->fly);
 	if (this->item != NULL)
 		CDrawObject::GetInstance()->Draw(this->item);
 	//CDrawObject::GetInstance()->Draw(this->coin);
-	CDrawObject::GetInstance()->Draw(this->stone);
+	//CDrawObject::GetInstance()->Draw(this->stone);
 
-	CDrawObject::GetInstance()->Draw(this->enemyFlower2);
+	//CDrawObject::GetInstance()->Draw(this->enemyFlower2);
 
 	CLoadObject::GetInstance()->Draw();
 	
@@ -177,9 +177,9 @@ bool CPoolObject::contains(std::vector<int> v, int x)
 void CPoolObject::Update(float deltaTime)
 {
 	//this->stone->Update(deltaTime);
-	this->fly->Update(deltaTime);
+	//sthis->fly->Update(deltaTime);
 	
-	this->enemyFlower2->Update(deltaTime);
+	//this->enemyFlower2->Update(deltaTime);
 
 	if (this->item != NULL)
 		this->item->Update(deltaTime);

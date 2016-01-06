@@ -254,10 +254,9 @@ void CEnemyRun::OnCollision(float deltaTime)//xet va cham voi Player
 				this->m_vx = 0;
 				this->m_isLife = false;
 				this->status = ENEMY_STATUS::ENEMY_DIE;
-				CMarioObject::GetInstance()->m_vy *= -1;
-				
+							
 			}
-			
+			CMarioObject::GetInstance()->m_vy *= -1;
 		}	
 		
 	}
@@ -267,8 +266,9 @@ void CEnemyRun::OnCollision(float deltaTime)//xet va cham voi Player
 		if (CCollision::GetInstance()->Collision(CMarioObject::GetInstance(), this) && CMarioObject::GetInstance()->m_vy == 0)
 		{
 			//MessageBox(NULL, "Mario Die", "Game Over", MB_OK);
-			//CMarioObject::GetInstance()->m_status = STATUS::DIE;
-			this->status = ENEMY_STATUS::ENEMY_DIE;
+			CMarioObject::GetInstance()->MarioDie();
+			//this->m_isLife = false;
+			/*this->status = ENEMY_STATUS::ENEMY_DIE;
 			int lv = CMarioObject::GetInstance()->level;
 			switch (lv)
 			{
@@ -284,7 +284,7 @@ void CEnemyRun::OnCollision(float deltaTime)//xet va cham voi Player
 				break;
 			default:
 				break;
-			}
+			}*/
 		}
 	}
 }

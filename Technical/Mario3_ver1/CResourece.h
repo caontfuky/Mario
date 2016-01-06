@@ -33,3 +33,4 @@
 //Effect
 #define EFFECT_COIN "..\\Resources\\Effect\\Coin\\Coin.png"
 #define MUSHROOM_ITEM "..\\Resources\\Effect\\Mushroom.png"
+#define FLY_ITEM "..\\Resources\\Effect\\Fly.png"

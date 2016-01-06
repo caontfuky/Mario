@@ -32,11 +32,11 @@ void CCoin::Init()
 	this->m_currentFrame = 0;
 	this->m_elapseTimeChangeFrame = 0.1f;
 	this->m_increase = 1;
-	this->m_totalFrame = 5;
-	this->m_column = 5;
+	this->m_totalFrame = 6;
+	this->m_column = 6;
 
 	this->m_startFrame = 0;
-	this->m_endFrame = 4;
+	this->m_endFrame = 5;
 
 	//khoi tao thong so di chuyen
 	this->m_vx = 0;

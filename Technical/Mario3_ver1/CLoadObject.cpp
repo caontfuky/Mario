@@ -144,11 +144,11 @@ CBaseGameObject* CLoadObject::CreateObject(int id, Vector2 pos)
 		//			 //return CFactoryStaticObject::GetInstance()->CreateObject(info);
 		//			 break;
 		//}
-	case 601://brick
+	case 601://Cuc gach an tien binh thuong
 		return new CBrick(pos);
 		break;
-	case 602://Brick 2
-		return new CBrick(pos);
+	case 602://Brick Item
+		return new CBrick(pos, 2);
 		break;
 	case 603://Coin
 		return new CCoin(pos, true);
@@ -158,24 +158,38 @@ CBaseGameObject* CLoadObject::CreateObject(int id, Vector2 pos)
 		break;
 
 		//Enemy
-	case 201:
+
+		
+	case 201://Nam' Di chuyen qua lai
 		return new CEnemyRun(pos, LEVEL::LEVEL_0);
 		break;
-	case 202:
+		
+	case 202://Nam Bay
 		return new CEnemyRun(Vector2(pos), LEVEL::LEVEL_1);
 		break;
-	case 203:
-		//MessageBox(NULL, "Turtle", "Enemy", MB_OK);
+		
+	case 203://Rua mau do di chuyen qua lai		
 		return new CEnemyTurtle(pos, 0);
 		break;
-	case 204:
+
+	case 204://Hoa mau do ban dan
 		return new CEnemyFlower(pos);
 		break;
-	case 205:
-		return new CBrick(pos);
+
+	case 205://Rua mau xanh biet bay
+		return new CEnemyTurtleFly(pos);
 		break;
-	case 207:
-		return new CBrick(pos);
+
+	case 206://Hoa mau xanh can
+		return new CEnemyFlower2(pos);
+		break;
+
+	case 207://Hoa mau xanh ban
+		return new CEnemyFlower(pos, 2);
+		break;
+
+	case 208://Rua mau xanh di bo
+		return new CEnemyTurtleFly(pos,ENEMY_STATUS::ENEMY_MOVE);
 		break;
 
 	default:

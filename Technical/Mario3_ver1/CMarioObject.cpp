@@ -6,6 +6,8 @@ CMarioObject::CMarioObject()
 	this->m_Id = 0;
 	this->m_IdType = 1;
 	this->level = 1;
+	this->m_isRender = true;
+	this->m_isUndying = false;
 	this->isInput = false;
 	this->m_isFly = false;
 	this->m_isJumbFly = false;
@@ -15,6 +17,7 @@ CMarioObject::CMarioObject()
 	this->m_collision = COLLISION::NONE_COL;
 	this->InitMove();
 	this->InitAnimation();
+
 }
 void CMarioObject::InitAnimation()
 {
@@ -51,10 +54,10 @@ CMarioObject::~CMarioObject()
 {
 	delete this;
 }
+float timeUndying = 0;
+float undying;
 void CMarioObject::Update(float deltaTime)
 {
-	
-	
 	SetFrame(deltaTime);
 	ChangeFrame(deltaTime);	
 	MoveUpdate(deltaTime);
@@ -62,6 +65,31 @@ void CMarioObject::Update(float deltaTime)
 	{		
 		OnKeyDown(deltaTime);
 		OnKeyUp(deltaTime);
+	}
+	if (this->m_status != STATUS::DIE)
+	{
+		if (this->m_isUndying == true)
+		{
+			if (timeUndying >= 1.5)
+			{
+				this->m_isUndying = false;
+				timeUndying = 0;
+			}
+			else
+			{
+				if (undying >= 0.2)
+				{
+					this->m_isRender = !this->m_isRender;
+					undying = 0;
+				}
+				undying += deltaTime;
+			}
+			timeUndying += deltaTime;
+		}
+		else
+		{
+			this->m_isRender = true;
+		}
 	}
 	
 }
@@ -685,7 +713,30 @@ void CMarioObject::MoveUpdate(float deltaTime)
 	Move(deltaTime);
 
 }
-
+void CMarioObject::MarioDie()
+{
+	if (this->m_isUndying == false)
+	{
+		switch (this->level)
+		{
+		case 0:
+			break;
+		case 1:
+			this->m_vy = 120;
+			this->m_status = STATUS::DIE;
+			break;
+		case 2:
+			this->level = 1;
+			break;
+		case 3:
+			this->level = 2;
+			break;
+		default:
+			break;
+		}
+		this->m_isUndying = true;
+	}
+}
 void CMarioObject::SetAlive(bool islife)
 {}
 void CMarioObject::SetLeft(Direction left)

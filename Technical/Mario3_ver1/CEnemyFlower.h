@@ -8,6 +8,7 @@ class CEnemyFlower: public CBaseEnemy, CAnimation
 public:
 	CEnemyFlower();
 	CEnemyFlower(Vector2 pos);
+	CEnemyFlower(Vector2 pos, int lv);
 	~CEnemyFlower();
 public:
 	void Update(float deltaTime);//ham Update chinh cua game

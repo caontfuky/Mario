@@ -6,6 +6,8 @@ class CEnemyTurtleFly : public CBaseEnemy, public CAnimation, public CMove
 {
 public:
 	CEnemyTurtleFly();
+	CEnemyTurtleFly(Vector2 pos);
+	CEnemyTurtleFly(Vector2 pos, ENEMY_STATUS lv);
 	~CEnemyTurtleFly();
 
 	void Update(float deltaTime);//ham Update chinh cua game

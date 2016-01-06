@@ -5,7 +5,17 @@ CEnemyTurtleFly::CEnemyTurtleFly()
 {
 	Init();
 }
-
+CEnemyTurtleFly::CEnemyTurtleFly(Vector2 pos)
+{
+	Init();
+	this->m_Pos = pos;
+}
+CEnemyTurtleFly::CEnemyTurtleFly(Vector2 pos, ENEMY_STATUS lv)
+{
+	Init();
+	this->m_Pos = pos;
+	this->status = lv;
+}
 
 CEnemyTurtleFly::~CEnemyTurtleFly()
 {
@@ -100,7 +110,7 @@ void CEnemyTurtleFly::MoveUpdate(float deltaTime)
 	
 	if (this->status != ENEMY_STATUS::ENEMY_DIE)
 	{
-		this->m_vx = this->m_vxDefault;
+		//this->m_vx = this->m_vxDefault;
 		//this->m_Pos.x += this->m_vx * deltaTime;
 		if (this->isGround == true && this->status == ENEMY_STATUS::ENEMY_ATTACK)
 		{
@@ -211,6 +221,25 @@ void CEnemyTurtleFly::OnCollision(float deltaTime, std::vector<Ground> listGroun
 					}
 				}
 			}
+			if (ground.idGround == 705 || ground.idGround == 701)
+			{
+				if (this->status == ENEMY_STATUS::ENEMY_MOVE)
+				{
+					/*if (this->m_Pos.x < this->m_PosStart.x || this->m_Pos.x > this->m_PosStart.x + this->m_Distance)
+					{*/
+					this->m_vx *= -1;
+					if (this->m_vx > 0)
+					{
+						this->m_Dir = Direction::RIGHT;
+					}
+					else
+					{
+						this->m_Dir = Direction::LEFT;
+					}
+				}
+
+				//}
+			}
 
 		}
 	}
@@ -258,22 +287,7 @@ void CEnemyTurtleFly::OnCollision(float deltaTime)//xet va cham voi Player
 
 		if (this->status != ENEMY_STATUS::ENEMY_DIE)
 		{
-			//CMarioObject::GetInstance()->m_status = STATUS::DIE;
-			int lv = CMarioObject::GetInstance()->level;
-			switch (lv)
-			{
-			case 1:
-				CMarioObject::GetInstance()->m_status = STATUS::DIE;
-				break;
-			case 2:
-				CMarioObject::GetInstance()->level = 1;
-				break;
-			case 3:
-				CMarioObject::GetInstance()->level = 2;
-				break;
-			default:
-				break;
-			}
+			CMarioObject::GetInstance()->MarioDie();
 			
 		}
 		else

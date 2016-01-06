@@ -66,8 +66,8 @@ void CEnemyTurtle::Update(float deltaTime)
 	{
 		if (CCollision::GetInstance()->Collision(CMarioObject::GetInstance(), this))
 		{
-			CMarioObject::GetInstance()->m_status = STATUS::DIE;
-			CMarioObject::GetInstance()->m_vy = 120;
+			CMarioObject::GetInstance()->MarioDie();
+			//CMarioObject::GetInstance()->m_vy = 120;
 		}
 	}
 }
@@ -90,7 +90,7 @@ void CEnemyTurtle::SetFrame(float deltaTime)
 void CEnemyTurtle::MoveUpdate(float deltaTime)
 {
 	
-	if (this->status == ENEMY_STATUS::ENEMY_MOVE)
+	/*if (this->status == ENEMY_STATUS::ENEMY_MOVE)
 	{
 		if (this->m_Pos.x < this->m_PosStart.x || this->m_Pos.x > this->m_PosStart.x + this->m_Distance)
 		{				
@@ -104,7 +104,7 @@ void CEnemyTurtle::MoveUpdate(float deltaTime)
 				this->m_Dir = Direction::LEFT;
 			}
 		}		
-	}
+	}*/
 	
 	this->m_Pos.x += this->m_vx * deltaTime;
 	this->m_vy += this->m_a *deltaTime;
@@ -172,6 +172,25 @@ void CEnemyTurtle::OnCollision(float deltaTime, std::vector<Ground> listGround)/
 						this->isGround = true;
 					}
 				}
+			}
+			if (ground.idGround == 705 || ground.idGround == 701)
+			{
+				if (this->status == ENEMY_STATUS::ENEMY_MOVE)
+				{
+					/*if (this->m_Pos.x < this->m_PosStart.x || this->m_Pos.x > this->m_PosStart.x + this->m_Distance)
+					{*/
+						this->m_vx *= -1;
+						if (this->m_vx > 0)
+						{
+							this->m_Dir = Direction::RIGHT;
+						}
+						else
+						{
+							this->m_Dir = Direction::LEFT;
+						}
+				}
+				
+				//}
 			}
 			
 		}

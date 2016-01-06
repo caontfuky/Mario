@@ -3,7 +3,7 @@
 
 CItem::CItem()
 {
-	Init();
+	//Init();
 }
 CItem::CItem(Vector2 pos, TYPE_ITEM _type)
 {
@@ -14,7 +14,8 @@ CItem::CItem(Vector2 pos, TYPE_ITEM _type)
 	switch (this->type)
 	{
 	case TYPE_ITEM::ITEM_MUSHROOM:
-
+		this->m_Id = 203;
+		this->m_IdType = 203;//id Image
 		this->m_Width = 16;
 		this->m_Height = 0;
 
@@ -26,6 +27,10 @@ CItem::CItem(Vector2 pos, TYPE_ITEM _type)
 		this->m_column = 2;
 		break;
 	case TYPE_ITEM::ITEM_FLY:
+		this->m_Id = 204;
+		this->m_IdType = 204;//id Image
+		this->m_Width = 16;
+		this->m_Height = 16;
 		this->m_currentTime = 0;
 		this->m_currentFrame = 0;
 		this->m_elapseTimeChangeFrame = 0.1f;
@@ -43,9 +48,9 @@ CItem::~CItem()
 }
 void CItem::Init()
 {
-	this->m_Id = 203;
-	this->m_IdType = 203;//id Image
-	this->m_Tag = Tag::BRICK;
+	//this->m_Id = 203;
+	//this->m_IdType = 203;//id Image
+	
 	this->m_isLife = true;
 	//
 	this->m_vx = 20;
@@ -85,7 +90,7 @@ void CItem::OnCollision(float deltaTime, std::vector<Ground> listGround)
 		Box box = ground.box;
 
 		timeCollision = CCollision::GetInstance()->Collision(this, box, normalX, normalY, moveX, moveY, deltaTime);
-		
+		this->isGround = false;
 		if ((timeCollision > 0.0f && timeCollision < 1.0f) || timeCollision == 2.0f)
 		{
 			//MessageBox(NULL, "ASDsa", "ASDsad", MB_OK);
@@ -111,8 +116,10 @@ void CItem::OnCollision(float deltaTime)
 {
 	if (CCollision::GetInstance()->Collision(CMarioObject::GetInstance(), this))
 	{
+
 		this->m_Pos = Vector2(-50, -50);
 		int lv = CMarioObject::GetInstance()->level;
+		
 		switch (lv)
 		{
 		case 1:
@@ -121,14 +128,15 @@ void CItem::OnCollision(float deltaTime)
 			
 			break;
 		case 2:
-			//CMarioObject::GetInstance()->level = 3;
+			//CMarioObject::GetInstance()->m_Pos.y = CMarioObject::GetInstance()->m_Pos.y + CMarioObject::GetInstance()->m_Height / 2;
+			CMarioObject::GetInstance()->level = 3;
 			break;
 		case 3:
 			break;
 		default:
 			break;
 		}
-
+		CMarioObject::GetInstance()->m_isUndying = true;
 		
 	}
 }
@@ -165,7 +173,7 @@ void CItem::MoveUpdate(float deltaTime)
 		}
 		break;
 	case TYPE_ITEM::ITEM_FLY:
-		break;
+		this->m_Pos.x -= this->m_vx * deltaTime;
 	default:
 		break;
 	}

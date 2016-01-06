@@ -93,11 +93,25 @@ void CBrick::OnCollision(float deltaTime, std::vector<CBaseGameObject*> listObje
 							}
 							if (this->level == 2)
 							{
-								CPoolObject::GetInstance()->RenderItem(pos, TYPE_ITEM::ITEM_MUSHROOM);
+								int lv = CMarioObject::GetInstance()->level;
+								switch (lv)
+								{
+								case 1:
+									CPoolObject::GetInstance()->RenderItem(pos, TYPE_ITEM::ITEM_MUSHROOM);
+									break;
+								case 2:
+									CPoolObject::GetInstance()->RenderItem(pos, TYPE_ITEM::ITEM_FLY);
+									break;
+								case 3:
+									break;
+								default:
+									break;
+								}
 							}
 						}
 						status = BRICK_STATUS::BRICK_NONE;
 						this->m_isLife = false;
+						
 					}
 				}
 			}
