@@ -2,6 +2,13 @@
 #include "CDevice.h"
 
 
+void CStateGameManager::LoadScene()
+{
+	//menuGameScene = new MenuGameScene();
+	this->gamePlayScene = new CStateGamePlay();
+	gamePlayScene->Init();
+}
+
 void CStateGameManager::Update(bool isUpdate, float deltaTime)
 {
 	if (this->m_pCurrent != this->m_pNext)
@@ -33,7 +40,16 @@ void CStateGameManager::Update(bool isUpdate, float deltaTime)
 		}
 		CDevice::s_d3ddv->Present(NULL, NULL, NULL, NULL);
 	}
+
+	if (CInput::GetInstance()->IsKeyDown(DIK_Q))
+	{
+		ChangeState(this->gamePlayScene);
+	}
+	
 }
+
+
+
 void CStateGameManager::ChangeState(CState* state)
 {
 	this->m_pNext = state;

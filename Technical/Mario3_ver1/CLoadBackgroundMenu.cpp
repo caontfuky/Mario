@@ -13,7 +13,7 @@ CLoadBackgroundMenu::CLoadBackgroundMenu()
 	this->m_listBackGroundMatrix = new std::hash_map<int, std::string>();
 	this->m_listQuadTree = new std::hash_map<int, std::string>();
 	//this->m_drawImg = new CSprite();
-	this->m_quadTree = new CQuadTree();
+
 	this->m_matrix = nullptr;
 
 	LoadBackgroundFromFile();
@@ -27,7 +27,7 @@ CLoadBackgroundMenu::~CLoadBackgroundMenu()
 
 void CLoadBackgroundMenu::Update(float deltaTime)
 {
-	m_chooseItem->Update(deltaTime);
+	//m_chooseItem->Update(deltaTime);
 }
 
 void CLoadBackgroundMenu::Draw()
@@ -54,7 +54,7 @@ void CLoadBackgroundMenu::Draw()
 		}
 	}
 
-	m_chooseItem->Draw();
+	//m_chooseItem->Draw();
 
 #pragma endregion
 
@@ -66,7 +66,7 @@ void CLoadBackgroundMenu::LoadBackgroundFromFile()
 	this->m_tileCols = this->m_imageCurr->GetImageWidth() / this->m_tileWidth;
 	this->m_tileRows = this->m_imageCurr->GetImageHeight() / this->m_tileHeight;
 
-	m_chooseItem = new CChooseItem();
+	//m_chooseItem = new CChooseItem();
 	//m_chooseItem = new CChooseItem();
 
 	//this->m_quadTree->ReBuildQuadTree(FILE_QUADTREE);
@@ -129,12 +129,6 @@ void CLoadBackgroundMenu::LoadAllTextureFromFile(std::string filePath)
 		item = CFileUtil::GetInstance()->Split(result.at(i).c_str(), ',');
 		mapID = atoi(item.at(0).c_str());
 		pathItem = item.at(1).c_str();
-		//Tao CTexture
-		//m_imageCurr = new CTexture();
-		/*if((m_imageCurr->LoadImageFromFile(pathItem, NULL)));
-		{
-		this->m_listBackGroundImage->insert(Pair(mapID, m_imageCurr));
-		}*/
 		this->m_listBackGroundImage->insert(Pair(mapID, pathItem));
 	}
 }
@@ -156,24 +150,7 @@ void CLoadBackgroundMenu::LoadAllMatrixFromFile(std::string filePath)
 	}
 }
 
-//Load tat ca cac QuadTree tu file
-void CLoadBackgroundMenu::LoadAllQuadTreeFromFile(std::string filePath)
-{
-	int mapID;
-	std::string pathItem;
-	typedef pair<int, std::string> Pair;
-	std::vector<std::string> result = CFileUtil::GetInstance()->LoadFromFile(filePath); //Load tat ca cac duong dan tu nguon
-	std::vector<std::string> item; //Lay tung item trong result
-	for (int i = 0; i < result.size(); i++)
-	{
-		item = CFileUtil::GetInstance()->Split(result.at(i).c_str(), ',');
-		mapID = atoi(item.at(0).c_str());
-		pathItem = item.at(1).c_str();
-		//Tao CTexture
-		//this->m_quadTree->ReBuildQuadTree(pathItem);
-		this->m_listQuadTree->insert(Pair(mapID, pathItem));
-	}
-}
+
 void CLoadBackgroundMenu::DeleteMatrix()
 {
 	if (this->m_matrix != nullptr)
@@ -191,14 +168,14 @@ void CLoadBackgroundMenu::Clear()
 {
 	if (this->m_matrix)
 		this->DeleteMatrix();
-	if (this->m_quadTree)
-	{
-		this->m_quadTree->Clear();
-		this->m_quadTree = nullptr;
-	}
 	if (this->m_imageCurr)
 	{
 		delete this->m_imageCurr;
 		this->m_imageCurr = nullptr;
 	}
+
+	//if (this -> m_chooseItem)
+	//{
+	//	delete this->m_chooseItem;
+	//}
 }

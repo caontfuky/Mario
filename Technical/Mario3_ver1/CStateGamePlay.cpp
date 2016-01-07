@@ -11,16 +11,21 @@ CStateGamePlay::~CStateGamePlay()
 void CStateGamePlay::Init()
 {
 	CLoadBackground::GetInstance()->LoadBackgroundFromFile();
-	CLoadBackgroundMenu::GetInstance()->LoadBackgroundFromFile();
-	//CLoadObject::GetInstance()->LoadReSourceFromFile();
+	
+	//CLoadBackgroundMenu::GetInstance()->LoadBackgroundFromFile(); // ...................................................
+
+	CLoadObject::GetInstance()->LoadReSourceFromFile();
 }
 void CStateGamePlay::Update(float deltaTime)
 {
-	//CLoadObject::GetInstance()->Update(deltaTime);
+
+	CLoadObject::GetInstance()->Update(deltaTime);
 	//update cac Enemy
 	CPoolObject::GetInstance()->Update(deltaTime);
 	//update mario
 	CMarioObject::GetInstance()->Update(deltaTime);
+
+	//CLoadBackgroundMenu::GetInstance()->Update(deltaTime); // ...................................................
 
 	//CMarioObject::GetInstance()->OnCollision(deltaTime, CPoolObject::GetInstance()->enemy);
 	//va cham voi Ground
@@ -30,21 +35,18 @@ void CStateGamePlay::Update(float deltaTime)
 	//va cham voi List Enemy
 	CMarioObject::GetInstance()->OnCollision(deltaTime, CLoadObject::GetInstance()->m_listGameObject);//CPoolObject::GetInstance()->listEnemy);
 	
-	CLoadBackgroundMenu::GetInstance()->Update(deltaTime);
 }
 void CStateGamePlay::Render()
 {
-
-	//CDrawObject::GetInstance()->Draw(CMarioObject::GetInstance(), D3DCOLOR_ARGB(127, 255, 255, 255));
+	CDrawObject::GetInstance()->Draw(CMarioObject::GetInstance(), D3DCOLOR_ARGB(127, 255, 255, 255));
 	
-	CLoadBackgroundMenu::GetInstance()->Draw();
+	//CLoadBackgroundMenu::GetInstance()->Draw();			// ...................................................
 	//ve map len man hinh
-	//CLoadBackground::GetInstance()->Draw();
+	CLoadBackground::GetInstance()->Draw();
 	//ve mario
 	CDrawObject::GetInstance()->Draw(CMarioObject::GetInstance());
 	//ve cac doi tuong len man hinh
 	CPoolObject::GetInstance()->Draw();
-	
 }
 void CStateGamePlay::Destroy()
 {

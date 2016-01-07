@@ -782,6 +782,7 @@ void CMarioObject::OnKeyDown(float deltaTime)
 		case DIK_X:
 			break;
 		case DIK_Z:
+			
 			break;
 		case DIK_C:
 			this->m_isFly = true;

@@ -17,7 +17,13 @@ void CMario::Init()
 	CDevice::GetInstance()->InitDirect3D();
 	CInput::GetInstance()->InitInput(CViewWindows::m_hInstance);
 	CInput::GetInstance()->InitKeyboard(CViewWindows::m_hwndWindow);
-	CStateGameManager::GetInstance()->ChangeState(new CStateGamePlay());
+
+	CStateGameManager::GetInstance()->LoadScene();
+
+	//CStateGameManager::GetInstance()->currentScene = StateScene::MENU_SCENE;
+
+	CStateGameManager::GetInstance()->ChangeState(new MenuGameScene());
+
 	//CManagementTexture::GetInstance()->LoadAllResourceFromFile(__OBJECT_PATH__);
 
 	//Audio

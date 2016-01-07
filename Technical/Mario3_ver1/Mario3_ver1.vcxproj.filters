@@ -215,7 +215,10 @@
       <Filter>FrameWork\Object\Scene\Menu</Filter>
     </ClCompile>
     <ClCompile Include="ChooseItem.cpp">
-      <Filter>FrameWork</Filter>
+      <Filter>FrameWork\Object\Scene\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuGameScene.cpp">
+      <Filter>FrameWork\Object\Scene\Menu</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -357,6 +360,11 @@
     <ClInclude Include="StaticObject.h">
       <Filter>FrameWork\Object\Scene\Menu</Filter>
     </ClInclude>
-    <ClInclude Include="ChooseItem.h" />
+    <ClInclude Include="ChooseItem.h">
+      <Filter>FrameWork\Object\Scene\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuGameScene.h">
+      <Filter>FrameWork\Object\Scene\Menu</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

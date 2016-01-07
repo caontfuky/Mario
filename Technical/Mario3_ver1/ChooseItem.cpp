@@ -2,21 +2,57 @@
 
 #define CHOOSE_ITEM_ONE_PLAYER "..\\Resources\\Map\\choiseitem.PNG"
 #define POSITION_X_CHOISE_ITEM 180
-#define POSITION_Y_CHOISE_ITEM 325
+#define POSITION_Y_CHOISE_ITEM 292
+#define POSITION_Y_CHOISE_ITEM2 325
 //#define CHOOSE_ITEM_ONE_PLAYER "..\\Resources\\Map\\Quadtree\\Choise1player.PNG"
 
 CChooseItem::CChooseItem()
 {
-	this->m_Pos = Vector2(180,325); // vi tri ban dau cua choise item
+	this->m_Pos = Vector2(POSITION_X_CHOISE_ITEM, POSITION_Y_CHOISE_ITEM); // vi tri ban dau cua choise item
 	this->m_imageCurr = new CTexture();
 	this->m_drawImg = new CSprite();
 	this->m_imageCurr->LoadImageFromFile(CHOOSE_ITEM_ONE_PLAYER, D3DCOLOR_XRGB(0, 255, 255));
 	m_ChoiseID = 1;
+	direction = directionItemChoisePlay::DEFAULT;
 }
 
 void CChooseItem::Update(float deltaTime)
 {
-	
+	if (CInput::GetInstance()->IsKeyDown(DIK_X))
+	{
+		direction = directionItemChoisePlay::UP;
+		//MessageBox(NULL, "ok", "error", MB_OK);
+	}
+	else if (CInput::GetInstance()->IsKeyDown(DIK_Z))
+	{
+		direction = directionItemChoisePlay::DOWN;
+	}
+	MoveUpdate(deltaTime);
+}
+
+
+void CChooseItem::MoveUpdate(float deltaTime)
+{
+	switch (direction)
+	{
+	case directionItemChoisePlay::UP :
+		if (this->m_Pos.y > POSITION_Y_CHOISE_ITEM)
+		{
+			this->m_Pos.y -= 350 * deltaTime;
+		}
+		direction = directionItemChoisePlay::DEFAULT;
+		break;
+	case directionItemChoisePlay::DOWN:
+		if (this->m_Pos.y < POSITION_Y_CHOISE_ITEM2)
+		{
+			this->m_Pos.y += 350 * deltaTime;
+		}
+		direction = directionItemChoisePlay::DEFAULT;
+		break;
+	default:
+		break;
+	}
+	//this->m_Pos.y += 200 * deltaTime;
 }
 
 void CChooseItem::Draw()
