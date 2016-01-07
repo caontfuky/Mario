@@ -9,6 +9,8 @@
 #include "CPoolObject.h"
 #include "CLoadBackground.h"
 #include "CLoadObject.h"
+#include"CLoadBackgroundMenu.h"
+
 class CStateGamePlay : public CState
 {
 public:

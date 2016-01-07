@@ -1,26 +1,30 @@
-﻿Build started 1/7/2016 11:36:57.
-     1>Project "D:\DirectX\Mario3\Mario\trunk\Technical\Mario3_ver1\Mario3_ver1.vcxproj" on node 2 (Build target(s)).
+﻿Build started 1/7/2016 3:27:20 PM.
+     1>Project "E:\DO AN\NHAP MON GAME\Mario_Bros\trunk\Technical\Mario3_ver1\Mario3_ver1.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt CLoadObject.cpp
-         CLoadObject.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt CLoadBackgroundMenu.cpp CMario.cpp CStateGamePlay.cpp ChooseItem.cpp
+         ChooseItem.cpp
          c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-     1>d:\directx\mario3\mario\trunk\technical\mario3_ver1\cbasegameobject.h(55): warning C4244: 'return' : conversion from 'float' to 'int', possible loss of data
-     1>d:\directx\mario3\mario\trunk\technical\mario3_ver1\cbasegameobject.h(56): warning C4244: 'return' : conversion from 'float' to 'int', possible loss of data
-     1>d:\directx\mario3\mario\trunk\technical\mario3_ver1\cbackground.h(21): warning C4244: 'return' : conversion from 'float' to 'int', possible loss of data
-     1>d:\directx\mario3\mario\trunk\technical\mario3_ver1\cbackground.h(22): warning C4244: 'return' : conversion from 'float' to 'int', possible loss of data
-     1>d:\directx\mario3\mario\trunk\technical\mario3_ver1\cloadobject.h(23): warning C4005: 'FILE_LIST_OBJECT' : macro redefinition
-                 d:\directx\mario3\mario\trunk\technical\mario3_ver1\cloadgameobject.h(20) : see previous definition of 'FILE_LIST_OBJECT'
-     1>d:\directx\mario3\mario\trunk\technical\mario3_ver1\cloadobject.h(24): warning C4005: 'FILE_LIST_OBJECT_QUADTREE' : macro redefinition
-                 d:\directx\mario3\mario\trunk\technical\mario3_ver1\cloadgameobject.h(21) : see previous definition of 'FILE_LIST_OBJECT_QUADTREE'
-     1>d:\directx\mario3\mario\trunk\technical\mario3_ver1\cloadobject.cpp(35): warning C4018: '<' : signed/unsigned mismatch
-     1>d:\directx\mario3\mario\trunk\technical\mario3_ver1\cloadobject.cpp(72): warning C4018: '<' : signed/unsigned mismatch
-     1>d:\directx\mario3\mario\trunk\technical\mario3_ver1\cloadobject.cpp(92): warning C4018: '<' : signed/unsigned mismatch
-     1>d:\directx\mario3\mario\trunk\technical\mario3_ver1\cloadobject.cpp(267): warning C4018: '<' : signed/unsigned mismatch
-     1>d:\directx\mario3\mario\trunk\technical\mario3_ver1\cloadobject.cpp(296): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
-     1>d:\directx\mario3\mario\trunk\technical\mario3_ver1\cloadobject.cpp(297): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
-     1>d:\directx\mario3\mario\trunk\technical\mario3_ver1\cloadobject.cpp(199): warning C4715: 'CLoadObject::CreateObject' : not all control paths return a value
+     1>e:\do an\nhap mon game\mario_bros\trunk\technical\mario3_ver1\cbasegameobject.h(55): warning C4244: 'return' : conversion from 'float' to 'int', possible loss of data
+     1>e:\do an\nhap mon game\mario_bros\trunk\technical\mario3_ver1\cbasegameobject.h(56): warning C4244: 'return' : conversion from 'float' to 'int', possible loss of data
+         Generating Code...
+         Compiling...
+         CLoadBackgroundMenu.cpp
+         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+     1>e:\do an\nhap mon game\mario_bros\trunk\technical\mario3_ver1\cbasegameobject.h(55): warning C4244: 'return' : conversion from 'float' to 'int', possible loss of data
+     1>e:\do an\nhap mon game\mario_bros\trunk\technical\mario3_ver1\cbasegameobject.h(56): warning C4244: 'return' : conversion from 'float' to 'int', possible loss of data
+     1>e:\do an\nhap mon game\mario_bros\trunk\technical\mario3_ver1\cloadbackgroundmenu.cpp(49): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>e:\do an\nhap mon game\mario_bros\trunk\technical\mario3_ver1\cloadbackgroundmenu.cpp(50): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>e:\do an\nhap mon game\mario_bros\trunk\technical\mario3_ver1\cloadbackgroundmenu.cpp(91): warning C4018: '<' : signed/unsigned mismatch
+     1>e:\do an\nhap mon game\mario_bros\trunk\technical\mario3_ver1\cloadbackgroundmenu.cpp(113): warning C4018: '<' : signed/unsigned mismatch
+     1>e:\do an\nhap mon game\mario_bros\trunk\technical\mario3_ver1\cloadbackgroundmenu.cpp(127): warning C4018: '<' : signed/unsigned mismatch
+     1>e:\do an\nhap mon game\mario_bros\trunk\technical\mario3_ver1\cloadbackgroundmenu.cpp(148): warning C4018: '<' : signed/unsigned mismatch
+     1>e:\do an\nhap mon game\mario_bros\trunk\technical\mario3_ver1\cloadbackgroundmenu.cpp(167): warning C4018: '<' : signed/unsigned mismatch
+         Generating Code...
+         Skipping... (no relevant changes detected)
+         CStateGamePlay.cpp
+         CMario.cpp
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\DirectX\Mario3\Mario\trunk\Technical\Debug\Mario3_ver1.exe" /INCREMENTAL /NOLOGO d3d9.lib d3dx9.lib dxguid.lib dxerr.lib dinput8.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\DirectX\Mario3\Mario\trunk\Technical\Debug\Mario3_ver1.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\DirectX\Mario3\Mario\trunk\Technical\Debug\Mario3_ver1.lib" /MACHINE:X86 Debug\CAnimation.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\DO AN\NHAP MON GAME\Mario_Bros\trunk\Technical\Debug\Mario3_ver1.exe" /INCREMENTAL /NOLOGO d3d9.lib d3dx9.lib dxguid.lib dxerr.lib dinput8.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\DO AN\NHAP MON GAME\Mario_Bros\trunk\Technical\Debug\Mario3_ver1.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\DO AN\NHAP MON GAME\Mario_Bros\trunk\Technical\Debug\Mario3_ver1.lib" /MACHINE:X86 Debug\CAnimation.obj
          Debug\CBackGround.obj
          Debug\CBaseEnemy.obj
          Debug\CBaseGameObject.obj
@@ -39,6 +43,7 @@
          Debug\CFileConfig.obj
          Debug\CFileUtil.obj
          Debug\CGame.obj
+         Debug\ChooseItem.obj
          Debug\CItem.obj
          Debug\CLoadBackground.obj
          Debug\CLoadGameObject.obj
@@ -57,12 +62,14 @@
          Debug\CInput.obj
          Debug\CEnemyTurtleFly.obj
          Debug\CEnemyFlower2.obj
+         Debug\CLoadBackgroundMenu.obj
          Debug\Main.obj
          Debug\QuadObject.obj
          Debug\StateGameManager.obj
-         Mario3_ver1.vcxproj -> D:\DirectX\Mario3\Mario\trunk\Technical\Debug\Mario3_ver1.exe
-     1>Done Building Project "D:\DirectX\Mario3\Mario\trunk\Technical\Mario3_ver1\Mario3_ver1.vcxproj" (Build target(s)).
+         Debug\StaticObject.obj
+         Mario3_ver1.vcxproj -> E:\DO AN\NHAP MON GAME\Mario_Bros\trunk\Technical\Debug\Mario3_ver1.exe
+     1>Done Building Project "E:\DO AN\NHAP MON GAME\Mario_Bros\trunk\Technical\Mario3_ver1\Mario3_ver1.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:07.41
+Time Elapsed 00:00:02.88

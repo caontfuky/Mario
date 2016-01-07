@@ -5,7 +5,7 @@ CMarioObject::CMarioObject()
 {
 	this->m_Id = 0;
 	this->m_IdType = 1;
-	this->level = 3;
+	this->level = 1;
 	this->m_isRender = true;
 	this->m_isUndying = false;
 	this->isInput = false;

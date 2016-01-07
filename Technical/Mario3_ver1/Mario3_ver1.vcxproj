@@ -87,6 +87,7 @@
     <ClCompile Include="CFileConfig.cpp" />
     <ClCompile Include="CFileUtil.cpp" />
     <ClCompile Include="CGame.cpp" />
+    <ClCompile Include="ChooseItem.cpp" />
     <ClCompile Include="CItem.cpp" />
     <ClCompile Include="CLoadBackground.cpp" />
     <ClCompile Include="CLoadGameObject.cpp" />
@@ -105,9 +106,11 @@
     <ClCompile Include="CInput.cpp" />
     <ClCompile Include="CEnemyTurtleFly.cpp" />
     <ClCompile Include="CEnemyFlower2.cpp" />
+    <ClCompile Include="CLoadBackgroundMenu.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="QuadObject.cpp" />
     <ClCompile Include="StateGameManager.cpp" />
+    <ClCompile Include="StaticObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CAnimation.h" />
@@ -130,6 +133,7 @@
     <ClInclude Include="CFileUtil.h" />
     <ClInclude Include="CGame.h" />
     <ClInclude Include="CGlobal.h" />
+    <ClInclude Include="ChooseItem.h" />
     <ClInclude Include="CItem.h" />
     <ClInclude Include="CLoadBackground.h" />
     <ClInclude Include="CLoadGameObject.h" />
@@ -152,8 +156,10 @@
     <ClInclude Include="CInput.h" />
     <ClInclude Include="CEnemyTurtleFly.h" />
     <ClInclude Include="CEnemyFlower2.h" />
+    <ClInclude Include="CLoadBackgroundMenu.h" />
     <ClInclude Include="QuadObject.h" />
     <ClInclude Include="StateGameManager.h" />
+    <ClInclude Include="StaticObject.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

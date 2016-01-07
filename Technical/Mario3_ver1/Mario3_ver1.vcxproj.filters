@@ -83,6 +83,9 @@
     <Filter Include="FrameWork\Object\Object\BaseEnemy\EnemyFlower2">
       <UniqueIdentifier>{79a4f5b9-4676-4733-b4e7-a9ccf35b620f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FrameWork\Object\Scene\Menu">
+      <UniqueIdentifier>{c1e309fc-69ba-4762-9e33-4b51aed9815b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -204,6 +207,15 @@
     </ClCompile>
     <ClCompile Include="CEnemyFlower2.cpp">
       <Filter>FrameWork\Object\Object\BaseEnemy\EnemyFlower2</Filter>
+    </ClCompile>
+    <ClCompile Include="CLoadBackgroundMenu.cpp">
+      <Filter>FrameWork\Object\Scene\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="StaticObject.cpp">
+      <Filter>FrameWork\Object\Scene\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="ChooseItem.cpp">
+      <Filter>FrameWork</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -339,5 +351,12 @@
     <ClInclude Include="CEnemyFlower2.h">
       <Filter>FrameWork\Object\Object\BaseEnemy\EnemyFlower2</Filter>
     </ClInclude>
+    <ClInclude Include="CLoadBackgroundMenu.h">
+      <Filter>FrameWork\Object\Scene\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticObject.h">
+      <Filter>FrameWork\Object\Scene\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="ChooseItem.h" />
   </ItemGroup>
 </Project>
