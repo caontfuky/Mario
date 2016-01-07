@@ -5,7 +5,7 @@ CMarioObject::CMarioObject()
 {
 	this->m_Id = 0;
 	this->m_IdType = 1;
-	this->level = 1;
+	this->level = 3;
 	this->m_isRender = true;
 	this->m_isUndying = false;
 	this->isInput = false;
@@ -544,17 +544,23 @@ void CMarioObject::SetFrame(float deltaTime)
 	{
 		if (this->m_collision == COLLISION::NONE_COL)
 		{
-			if (!this->m_isFly)
-			{			
-				this->m_Width = 24;
-				this->m_Height = 30;
-				this->m_startFrame = 0;
-				this->m_endFrame = 0;
+			
+			if (!this->m_isJumbFly)
+			{
+				if (!this->m_isFly)
+				{
+					this->m_Width = 24;
+					this->m_Height = 30;
+					this->m_startFrame = 0;
+					this->m_endFrame = 0;
+				}
 			}
 			else
 			{
-				this->m_startFrame = 3;
-				this->m_endFrame = 3;
+				this->m_Width = 26;
+				this->m_Height = 30;
+				this->m_startFrame = 6;
+				this->m_endFrame = 7;
 			}
 		}
 		else
@@ -595,15 +601,14 @@ void CMarioObject::SetFrame(float deltaTime)
 					this->m_vxMax = 80;
 					this->m_startFrame = 3;
 					this->m_endFrame = 5;
-				}
-				
+				}				
 				break;
 			case STATUS::JUMB:
-				this->m_startFrame = 0;
-				this->m_endFrame = 0;
+				//this->m_startFrame = 0;
+				//this->m_endFrame = 0;
 				break;
 			case STATUS::FLY:
-				if (this->m_collision == COLLISION::NONE_COL)
+				/*if (this->m_collision == COLLISION::NONE_COL)
 				{
 					this->m_startFrame = 6;
 					this->m_endFrame = 8;
@@ -613,7 +618,7 @@ void CMarioObject::SetFrame(float deltaTime)
 					
 					this->m_startFrame = 0;
 					this->m_endFrame = 2;
-				}
+				}*/
 				break;
 			case STATUS::DIE:
 				break;

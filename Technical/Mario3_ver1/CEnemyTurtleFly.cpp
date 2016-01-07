@@ -9,12 +9,14 @@ CEnemyTurtleFly::CEnemyTurtleFly(Vector2 pos)
 {
 	Init();
 	this->m_Pos = pos;
+	this->m_PosStart = this->m_Pos;
 }
 CEnemyTurtleFly::CEnemyTurtleFly(Vector2 pos, ENEMY_STATUS lv)
 {
 	Init();
 	this->m_Pos = pos;
 	this->status = lv;
+	this->m_PosStart = this->m_Pos;
 }
 
 CEnemyTurtleFly::~CEnemyTurtleFly()
@@ -106,8 +108,7 @@ void CEnemyTurtleFly::SetFrame(float deltaTime)
 bool isCheat = false;
 bool isCam = false;
 void CEnemyTurtleFly::MoveUpdate(float deltaTime)
-{
-	
+{	
 	if (this->status != ENEMY_STATUS::ENEMY_DIE)
 	{
 		//this->m_vx = this->m_vxDefault;
@@ -177,7 +178,7 @@ void CEnemyTurtleFly::MoveUpdate(float deltaTime)
 	{
 		this->m_vy = 0;
 		this->m_a = 0;
-	}
+	}	
 	this->m_Pos.x += this->m_vx * deltaTime;
 	this->m_vy += this->m_a *deltaTime;
 	this->m_Pos.y += this->m_vy*deltaTime + 0.5 * this->m_a * deltaTime *deltaTime;
@@ -287,8 +288,7 @@ void CEnemyTurtleFly::OnCollision(float deltaTime)//xet va cham voi Player
 
 		if (this->status != ENEMY_STATUS::ENEMY_DIE)
 		{
-			CMarioObject::GetInstance()->MarioDie();
-			
+			CMarioObject::GetInstance()->MarioDie();			
 		}
 		else
 		{

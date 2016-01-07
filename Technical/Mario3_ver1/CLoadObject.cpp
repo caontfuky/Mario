@@ -252,6 +252,7 @@ void CLoadObject::Update(float deltaTime)
 		
 	}
 	Collision(deltaTime);//enemy va cham voi Ground
+	CheckEnemyTurtleFly(deltaTime);
 }
 void CLoadObject::LoadGameObjectFromFile(const std::string& filePath)
 {
@@ -367,4 +368,22 @@ void CLoadObject::Reset(const int& idMap)
 	// TT
 	this->CreateObjectOnScreen();
 	int x = 0;
+}
+int countTurtleFly = 0;
+void CLoadObject::CheckEnemyTurtleFly(float deltaTime)
+{
+	for (std::vector<CBaseGameObject*>::iterator it = this->m_listGameObject.begin();
+		it != this->m_listGameObject.end();
+		++it)
+	{
+		CBaseGameObject* gameObj = *it;
+		if (gameObj != NULL)
+		{
+			if (gameObj->m_Id == 106)
+			{
+				
+			}
+		}
+	}
+	
 }

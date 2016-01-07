@@ -103,20 +103,36 @@ void CDrawObject::Draw(CBaseGameObject* obj)
 				{
 					if (CMarioObject::GetInstance()->m_collision == COLLISION::NONE_COL)//truong hop mario nhay
 					{
-						texture->LoadImageFromFile(MARIO_JUMB_LV3, D3DCOLOR_XRGB(0, 255, 255));
-
-						if (obj->GetDirection() == Direction::RIGHT)
+						if (!CMarioObject::GetInstance()->m_isJumbFly)
 						{
-							this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+
+							texture->LoadImageFromFile(MARIO_JUMB_LV3, D3DCOLOR_XRGB(0, 255, 255));
+
+							if (obj->GetDirection() == Direction::RIGHT)
+							{
+								this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+							}
+							else
+							{
+								this->m_draw->drawFlipX(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+							}
 						}
 						else
 						{
-							this->m_draw->drawFlipX(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+							texture->LoadImageFromFile(MARIO_FLY_LV3, D3DCOLOR_XRGB(0, 255, 255));
+							if (obj->GetDirection() == Direction::RIGHT)
+							{
+								this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+							}
+							else
+							{
+								this->m_draw->drawFlipX(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+							}
 						}
 					}
 					else
 					{
-						if (CMarioObject::GetInstance()->m_vx < 80)
+						if (CMarioObject::GetInstance()->m_vx < 80 && CMarioObject::GetInstance()->m_vx > -80)
 						{
 
 							texture->LoadImageFromFile(MARIO_MOVE_LV3, D3DCOLOR_XRGB(0, 255, 255));
@@ -131,7 +147,7 @@ void CDrawObject::Draw(CBaseGameObject* obj)
 						}
 						if (CMarioObject::GetInstance()->m_vx >= 80 || CMarioObject::GetInstance()->m_vx <= -80)
 						{
-							texture->LoadImageFromFile(MARIO_FLY_LV3, D3DCOLOR_XRGB(255, 0, 255));
+							texture->LoadImageFromFile(MARIO_FLY_LV3, D3DCOLOR_XRGB(0, 255, 255));
 							if (obj->GetDirection() == Direction::RIGHT)
 							{
 								this->m_draw->draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);

@@ -243,3 +243,7 @@ void CPoolObject::RenderItem(Vector2 pos, TYPE_ITEM type)
 {
 	this->item = new CItem(pos, type);
 }
+void CPoolObject::CheckEnemyTurtleFly()
+{
+
+}

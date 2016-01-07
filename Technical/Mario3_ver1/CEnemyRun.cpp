@@ -74,7 +74,7 @@ void CEnemyRun::SetFrame(float deltaTime)
 {
 	if (this->lv <= 0)
 	{
-
+		
 		switch (this->status)
 		{
 		case ENEMY_STATUS::ENEMY_MOVE:

@@ -70,6 +70,7 @@ public:
 	void FireBullet(BULLET_DIR dir, Vector2 pos);
 	void RenderItem(Vector2 pos, TYPE_ITEM type);
 	void Collision(float deltaTime);
+	void CheckEnemyTurtleFly();
 	bool contains(std::vector<int> v, int x);
 };
 #endif

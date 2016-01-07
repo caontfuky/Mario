@@ -70,6 +70,7 @@ public:
 	// TT
 	bool contains(std::vector<int> v, int x);
 
+	void CheckEnemyTurtleFly(float deltaTime);
 	int count = 0;
 };
 
