@@ -41,7 +41,7 @@ void CChooseItem::EffectChangeState(float deltaTime)
 	{
 	case Status::SHOW:
 		timeDelay += deltaTime;
-		if (timeDelay > 0.2f)
+		if (timeDelay > 0.15f)
 		{
 			status = Status::HIDE;
 			timeDelay = 0;
@@ -50,7 +50,7 @@ void CChooseItem::EffectChangeState(float deltaTime)
 		break;
 	case Status::HIDE:
 		timeDelay += deltaTime;
-		if (timeDelay > 0.2f)
+		if (timeDelay > 0.15f)
 		{
 			timeDelay = 0;
 			status = Status::SHOW;

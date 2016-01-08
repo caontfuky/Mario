@@ -7,8 +7,7 @@ void CStateGameManager::LoadScene()
 	menuGameScene = new MenuGameScene();
 	this->gamePlayScene = new CStateGamePlay();
 	gamePlayScene->Init();
-
-	ChangeState(menuGameScene);
+	m_pCurrent = menuGameScene;
 }
 
 
@@ -47,7 +46,7 @@ void CStateGameManager::Update(bool isUpdate, float deltaTime)
 	if (CInput::GetInstance()->IsKeyDown(DIK_Q))
 	{
 		isStart = true;
-
+		m_pCurrent->isChangeState = true;
 	}
 	if (isStart)
 	{
@@ -55,10 +54,7 @@ void CStateGameManager::Update(bool isUpdate, float deltaTime)
 		if (timeDelay > 1.5f)
 		{
 			ChangeState(this->gamePlayScene);
-			if (this->menuGameScene)
-			{
-				delete menuGameScene;
-			}
+
 			timeDelay = 0;
 			isStart = false;
 		}

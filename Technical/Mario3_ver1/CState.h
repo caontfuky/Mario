@@ -5,6 +5,7 @@ class CState
 {
 public:
 	CState();
+	bool isChangeState =  false;
 	virtual ~CState(){};
 	virtual void Init() = 0;
 	virtual void Update(float deltaTime) = 0;

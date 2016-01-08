@@ -10,9 +10,8 @@ void MenuGameScene::Init()
 {
 	this->choiseItem = new CChooseItem();
 	this->loadBackgroundMenu = new CLoadBackgroundMenu();
-	
-	isChangeScene = true;
 
+	isChangeScene = true;
 }
 
 void MenuGameScene::Render()
@@ -23,7 +22,7 @@ void MenuGameScene::Render()
 
 void MenuGameScene::Update(float deltaTime)
 {
-	if (isChangeScene)
+	if (isChangeState)
 	{
 		//MessageBox(NULL, "sd", "asd", MB_OK);
 		choiseItem->EffectChangeState(deltaTime);
