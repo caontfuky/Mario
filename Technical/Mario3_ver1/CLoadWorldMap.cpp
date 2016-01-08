@@ -19,12 +19,17 @@ void CLoadWorldMap::Update(float deltaTime)
 {
 	this->mario->Update(deltaTime);
 	this->mario->OnCollision(this->listNote);
+	
 }
 void CLoadWorldMap::Draw()
 {
 	this->m_drawImg->drawScale(this->m_imageCurr, NULL, Vector3(0, 0, 0), Vector2(1, 1), D3DCOLOR_XRGB(255, 255, 225), false);
 	this->mario->Draw();
 	
+}
+int CLoadWorldMap::GetMapID()
+{
+	return this->mario->note.MapID;
 }
 void CLoadWorldMap::LoadNote(std::string path)
 {
@@ -46,9 +51,10 @@ void CLoadWorldMap::LoadNote(std::string path)
 		bool l = std::atoi(result.at(8).c_str());
 		bool r = std::atoi(result.at(9).c_str());
 
-		Note n = Note(stt, id, Vector2(posX, posY), width, height, t, l, d, r);
+		int mapId = std::atoi(result.at(10).c_str());
+
+		Note n = Note(stt, id, Vector2(posX, posY), width, height, t, l, d, r, mapId);
 
 		this->listNote.push_back(n);
-
 	}
 }

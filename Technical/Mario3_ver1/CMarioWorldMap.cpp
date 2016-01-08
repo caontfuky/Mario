@@ -45,9 +45,10 @@ void CMarioWorldMap::Draw()
 {
 	Vector3 p = Vector3();
 
-	p = CCamera::GetInstance()->GetPointTransform(pos.x, pos.y + 90);
+	p = CCamera::GetInstance()->GetPointTransform(pos.x, pos.y + 100);
 
-	this->m_drawImg->draw(m_imageCurr, this->GetRectRS(), p, D3DCOLOR_XRGB(255, 255, 255), true);
+	this->m_drawImg->drawScale(this->m_imageCurr, this->GetRectRS(), p, Vector2(1.5, 1.5), D3DCOLOR_XRGB(255, 255, 225), false);
+
 }
 
 void CMarioWorldMap::SetFrame()
@@ -122,6 +123,22 @@ void CMarioWorldMap::OnCollision(std::vector<Note> listNote)
 			}
 		}
 	}
+}
+int CMarioWorldMap::OnCollisionMap(std::vector<Note> listNote)
+{
+	for (std::vector<Note>::iterator it = listNote.begin(); it != listNote.end(); it++)
+	{
+		Note n = *it;
+		Box box = Box(n.pos.x, n.pos.y, n.width, n.height);
+		if (this->note.stt != n.stt)
+		{
+			if (CCollision::GetInstance()->AABBCheck(this->GetBox(), box) && n.id == 713)
+			{
+				return n.MapID;
+			}
+		}
+	}
+	return -1;
 }
 Box CMarioWorldMap::GetBox()
 {	

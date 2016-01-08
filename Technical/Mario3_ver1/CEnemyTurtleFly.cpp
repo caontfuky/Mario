@@ -67,6 +67,7 @@ void CEnemyTurtleFly::Init()
 	this->m_isJumping = false;
 	this->m_canJump = true;
 	this->m_isMario = false;
+	this->timeReLoad = 0;
 }
 void CEnemyTurtleFly::Update(float deltaTime)
 {
@@ -182,6 +183,12 @@ void CEnemyTurtleFly::MoveUpdate(float deltaTime)
 	this->m_Pos.x += this->m_vx * deltaTime;
 	this->m_vy += this->m_a *deltaTime;
 	this->m_Pos.y += this->m_vy*deltaTime + 0.5 * this->m_a * deltaTime *deltaTime;
+	if (this->timeReLoad > 15 && this->status == ENEMY_STATUS::ENEMY_ATTACK)
+	{
+		this->m_Pos = this->m_PosStart;
+		this->timeReLoad = 0;
+	}
+	this->timeReLoad += deltaTime;
 }
 void CEnemyTurtleFly::Update(float deltaTime, std::vector<CBaseGameObject*>* listObjectCollision)
 {

@@ -4,16 +4,20 @@
 
 void CStateGameManager::LoadScene()
 {
+	
+
 	menuGameScene = new MenuGameScene();
 	this->worldMapScene = new CWorldMapScene();
 	this->gamePlayScene = new CStateGamePlay();
 	gamePlayScene->Init();
 	m_pCurrent = menuGameScene;
+	
 }
 
 
 void CStateGameManager::Update(bool isUpdate, float deltaTime)
 {
+	
 	if (this->m_pCurrent != this->m_pNext)
 	{
 		if (this->m_pCurrent)
@@ -44,7 +48,8 @@ void CStateGameManager::Update(bool isUpdate, float deltaTime)
 		CDevice::s_d3ddv->Present(NULL, NULL, NULL, NULL);
 	}
 
-	if (CInput::GetInstance()->IsKeyDown(DIK_Q))
+	
+	if (CInput::GetInstance()->IsKeyDown(DIK_RETURN))
 	{
 		isStart = true;
 		m_pCurrent->isChangeState = true;
@@ -54,10 +59,22 @@ void CStateGameManager::Update(bool isUpdate, float deltaTime)
 		timeDelay += deltaTime;
 		if (timeDelay > 1.5f)
 		{
-			ChangeState(this->worldMapScene);
+			if (this->m_pCurrent != this->worldMapScene && this->m_pCurrent != this->gamePlayScene)
+				ChangeState(this->worldMapScene);
 
 			timeDelay = 0;
 			isStart = false;
+		}
+	}
+	
+	
+	if (this->m_pCurrent == this->worldMapScene)
+	{
+		gamePlayScene->m_mapId = this->worldMapScene->worldMap->mario->note.MapID;
+
+		if (CInput::GetInstance()->IsKeyDown(DIK_SPACE) && gamePlayScene->m_mapId != -1)
+		{
+			ChangeState(gamePlayScene);
 		}
 	}
 }

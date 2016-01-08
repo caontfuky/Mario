@@ -28,5 +28,6 @@ private:
 	float m_Distance;
 	Vector2 m_PosStart;
 	bool m_isMario;
+	float timeReLoad;
 };
 

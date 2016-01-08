@@ -23,6 +23,7 @@ public:
 	void Draw();
 	void LoadNote(std::string path);
 	void Update(float deltaTime);
+	int GetMapID();
 public:
 	Note note;
 	std::vector<Note> listNote;

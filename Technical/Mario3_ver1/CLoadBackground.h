@@ -12,6 +12,7 @@
 
 #define FILE_MAP "..\\Resources\\Map\\Quadtree\\1-1-1.txt"
 #define FILE_QUADTREE "..\\Resources\\Map\\Quadtree\\1-1-1quadtree.txt"
+
 class CLoadBackground :public CSingleton<CLoadBackground>
 {
 	friend class CSingleton<CLoadBackground>;

@@ -33,6 +33,7 @@ public:
 	void OnKeyDown(float deltaTime);
 	void OnkeyUp(float deltaTime);
 	void OnCollision(std::vector<Note> listNote);
+	int OnCollisionMap(std::vector<Note> listNote);
 	RECT *GetRectRS();
 	Box GetBox();
 };

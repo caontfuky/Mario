@@ -16,7 +16,7 @@ void CStateGamePlay::Init()
 }
 void CStateGamePlay::Update(float deltaTime)
 {
-	CLoadObject::GetInstance()->Update(deltaTime);
+
 	//update cac Enemy
 	CPoolObject::GetInstance()->Update(deltaTime);
 	//update mario

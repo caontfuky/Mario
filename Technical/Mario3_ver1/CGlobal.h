@@ -148,6 +148,7 @@ public:
 	bool Left;
 	bool Down;
 	bool Right;
+	int MapID;
 public:
 	Note()
 	{}
@@ -162,5 +163,18 @@ public:
 		Down = d;
 		Left = l;
 		Right = r;
+	}
+	Note(int _stt, int _id, Vector2 _pos, float _w, float _h, bool t, bool l, bool d, bool r, int _mapID)
+	{
+		stt = _stt;
+		id = _id;
+		pos = _pos;
+		width = _w;
+		height = _h;
+		Top = t;
+		Down = d;
+		Left = l;
+		Right = r;
+		MapID = _mapID;
 	}
 };
