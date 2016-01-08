@@ -136,3 +136,31 @@ struct Ground
 	}
 
 };
+struct Note
+{
+public:
+	int stt;
+	int id;
+	Vector2 pos;
+	float width;
+	float height;
+	bool Top;
+	bool Left;
+	bool Down;
+	bool Right;
+public:
+	Note()
+	{}
+	Note(int _stt, int _id, Vector2 _pos, float _w, float _h, bool t, bool l, bool d, bool r)
+	{
+		stt = _stt;
+		id = _id;
+		pos = _pos;
+		width = _w;
+		height = _h;
+		Top = t;
+		Down = d;
+		Left = l;
+		Right = r;
+	}
+};

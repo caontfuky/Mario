@@ -23,7 +23,6 @@ public:
 	void Destroy();
 public:
 	int m_mapId;
-
 	//CScenseManagement* m_scenseManager;
 };
 

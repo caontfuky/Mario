@@ -12,9 +12,14 @@
 #define MARIO_JUMB_LV3 "..\\Resources\\Mario\\Lv3\\Jumb.PNG"
 #define MARIO_FLY_LV3 "..\\Resources\\Mario\\Lv3\\Fly.PNG"
 
+//wm
+#define MARIO_WM "..\\Resources\\Mario\\mairo_wm.PNG"
+
 #define BACK_GROUND "..\\Resources\\Mario\\Background.png"
 #define BACK_GROUND_1 "..\\Resources\\Map\\Quadtree\\1-1-1-1.PNG"//Map_1.png"
 #define BACK_GROUND_MENU "..\\Resources\\Map\\Quadtree\\bg_menu_1_title.PNG"//map menu.png"
+#define WORLD_MAP "..\\Resources\\Mario\\wm.png"
+
 #define BULLET_ENEMY "..\\Resources\\Enemy\\Bullet.png"
 
 #define CHOISE_ITEM "..\\Resources\\Map\\Quadtree\\Choise1player.PNG"//map menu.png"

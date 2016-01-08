@@ -17,6 +17,7 @@ CLoadBackgroundMenu::CLoadBackgroundMenu()
 	this->m_matrix = nullptr;
 
 	LoadBackgroundFromFile();
+	m_chooseItem = new CChooseItem();
 }
 
 
