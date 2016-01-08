@@ -13,25 +13,27 @@ enum StateScene
 	GAMEOVERSCENE = 3
 };
 
-
 class CStateGameManager : public CSingleton<CStateGameManager>
 {
 	friend class CSingleton<CStateGameManager>;
+private:
+	float timeDelay;
 public:
 	//static CStateManagement* m_instante;
 	//static CStateManagement* GetInstance();
 	StateScene currentScene;
 	void LoadScene();
 	void Update(bool isUpdate, float deltaTime);
-
 	void ChangeState(CState*);
+
+	void Clear();
 public:
 	MenuGameScene *menuGameScene;
 	CStateGamePlay *gamePlayScene;
+	bool isStart;
 protected:
 	CStateGameManager() : m_pNext(0), m_pCurrent(0){}
 protected:
-
 	CState* m_pNext;
 	CState* m_pCurrent;
 };

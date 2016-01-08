@@ -30,7 +30,6 @@ CEnemyFlower::CEnemyFlower(Vector2 pos, int lv)
 	default:
 		break;
 	}
-
 }
 
 CEnemyFlower::~CEnemyFlower()
@@ -72,51 +71,78 @@ void CEnemyFlower::Update(float deltaTime)
 {
 	ChangeFrame(deltaTime);
 	SetFrame(deltaTime);
-	Bullet(deltaTime);
+	//Bullet(deltaTime);
 	OnCollision(deltaTime);
+
 }
 void CEnemyFlower::OnCollision(float deltaTime, std::vector<Ground> listGround)
 {}
 float timeAttack = 0;
 void CEnemyFlower::Bullet(float deltaTime)
 {
-	if (this->status == ENEMY_STATUS::ENEMY_ATTACK)
+	/*if (this->status == ENEMY_STATUS::ENEMY_ATTACK)
 	{		
 		if (timeAttack > 2)
 		{			
-			this->status = ENEMY_STATUS::ENEMY_NONE;	
+			this->status = ENEMY_STATUS::ENEMY_MOVE;	
 			timeAttack = 0;
 		}
 		timeAttack += deltaTime;
-	}
+	}*/
 }
-
+float timeDelay = 0;
+bool isMoveDown = false;
 void CEnemyFlower::SetFrame(float deltaTime)
 {
-	if (this->status != ENEMY_STATUS::ENEMY_NONE)
-	{	
-		if (this->m_Height <= 32)
-		{
-			this->m_Height += this->speed * deltaTime;		
-			if (this->m_Height >= 32)
-			{
-				this->status = ENEMY_STATUS::ENEMY_ATTACK;
-				
-				CPoolObject::GetInstance()->FireBullet(GetDirEnemyFlower(), Vector2(this->m_Pos.x, this->m_Pos.y + this->m_Height / 2));
-			}
-		}
-		
-	}
-	if (this->status == ENEMY_STATUS::ENEMY_NONE)
+	switch (status)
 	{
-		if(this->m_Height >= 0)
+	case ENEMY_NONE:
+		break;
+	case ENEMY_MOVE:
+		
+		if (isMoveDown)
 		{
-			this->m_Height -= this->speed * deltaTime;
-			if (this->m_Height <= 0)
+			if (m_Height > 0)
 			{
-				this->status = ENEMY_STATUS::ENEMY_MOVE;
+				this->m_Height -= this->speed * deltaTime;
 			}
 		}
+		else
+		{
+			if (m_Height < 32)
+			{
+				this->m_Height += this->speed * deltaTime;
+			}
+		}
+
+		if (m_Height <= 0)
+		{
+			timeDelay += deltaTime;
+			if (timeDelay > 6)
+			{
+				isMoveDown = false;
+				timeDelay = 0;
+			}
+		}
+		if (m_Height >= 32)
+		{
+			status = ENEMY_STATUS::ENEMY_ATTACK;			
+		}
+		break;
+	case ENEMY_DIE:
+		break;
+	case ENEMY_ATTACK:
+		timeDelay += deltaTime;
+		if (timeDelay > 2)
+		{
+			CPoolObject::GetInstance()->FireBullet(GetDirEnemyFlower(), Vector2(this->m_Pos.x, this->m_Pos.y + this->m_Height / 3 ));
+			status = ENEMY_STATUS::ENEMY_MOVE;
+			isMoveDown = true;
+			timeDelay = 0;
+		}
+		break;
+	default:
+		break;
 	}
 }
 BULLET_DIR CEnemyFlower::GetDirEnemyFlower()

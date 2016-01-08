@@ -30,7 +30,6 @@ void CMarioObject::InitAnimation()
 }
 void CMarioObject::InitMove()
 {
-	
 	this->m_vx = 0;
 	this->m_vy = 0;
 	this->m_vxDefault = this->m_vx;
@@ -400,7 +399,7 @@ void CMarioObject::Gravity(float deltaTime)
 	{
 		this->m_canJump = true;
 	}
-	this->m_Pos.y += this->m_vy*deltaTime + 0.5 * this->m_a * deltaTime *deltaTime;
+	this->m_Pos.y += this->m_vy*deltaTime + 1 * this->m_a * deltaTime *deltaTime;
 }
 //xu ly khi mario nhay, add them 1 luc
 void CMarioObject::AddForce(float deltaTime)

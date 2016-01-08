@@ -17,6 +17,10 @@ CBaseGameObject::CBaseGameObject()
 
 CBaseGameObject::~CBaseGameObject()
 {
+	if (this->m_RectRS)
+	{
+		delete m_RectRS;
+	}
 }
 void CBaseGameObject::Update(float deltaTime, std::vector<CBaseGameObject*>* listObjectCollision)
 {

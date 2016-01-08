@@ -3,12 +3,13 @@
 #include"ChooseItem.h"
 #include"CBaseGameObject.h"
 #include"CState.h"
+
 class MenuGameScene :public CState
 {
-	friend class CSingleton<MenuGameScene>;
-private:
+public:
 	CLoadBackgroundMenu *loadBackgroundMenu;
 	CChooseItem *choiseItem;
+	bool isChangeScene;
 public:
 	//void Update(float deltaTime);//ham Update chinh cua game
 	//void Init();
