@@ -11,25 +11,17 @@ CStateGamePlay::~CStateGamePlay()
 void CStateGamePlay::Init()
 {
 	CLoadBackground::GetInstance()->LoadBackgroundFromFile();
-	
-	//CLoadBackgroundMenu::GetInstance()->LoadBackgroundFromFile(); // ...................................................
 
 	CLoadObject::GetInstance()->LoadReSourceFromFile();
 }
 void CStateGamePlay::Update(float deltaTime)
 {
-
 	CLoadObject::GetInstance()->Update(deltaTime);
 	//update cac Enemy
 	CPoolObject::GetInstance()->Update(deltaTime);
 	//update mario
 	CMarioObject::GetInstance()->Update(deltaTime);
-
-	//CLoadBackgroundMenu::GetInstance()->Update(deltaTime); // ...................................................
-
-	//CMarioObject::GetInstance()->OnCollision(deltaTime, CPoolObject::GetInstance()->enemy);
 	//va cham voi Ground
-	//CMarioObject::GetInstance()->OnCollision(deltaTime, CBoxGround::GetInstance()->listBox);
 	CMarioObject::GetInstance()->OnCollision(deltaTime, CBoxGround::GetInstance()->listGround);
 
 	//va cham voi List Enemy
@@ -38,9 +30,8 @@ void CStateGamePlay::Update(float deltaTime)
 }
 void CStateGamePlay::Render()
 {
-	CDrawObject::GetInstance()->Draw(CMarioObject::GetInstance(), D3DCOLOR_ARGB(127, 255, 255, 255));
+	//CDrawObject::GetInstance()->Draw(CMarioObject::GetInstance(), D3DCOLOR_ARGB(127, 255, 255, 255));
 	
-	//CLoadBackgroundMenu::GetInstance()->Draw();			// ...................................................
 	//ve map len man hinh
 	CLoadBackground::GetInstance()->Draw();
 	//ve mario

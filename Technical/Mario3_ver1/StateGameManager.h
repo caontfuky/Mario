@@ -5,6 +5,7 @@
 #include "CState.h"
 #include"MenuGameScene.h"
 #include"CStateGamePlay.h"
+#include "CWorldMapScene.h"
 
 enum StateScene
 {
@@ -29,6 +30,7 @@ public:
 	void Clear();
 public:
 	MenuGameScene *menuGameScene;
+	CWorldMapScene *worldMapScene;
 	CStateGamePlay *gamePlayScene;
 	bool isStart;
 protected:

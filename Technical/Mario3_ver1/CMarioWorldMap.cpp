@@ -45,7 +45,7 @@ void CMarioWorldMap::Draw()
 {
 	Vector3 p = Vector3();
 
-	p = CCamera::GetInstance()->GetPointTransform(pos.x, pos.y + 130);
+	p = CCamera::GetInstance()->GetPointTransform(pos.x, pos.y + 90);
 
 	this->m_drawImg->draw(m_imageCurr, this->GetRectRS(), p, D3DCOLOR_XRGB(255, 255, 255), true);
 }

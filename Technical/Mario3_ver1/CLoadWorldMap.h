@@ -16,6 +16,7 @@ public:
 	~CLoadWorldMap();
 public:
 	CMarioWorldMap *mario;
+	
 	CTexture* m_imageCurr; //Lay texture trong bo dem, can dung lop managertexture
 	CSprite* m_drawImg; //Dung de ve anh len man hinh, can dung lop managerSprite
 

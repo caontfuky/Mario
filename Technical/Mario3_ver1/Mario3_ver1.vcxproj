@@ -111,6 +111,7 @@
     <ClCompile Include="CEnemyTurtleFly.cpp" />
     <ClCompile Include="CEnemyFlower2.cpp" />
     <ClCompile Include="CLoadBackgroundMenu.cpp" />
+    <ClCompile Include="CWorldMapScene.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MenuGameScene.cpp" />
     <ClCompile Include="QuadObject.cpp" />
@@ -166,6 +167,7 @@
     <ClInclude Include="CEnemyTurtleFly.h" />
     <ClInclude Include="CEnemyFlower2.h" />
     <ClInclude Include="CLoadBackgroundMenu.h" />
+    <ClInclude Include="CWorldMapScene.h" />
     <ClInclude Include="MenuGameScene.h" />
     <ClInclude Include="QuadObject.h" />
     <ClInclude Include="StateGameManager.h" />

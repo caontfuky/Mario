@@ -5,6 +5,7 @@
 void CStateGameManager::LoadScene()
 {
 	menuGameScene = new MenuGameScene();
+	this->worldMapScene = new CWorldMapScene();
 	this->gamePlayScene = new CStateGamePlay();
 	gamePlayScene->Init();
 	m_pCurrent = menuGameScene;
@@ -53,7 +54,7 @@ void CStateGameManager::Update(bool isUpdate, float deltaTime)
 		timeDelay += deltaTime;
 		if (timeDelay > 1.5f)
 		{
-			ChangeState(this->gamePlayScene);
+			ChangeState(this->worldMapScene);
 
 			timeDelay = 0;
 			isStart = false;

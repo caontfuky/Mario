@@ -86,6 +86,9 @@
     <Filter Include="FrameWork\Object\Scene\Menu">
       <UniqueIdentifier>{c1e309fc-69ba-4762-9e33-4b51aed9815b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FrameWork\Object\Scene\WorldMap">
+      <UniqueIdentifier>{c43184be-f741-454b-80bb-7b1a0d55ab92}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -219,6 +222,21 @@
     </ClCompile>
     <ClCompile Include="MenuGameScene.cpp">
       <Filter>FrameWork\Object\Scene\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="CInputWorldMap.cpp">
+      <Filter>FrameWork\Object\Scene\WorldMap</Filter>
+    </ClCompile>
+    <ClCompile Include="CLoadWorldMap.cpp">
+      <Filter>FrameWork\Object\Scene\WorldMap</Filter>
+    </ClCompile>
+    <ClCompile Include="CMarioWorldMap.cpp">
+      <Filter>FrameWork\Object\Scene\WorldMap</Filter>
+    </ClCompile>
+    <ClCompile Include="CNoteWorldMap.cpp">
+      <Filter>FrameWork\Object\Scene\WorldMap</Filter>
+    </ClCompile>
+    <ClCompile Include="CWorldMapScene.cpp">
+      <Filter>FrameWork\Object\Scene\WorldMap</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -365,6 +383,21 @@
     </ClInclude>
     <ClInclude Include="MenuGameScene.h">
       <Filter>FrameWork\Object\Scene\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="CInputWorldMap.h">
+      <Filter>FrameWork\Object\Scene\WorldMap</Filter>
+    </ClInclude>
+    <ClInclude Include="CLoadWorldMap.h">
+      <Filter>FrameWork\Object\Scene\WorldMap</Filter>
+    </ClInclude>
+    <ClInclude Include="CMarioWorldMap.h">
+      <Filter>FrameWork\Object\Scene\WorldMap</Filter>
+    </ClInclude>
+    <ClInclude Include="CNoteWorldMap.h">
+      <Filter>FrameWork\Object\Scene\WorldMap</Filter>
+    </ClInclude>
+    <ClInclude Include="CWorldMapScene.h">
+      <Filter>FrameWork\Object\Scene\WorldMap</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

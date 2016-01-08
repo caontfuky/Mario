@@ -24,6 +24,7 @@ void CLoadWorldMap::Draw()
 {
 	this->m_drawImg->drawScale(this->m_imageCurr, NULL, Vector3(0, 0, 0), Vector2(1, 1), D3DCOLOR_XRGB(255, 255, 225), false);
 	this->mario->Draw();
+	
 }
 void CLoadWorldMap::LoadNote(std::string path)
 {
