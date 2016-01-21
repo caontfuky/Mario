@@ -3,8 +3,7 @@
 #include "CStateGamePlay.h"	
 #include "CDevice.h"
 #include "CInput.h"
-//#include "CManagementTexture.h"
-//#include "CManageAudio.h"
+#include "CManageAudio.h"
 
 CMario::CMario()
 {
@@ -19,16 +18,12 @@ void CMario::Init()
 	CInput::GetInstance()->InitKeyboard(CViewWindows::m_hwndWindow);
 
 	CStateGameManager::GetInstance()->LoadScene();
-
-	//CStateGameManager::GetInstance()->currentScene = StateScene::MENU_SCENE;
-
 	CStateGameManager::GetInstance()->ChangeState(new MenuGameScene());
 
-	//CManagementTexture::GetInstance()->LoadAllResourceFromFile(__OBJECT_PATH__);
 
 	//Audio
-	//ManageAudio::GetInstance()->init_DirectSound(CView::m_hwndWindow);
-	//ManageAudio::GetInstance()->readFileAudio();
+	ManageAudio::GetInstance()->init_DirectSound(CViewWindows::m_hwndWindow);
+	ManageAudio::GetInstance()->readFileAudio();
 }
 
 void CMario::Destroy()

@@ -238,6 +238,12 @@
     <ClCompile Include="CWorldMapScene.cpp">
       <Filter>FrameWork\Object\Scene\WorldMap</Filter>
     </ClCompile>
+    <ClCompile Include="CSoundUtil.cpp">
+      <Filter>FrameWork\DirectX\Divice</Filter>
+    </ClCompile>
+    <ClCompile Include="CManageAudio.cpp">
+      <Filter>FrameWork\DirectX\Divice</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CGlobal.h">
@@ -398,6 +404,12 @@
     </ClInclude>
     <ClInclude Include="CWorldMapScene.h">
       <Filter>FrameWork\Object\Scene\WorldMap</Filter>
+    </ClInclude>
+    <ClInclude Include="CSoundUtil.h">
+      <Filter>FrameWork\DirectX\Divice</Filter>
+    </ClInclude>
+    <ClInclude Include="CManageAudio.h">
+      <Filter>FrameWork\DirectX\Divice</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

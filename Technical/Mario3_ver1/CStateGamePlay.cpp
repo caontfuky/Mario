@@ -1,6 +1,7 @@
 #include "CStateGamePlay.h"
 #include "CDrawObject.h"
 #include "CBoxGround.h"
+#include "CManageAudio.h"
 CStateGamePlay::CStateGamePlay()
 {
 	
@@ -13,6 +14,8 @@ void CStateGamePlay::Init()
 	CLoadBackground::GetInstance()->LoadBackgroundFromFile();
 
 	CLoadObject::GetInstance()->LoadReSourceFromFile();
+
+	ManageAudio::GetInstance()->playSound(TypeAudio::AUDIO_BACKGROUND_STATE_1);
 }
 void CStateGamePlay::Update(float deltaTime)
 {

@@ -1,4 +1,7 @@
 
+
+
+
 //lv1
 #define MARIO_MOVE "..\\Resources\\Mario\\Lv1\\move.PNG"
 #define MARIO_JUMB "..\\Resources\\Mario\\Lv1\\Jumb.PNG"

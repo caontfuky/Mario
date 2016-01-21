@@ -50,7 +50,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>d3d9.lib;d3dx9.lib;dxguid.lib;dxerr.lib;dinput8.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3d9.lib;d3dx9.lib;dxguid.lib;dxerr.lib;dinput8.lib;dsound.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -94,6 +94,7 @@
     <ClCompile Include="CLoadGameObject.cpp" />
     <ClCompile Include="CLoadObject.cpp" />
     <ClCompile Include="CLoadWorldMap.cpp" />
+    <ClCompile Include="CManageAudio.cpp" />
     <ClCompile Include="CMario.cpp" />
     <ClCompile Include="CMarioObject.cpp" />
     <ClCompile Include="CMarioWorldMap.cpp" />
@@ -101,6 +102,7 @@
     <ClCompile Include="CPoolObject.cpp" />
     <ClCompile Include="CQuadNode.cpp" />
     <ClCompile Include="CQuadTree.cpp" />
+    <ClCompile Include="CSoundUtil.cpp" />
     <ClCompile Include="CSprite.cpp" />
     <ClCompile Include="CState.cpp" />
     <ClCompile Include="CStateGamePlay.cpp" />
@@ -146,6 +148,7 @@
     <ClInclude Include="CLoadGameObject.h" />
     <ClInclude Include="CLoadObject.h" />
     <ClInclude Include="CLoadWorldMap.h" />
+    <ClInclude Include="CManageAudio.h" />
     <ClInclude Include="CMario.h" />
     <ClInclude Include="CMarioObject.h" />
     <ClInclude Include="CMarioWorldMap.h" />
@@ -157,6 +160,7 @@
     <ClInclude Include="CQuadTree.h" />
     <ClInclude Include="CResourece.h" />
     <ClInclude Include="CSingleton.h" />
+    <ClInclude Include="CSoundUtil.h" />
     <ClInclude Include="CSprite.h" />
     <ClInclude Include="CState.h" />
     <ClInclude Include="CStateGamePlay.h" />

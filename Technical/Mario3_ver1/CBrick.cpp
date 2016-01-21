@@ -103,6 +103,7 @@ void CBrick::OnCollision(float deltaTime, std::vector<CBaseGameObject*> listObje
 									CPoolObject::GetInstance()->RenderItem(pos, TYPE_ITEM::ITEM_FLY);
 									break;
 								case 3:
+									CPoolObject::GetInstance()->RenderCoin(pos);
 									break;
 								default:
 									break;
@@ -156,6 +157,7 @@ void CBrick::OnCollision(float deltaTime)
 						CPoolObject::GetInstance()->RenderItem(pos, TYPE_ITEM::ITEM_FLY);
 						break;
 					case 3:
+						CPoolObject::GetInstance()->RenderCoin(pos);
 						break;
 					default:
 						break;

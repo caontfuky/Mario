@@ -120,26 +120,26 @@ void CEnemyTurtle::Update(float deltaTime, std::vector<CBaseGameObject*>* listOb
 }
 void CEnemyTurtle::OnCollision(float deltaTime, std::vector<CBaseGameObject*> listObjectCollision)
 {
-	//float normalX = 0;
-	//float normalY = 0;
-	//float moveX = 0.0f;
-	//float moveY = 0.0f;
-	//float timeCollision;
-	//for (std::vector<CBaseGameObject*>::iterator it = listObjectCollision.begin(); it != listObjectCollision.end(); it++)
-	//{
-	//	CBaseGameObject* obj = *it;
+	float normalX = 0;
+	float normalY = 0;
+	float moveX = 0.0f;
+	float moveY = 0.0f;
+	float timeCollision;
+	for (std::vector<CBaseGameObject*>::iterator it = listObjectCollision.begin(); it != listObjectCollision.end(); it++)
+	{
+		CBaseGameObject* obj = *it;
 
-	//	if (obj->GetTag() == Tag::BRICK)
-	//	{
-	//		if (obj->m_IdType == 201 && obj->m_isLife == false)//va cham voi con rua
-	//		{
-	//			if (CCollision::GetInstance()->Collision(obj, this))
-	//			{
-	//				this->m_vx *= -1;
-	//			}
-	//		}
-	//	}
-	//}
+		if (obj->GetTag() == Tag::BRICK)
+		{
+			if (obj->m_IdType == 201 && obj->m_isLife == false)//va cham voi con rua
+			{
+				if (CCollision::GetInstance()->Collision(obj, this))
+				{
+					this->m_vx *= -1;
+				}
+			}
+		}
+	}
 }
 void CEnemyTurtle::OnCollision(float deltaTime, CBaseGameObject* Object)
 {}
