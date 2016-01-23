@@ -143,6 +143,7 @@ void CBrick::OnCollision(float deltaTime)
 				if (this->level == 1)
 				{
 					CPoolObject::GetInstance()->RenderCoin(pos);
+					ManageAudio::GetInstance()->playSound(TypeAudio::AUDIO_MARIO_COLLISION_BRICK);
 					//CPoolObject::GetInstance()->RenderItem(pos, TYPE_ITEM::ITEM_MUSHROOM);
 				}
 				if (this->level == 2)

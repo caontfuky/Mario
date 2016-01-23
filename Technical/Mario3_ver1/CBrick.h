@@ -2,6 +2,7 @@
 #include "CAnimation.h"
 #include "CBaseGameObject.h"
 #include "CMarioObject.h"
+#include"CManageAudio.h"
 enum BRICK_STATUS
 {
 	BRICK_NONE = 0,
