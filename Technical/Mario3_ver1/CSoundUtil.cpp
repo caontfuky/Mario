@@ -732,7 +732,6 @@ HRESULT CSound::Get3DBufferInterface(DWORD dwIndex, LPDIRECTSOUND3DBUFFER* ppDS3
 //-----------------------------------------------------------------------------
 HRESULT CSound::Play(DWORD dwPriority, DWORD dwFlags, LONG lVolume, LONG lFrequency, LONG lPan)
 {
-	
 	HRESULT hr;
 	BOOL    bRestored;
 

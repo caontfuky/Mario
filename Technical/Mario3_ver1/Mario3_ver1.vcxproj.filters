@@ -89,6 +89,9 @@
     <Filter Include="FrameWork\Object\Scene\WorldMap">
       <UniqueIdentifier>{c43184be-f741-454b-80bb-7b1a0d55ab92}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FrameWork\Object\Scene\UI">
+      <UniqueIdentifier>{9822c099-9925-4a80-9717-6f719933f243}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -243,6 +246,15 @@
     </ClCompile>
     <ClCompile Include="CManageAudio.cpp">
       <Filter>FrameWork\DirectX\Divice</Filter>
+    </ClCompile>
+    <ClCompile Include="Audio.cpp">
+      <Filter>FrameWork</Filter>
+    </ClCompile>
+    <ClCompile Include="CSoundUtil.cpp">
+      <Filter>FrameWork</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneUI.cpp">
+      <Filter>FrameWork\Object\Scene\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -410,6 +422,11 @@
     </ClInclude>
     <ClInclude Include="CManageAudio.h">
       <Filter>FrameWork\DirectX\Divice</Filter>
+    </ClInclude>
+    <ClInclude Include="Audio.h" />
+    <ClInclude Include="CSoundUtil.h" />
+    <ClInclude Include="SceneUI.h">
+      <Filter>FrameWork\Object\Scene\UI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

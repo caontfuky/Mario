@@ -125,11 +125,13 @@ void CItem::OnCollision(float deltaTime)
 		case 1:
 			CMarioObject::GetInstance()->m_Pos.y = CMarioObject::GetInstance()->m_Pos.y + CMarioObject::GetInstance()->m_Height/2;
 			CMarioObject::GetInstance()->level = 2;
-			
+			ManageAudio::GetInstance()->playSound(TypeAudio::AUDIO_MARIO_UP_LEVEL);
+
 			break;
 		case 2:
 			//CMarioObject::GetInstance()->m_Pos.y = CMarioObject::GetInstance()->m_Pos.y + CMarioObject::GetInstance()->m_Height / 2;
 			CMarioObject::GetInstance()->level = 3;
+			ManageAudio::GetInstance()->playSound(TypeAudio::AUDIO_MARIO_UP_LEVEL);
 			break;
 		case 3:
 			break;

@@ -1,6 +1,6 @@
 #include "StateGameManager.h"
 #include "CDevice.h"
-
+#include"CManageAudio.h"
 
 void CStateGameManager::LoadScene()
 {
@@ -17,7 +17,6 @@ void CStateGameManager::LoadScene()
 
 void CStateGameManager::Update(bool isUpdate, float deltaTime)
 {
-	
 	if (this->m_pCurrent != this->m_pNext)
 	{
 		if (this->m_pCurrent)
@@ -51,16 +50,27 @@ void CStateGameManager::Update(bool isUpdate, float deltaTime)
 	
 	if (CInput::GetInstance()->IsKeyDown(DIK_RETURN))
 	{
+		if (isStart == false)
+		{
+			ManageAudio::GetInstance()->playSound(TypeAudio::AUDIO_MARIO_COLLISION_BRICK);
+		}
 		isStart = true;
 		m_pCurrent->isChangeState = true;
+		
 	}
+
 	if (isStart)
 	{
 		timeDelay += deltaTime;
-		if (timeDelay > 1.5f)
+		if (timeDelay > 1.0f)
 		{
 			if (this->m_pCurrent != this->worldMapScene && this->m_pCurrent != this->gamePlayScene)
+			{
+				ManageAudio::GetInstance()->playSound(TypeAudio::AUDIO_WORLD_MAP);
+				ManageAudio::GetInstance()->stopSound(TypeAudio::AUDIO_BACKGROUND_STATE_1);
 				ChangeState(this->worldMapScene);
+			}
+				
 
 			timeDelay = 0;
 			isStart = false;
@@ -72,9 +82,10 @@ void CStateGameManager::Update(bool isUpdate, float deltaTime)
 	{
 		gamePlayScene->m_mapId = this->worldMapScene->worldMap->mario->note.MapID;
 
-		if (CInput::GetInstance()->IsKeyDown(DIK_SPACE) && gamePlayScene->m_mapId != -1)
+		if (CInput::GetInstance()->IsKeyDown(DIK_RETURN) && gamePlayScene->m_mapId != -1)
 		{
 			ChangeState(gamePlayScene);
+			ManageAudio::GetInstance()->stopSound(TypeAudio::AUDIO_WORLD_MAP);
 		}
 	}
 }

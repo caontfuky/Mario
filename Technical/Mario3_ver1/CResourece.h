@@ -21,6 +21,9 @@
 #define BACK_GROUND "..\\Resources\\Mario\\Background.png"
 #define BACK_GROUND_1 "..\\Resources\\Map\\Quadtree\\1-1-1-1.PNG"//Map_1.png"
 #define BACK_GROUND_MENU "..\\Resources\\Map\\Quadtree\\bg_menu_1_title.PNG"//map menu.png"
+
+#define BACK_GROUND_UI "..\\Resources\\Map\\Quadtree\\bg_ui.PNG"//UI menu.png"
+
 #define WORLD_MAP "..\\Resources\\Mario\\wm.png"
 
 #define BULLET_ENEMY "..\\Resources\\Enemy\\Bullet.png"

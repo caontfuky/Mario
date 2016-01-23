@@ -1,6 +1,8 @@
 #include "CMarioWorldMap.h"
 #include "CCamera.h"
 #include "CCollision.h"
+#include"CManageAudio.h"
+
 CMarioWorldMap::CMarioWorldMap()
 {
 	note = Note();
@@ -72,6 +74,7 @@ void CMarioWorldMap::OnKeyDown(float deltaTime)
 	{		
 		if (this->note.Top == 1)
 		{
+			ManageAudio::GetInstance()->playSound(TypeAudio::AUDIO_MAP_TRAVEL);
 			this->m_vx = 0;
 			this->m_vy = 100;
 			this->isMove = true;
@@ -79,8 +82,10 @@ void CMarioWorldMap::OnKeyDown(float deltaTime)
 	}
 	if (CInput::GetInstance()->IsKeyDown(DIK_DOWN))
 	{
+
 		if (this->note.Down == 1)
 		{
+			ManageAudio::GetInstance()->playSound(TypeAudio::AUDIO_MAP_TRAVEL);
 			this->m_vx = 0;
 			this->m_vy = -100;
 			this->isMove = true;
@@ -88,22 +93,26 @@ void CMarioWorldMap::OnKeyDown(float deltaTime)
 	}
 	if (CInput::GetInstance()->IsKeyDown(DIK_LEFT))
 	{
+		
 		if (this->note.Left == 1)
 		{
+			ManageAudio::GetInstance()->playSound(TypeAudio::AUDIO_MAP_TRAVEL);
 			this->m_vx = -100;
 			this->m_vy = 0;
 			this->isMove = true;
-		}
+		}			
 	}
 	if (CInput::GetInstance()->IsKeyDown(DIK_RIGHT))
 	{
 		if (this->note.Right == 1)
 		{
+			ManageAudio::GetInstance()->playSound(TypeAudio::AUDIO_MAP_TRAVEL);
 			this->m_vx = 100;
 			this->m_vy = 0;
 			this->isMove = true;
 		}
 	}
+	
 }
 void CMarioWorldMap::OnkeyUp(float deltaTime)
 {

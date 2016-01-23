@@ -33,8 +33,6 @@ void CStateGamePlay::Update(float deltaTime)
 }
 void CStateGamePlay::Render()
 {
-	//CDrawObject::GetInstance()->Draw(CMarioObject::GetInstance(), D3DCOLOR_ARGB(127, 255, 255, 255));
-	
 	//ve map len man hinh
 	CLoadBackground::GetInstance()->Draw();
 	//ve mario

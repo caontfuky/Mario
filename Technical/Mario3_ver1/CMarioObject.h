@@ -7,6 +7,8 @@
 #include "CMove.h"
 #include "CInput.h"
 #include "CCollision.h"
+#include"CManageAudio.h"
+
 
 enum STATUS
 {

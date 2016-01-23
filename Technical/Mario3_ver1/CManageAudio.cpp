@@ -82,8 +82,10 @@ void ManageAudio::stopSound(TypeAudio _type)
 	if (it != this->listAudio.end())
 	{
 		CSound* sound = it->second;
-
-		sound->Stop();
+		if (sound->IsSoundPlaying())
+		{
+			sound->Stop();
+		}
 	}
 }
 

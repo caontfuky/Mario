@@ -20,12 +20,12 @@ CChooseItem::CChooseItem()
 
 void CChooseItem::Update(float deltaTime)
 {
-	if (CInput::GetInstance()->IsKeyDown(DIK_X))
+	if (CInput::GetInstance()->IsKeyDown(DIK_UP))
 	{
 		direction = directionItemChoisePlay::UP;
 		//MessageBox(NULL, "ok", "error", MB_OK);
 	}
-	else if (CInput::GetInstance()->IsKeyDown(DIK_Z))
+	else if (CInput::GetInstance()->IsKeyDown(DIK_DOWN))
 	{
 		direction = directionItemChoisePlay::DOWN;
 	}
@@ -60,17 +60,6 @@ void CChooseItem::EffectChangeState(float deltaTime)
 	default:
 		break;
 	}
-	//timeDelay += deltaTime;
-	////float widthStart = this->m_Width;
-	//if (timeDelay > 1)
-	//{
-	//	m_Pos.y = 1000;
-	//}
-	//else
-	//{
-	//	m_Pos.y = posStart;
-	//}
-
 }
 void CChooseItem::MoveUpdate(float deltaTime)
 {

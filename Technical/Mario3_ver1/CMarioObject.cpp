@@ -120,6 +120,7 @@ void CMarioObject::OnCollision(float deltaTime, std::vector<CBaseGameObject*> li
 						this->m_a = 0;
 						this->m_canJump = false;
 						this->m_collision = COLLISION::GROUND_COL;
+						//ManageAudio::GetInstance()->playSound(TypeAudio::AUDIO_MARIO_COLLISION_BRICK);
 					}
 				}
 				if (normalY < 0)
@@ -688,7 +689,6 @@ void CMarioObject::MoveUpdate(float deltaTime)
 			{				
 				if (this->m_vx > -20 && this->m_vx < 20)
 				{
-					//MessageBox(NULL, "Vy Max", "VY", MB_OK);
 					this->m_vx = 0;
 					this->m_ax = 0;
 				}
@@ -721,6 +721,7 @@ void CMarioObject::MarioDie()
 {
 	if (this->m_isUndying == false)
 	{
+		
 		switch (this->level)
 		{
 		case 0:
@@ -728,6 +729,10 @@ void CMarioObject::MarioDie()
 		case 1:
 			this->m_vy = 120;
 			this->m_status = STATUS::DIE;
+
+			ManageAudio::GetInstance()->stopSound(TypeAudio::AUDIO_BACKGROUND_STATE_1);
+			ManageAudio::GetInstance()->playSound(TypeAudio::AUDIO_MARIO_DIE);
+
 			break;
 		case 2:
 			this->level = 1;
@@ -812,9 +817,10 @@ void CMarioObject::OnKeyUp(float deltaTime)
 	switch (this->m_keyUp)
 	{
 		case DIK_SPACE:
+			ManageAudio::GetInstance()->playSound(TypeAudio::AUDIO_MARIO_JUMP);
 			if (this->m_isJumbFly == false)
 			{
-
+				
 				this->m_isJumping = false;
 				this->m_timeJumb = 0;
 				this->m_a = m_aDefault;

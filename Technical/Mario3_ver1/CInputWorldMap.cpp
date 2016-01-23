@@ -19,7 +19,7 @@ void CInputWorldMap::OnKeyDown(float deltaTime)
 	switch (this->m_keyDown)
 	{
 	case DIK_Z:
-		MessageBox(NULL, "Asdsa", "asdsad", MB_OK);
+		//MessageBox(NULL, "Asdsa", "asdsad", MB_OK);
 		break;
 	default:
 		break;
@@ -32,7 +32,7 @@ void CInputWorldMap::OnkeyUp(float deltaTime)
 	switch (this->m_keyUp)
 	{
 	case DIK_Z:
-		MessageBox(NULL, "Asdsa", "asdsad", MB_OK);
+		//MessageBox(NULL, "Asdsa", "asdsad", MB_OK);
 		break;
 	default:
 		break;
