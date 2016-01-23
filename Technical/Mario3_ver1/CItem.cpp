@@ -101,7 +101,7 @@ void CItem::OnCollision(float deltaTime, std::vector<Ground> listGround)
 				this->m_vy = 0;
 				this->m_a = 0;						
 				this->isGround = true;
-				this->m_Pos.y = box.y + 6;
+				this->m_Pos.y = box.y + 8;
 			}
 
 		}
@@ -178,7 +178,7 @@ void CItem::MoveUpdate(float deltaTime)
 		break;
 	case TYPE_ITEM::ITEM_FLY:
 		//this->m_Pos.x -= this->m_vx * deltaTime;
-		this->m_Pos.y += this->m_vy*deltaTime + 0.5 * this->m_a * deltaTime *deltaTime;
+		//this->m_Pos.y += this->m_vy*deltaTime + 0.5 * this->m_a * deltaTime *deltaTime;
 	default:
 		break;
 	}

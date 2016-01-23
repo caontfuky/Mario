@@ -448,6 +448,7 @@ void CMarioObject::SetFrame(float deltaTime)
 {
 	if (this->level == 1)
 	{
+		this->m_elapseTimeChangeFrame = 0.1f;
 		if (this->m_status != STATUS::DIE)
 		{
 			this->m_Width = 16;
@@ -492,7 +493,7 @@ void CMarioObject::SetFrame(float deltaTime)
 	}
 	if (this->level == 2)
 	{
-		
+		this->m_elapseTimeChangeFrame = 0.1f;
 		if (this->m_collision == COLLISION::NONE_COL)
 		{
 				this->m_Width = 19;

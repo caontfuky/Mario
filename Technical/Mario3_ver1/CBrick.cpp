@@ -89,6 +89,7 @@ void CBrick::OnCollision(float deltaTime, std::vector<CBaseGameObject*> listObje
 							if (this->level == 1)
 							{
 								CPoolObject::GetInstance()->RenderCoin(pos);
+
 								//CPoolObject::GetInstance()->RenderItem(pos, TYPE_ITEM::ITEM_MUSHROOM);
 							}
 							if (this->level == 2)

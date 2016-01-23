@@ -91,6 +91,7 @@ void CEnemyTurtleFly::SetFrame(float deltaTime)
 		this->m_endFrame = 4;
 		break;
 	case ENEMY_STATUS::ENEMY_DIE:
+		this->m_isLife = false;
 		if (this->m_isMario == false)
 		{
 			this->m_startFrame = 0;
@@ -195,7 +196,29 @@ void CEnemyTurtleFly::Update(float deltaTime, std::vector<CBaseGameObject*>* lis
 
 }
 void CEnemyTurtleFly::OnCollision(float deltaTime, std::vector<CBaseGameObject*> listObjectCollision)
-{
+{ 
+	float normalX = 0;
+	float normalY = 0;
+	float moveX = 0.0f;
+	float moveY = 0.0f;
+	float timeCollision;
+	for (std::vector<CBaseGameObject*>::iterator it = listObjectCollision.begin(); it != listObjectCollision.end(); it++)
+	{
+		CBaseGameObject* obj = *it;
+
+		if (obj->m_IdType == 106 && obj->m_isLife == false)
+		{
+			if (normalY != 0)
+			{
+				this->status = ENEMY_STATUS::ENEMY_DIE;
+			}
+			if (normalX != 0)
+			{
+				this->status = ENEMY_STATUS::ENEMY_DIE;
+			}
+		}
+	}
+
 }
 void CEnemyTurtleFly::OnCollision(float deltaTime, CBaseGameObject* Object)
 {}
