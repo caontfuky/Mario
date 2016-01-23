@@ -186,7 +186,8 @@ void CEnemyFlower::OnCollision(float deltaTime)//xet va cham voi Player
 	if (CCollision::GetInstance()->Collision(CMarioObject::GetInstance(), this))
 	{
 		//MessageBox(NULL, "Mario Die", "Game Over", MB_OK);
-		CMarioObject::GetInstance()->MarioDie();
+		if (this->m_Height > 0)
+			CMarioObject::GetInstance()->MarioDie();
 		//CMarioObject::GetInstance()->m_vy = 120;
 	}
 }

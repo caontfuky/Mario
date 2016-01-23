@@ -79,6 +79,8 @@ public:
 	bool m_isCanJumbFly;
 	bool m_isUndying;
 	bool m_isRender;
+	float timeUndying;
+	float undying;
 	
 private:
 	float m_timeJumb = 10;//thoi gian addFore

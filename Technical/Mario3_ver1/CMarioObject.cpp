@@ -8,6 +8,8 @@ CMarioObject::CMarioObject()
 	this->level = 1;
 	this->m_isRender = true;
 	this->m_isUndying = false;
+	this->timeUndying = 0;
+	this->undying = 0;
 	this->isInput = false;
 	this->m_isFly = false;
 	this->m_isJumbFly = false;
@@ -53,8 +55,7 @@ CMarioObject::~CMarioObject()
 {
 	delete this;
 }
-float timeUndying = 0;
-float undying;
+
 void CMarioObject::Update(float deltaTime)
 {
 	SetFrame(deltaTime);

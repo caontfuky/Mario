@@ -27,6 +27,8 @@ CItem::CItem(Vector2 pos, TYPE_ITEM _type)
 		this->m_column = 2;
 		break;
 	case TYPE_ITEM::ITEM_FLY:
+		this->m_a = -300;
+		this->m_vy = 0;
 		this->m_Id = 204;
 		this->m_IdType = 204;//id Image
 		this->m_Width = 16;
@@ -170,12 +172,13 @@ void CItem::MoveUpdate(float deltaTime)
 				this->m_a = 0;
 				this->m_vy = 0;
 			}
-			this->m_Pos.x -= this->m_vx * deltaTime;
+			this->m_Pos.x += this->m_vx * deltaTime;
 					
 		}
 		break;
 	case TYPE_ITEM::ITEM_FLY:
-		this->m_Pos.x -= this->m_vx * deltaTime;
+		//this->m_Pos.x -= this->m_vx * deltaTime;
+		this->m_Pos.y += this->m_vy*deltaTime + 0.5 * this->m_a * deltaTime *deltaTime;
 	default:
 		break;
 	}
